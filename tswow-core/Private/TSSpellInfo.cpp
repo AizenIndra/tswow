@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -235,7 +235,7 @@ TSNumber<uint32> TSSpellInfo::GetPreventionType()
 
 TSNumber<uint32> TSSpellInfo::GetPriority()
 {
-#if TRINITY
+#if ORSTET
     return info->Priority;
 #endif
 }
@@ -375,7 +375,7 @@ TSSpellEffectInfo::TSSpellEffectInfo(SpellEffectInfo const* info)
 
 TSNumber<uint32> TSSpellEffectInfo::GetEffectIndex()
 {
-#if TRINITY
+#if ORSTET
     return static_cast<uint32>(m_info->EffectIndex);
 #endif
 }
@@ -464,7 +464,7 @@ bool TSSpellEffectInfo::IsAura()
 
 TSNumber<int32> TSSpellEffectInfo::CalcValue(TSWorldObject caster)
 {
-#if TRINITY
+#if ORSTET
     return m_info->CalcValue(caster.obj);
 #endif
 }

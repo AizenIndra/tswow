@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -44,7 +44,7 @@ TSVehicle::TSVehicle()
 bool TSVehicle::IsOnBoard(TSUnit _passenger)
 {
     auto passenger = _passenger.unit;
-#if defined TRINITY
+#if defined ORSTET
     return passenger->IsOnVehicle(vehicle->GetBase());
 #else
     return vehicle->HasOnBoard(passenger);
@@ -58,7 +58,7 @@ bool TSVehicle::IsOnBoard(TSUnit _passenger)
  */
 TSUnit  TSVehicle::GetOwner()
 {
-#if defined TRINITY
+#if defined ORSTET
      return TSUnit(vehicle->GetBase());
 #else
      return TSUnit(vehicle->GetOwner());
@@ -72,7 +72,7 @@ TSUnit  TSVehicle::GetOwner()
  */
 TSNumber<uint32> TSVehicle::GetEntry()
 {
-#if defined TRINITY
+#if defined ORSTET
     return vehicle->GetVehicleInfo()->ID;
 #endif
 }
@@ -97,7 +97,7 @@ TSUnit  TSVehicle::GetPassenger(int8 seatId)
 void TSVehicle::AddPassenger(TSUnit _passenger,int8 seatId)
 {
     auto passenger = _passenger.unit;
-#if defined TRINITY
+#if defined ORSTET
     vehicle->AddPassenger(passenger, seatId);
 #else
     if (vehicle->CanBoard(passenger))
@@ -113,7 +113,7 @@ void TSVehicle::AddPassenger(TSUnit _passenger,int8 seatId)
 void TSVehicle::RemovePassenger(TSUnit _passenger)
 {
     auto passenger = _passenger.unit;
-#if defined TRINITY
+#if defined ORSTET
     vehicle->RemovePassenger(passenger);
 #else
     vehicle->UnBoard(passenger, false);

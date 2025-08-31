@@ -1,4 +1,4 @@
-#include "ClientNetwork.h"
+﻿#include "ClientNetwork.h"
 #include "ClientDetours.h"
 
 #include "CustomPacketBuffer.h"
@@ -59,7 +59,7 @@ public:
         for (auto& chunk : chunks)
         {
             // the API assumes the opcode is not a part of the payload,
-            // because TrinityCore WorldPackets do not include it.
+            // because OrstetCore WorldPackets do not include it.
             //
             // This means just a single copy on the client.
             // Getting rid of it would be very cumbersome to almost no benefit.

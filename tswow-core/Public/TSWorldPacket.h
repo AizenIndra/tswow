@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -21,7 +21,7 @@
 #include "TSLua.h"
 #include "TSArray.h"
 
-class TC_GAME_API TSWorldPacket {
+class OC_GAME_API TSWorldPacket {
 public:
     WorldPacket *packet;
     bool owner;
@@ -116,7 +116,7 @@ namespace WorldPackets {
         class InitWorldStates;
     }
 }
-class TC_GAME_API TSWorldStatePacket
+class OC_GAME_API TSWorldStatePacket
 {
 public:
     WorldPackets::WorldState::InitWorldStates* m_ws;

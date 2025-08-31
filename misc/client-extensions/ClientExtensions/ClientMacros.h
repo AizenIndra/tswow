@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #define CLIENT_FUNCTION(name,addr,calltype,retval,...) \
     typedef retval (calltype *name##Type)__VA_ARGS__;\

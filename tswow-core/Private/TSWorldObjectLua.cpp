@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSWorldEntityLua.h"
 #include "TSWorldObject.h"
 #include "TSCreature.h"

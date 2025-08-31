@@ -144,7 +144,7 @@ export class Dataset {
                 worldSql = this.path.world_sql.abs().get()
             } else {
                 switch(this.config.EmulatorCore) {
-                    case 'trinitycore': {
+                    case 'orstetcore': {
                         worldSql = ipaths.bin.tdb.get()
                         break;
                     }
@@ -154,7 +154,7 @@ export class Dataset {
         }
 
         switch(this.config.EmulatorCore) {
-            case 'trinitycore':
+            case 'orstetcore':
                 await mysql.applySQLFiles(db,'world');
                 break;
         }

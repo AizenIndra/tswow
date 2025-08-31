@@ -1,5 +1,5 @@
 
-// TrinityCore copypaste
+// OrstetCore copypaste
 export enum UnitStates {
     /** player has fake death aura */
     DIED                  = 0x00000001,

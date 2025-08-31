@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -21,23 +21,23 @@
 #include "TSBase.h"
 #include "TSLua.h"
 
-TSItemTemplate TC_GAME_API CreateItemTemplate(uint32 entry,uint32 copyItemID = 38);
+TSItemTemplate OC_GAME_API CreateItemTemplate(uint32 entry,uint32 copyItemID = 38);
 
-void TC_GAME_API SendWorldMessage(std::string const& string);
+void OC_GAME_API SendWorldMessage(std::string const& string);
 
-TSNumber<uint32> TC_GAME_API GetCurrTime();
-TSNumber<uint64> TC_GAME_API GetUnixTime();
+TSNumber<uint32> OC_GAME_API GetCurrTime();
+TSNumber<uint64> OC_GAME_API GetUnixTime();
 
-std::string TC_GAME_API SyncHttpGet(std::string const& url);
+std::string OC_GAME_API SyncHttpGet(std::string const& url);
 
-bool TC_GAME_API IsGameEventActive(uint16_t event_id);
-bool TC_GAME_API IsHolidayActive(uint16_t holiday_id);
-TSArray<TSNumber<uint16>> TC_GAME_API GetActiveGameEvents();
+bool OC_GAME_API IsGameEventActive(uint16_t event_id);
+bool OC_GAME_API IsHolidayActive(uint16_t holiday_id);
+TSArray<TSNumber<uint16>> OC_GAME_API GetActiveGameEvents();
 
-void TC_GAME_API StartGameEvent(uint16_t event_id);
-void TC_GAME_API StopGameEvent(uint16_t event_id);
+void OC_GAME_API StartGameEvent(uint16_t event_id);
+void OC_GAME_API StopGameEvent(uint16_t event_id);
 
-bool TC_GAME_API HAS_TAG(uint32_t id, std::initializer_list<uint32_t> const& list);
-bool TC_GAME_API L_HAS_TAG(uint32_t id, sol::table);
+bool OC_GAME_API HAS_TAG(uint32_t id, std::initializer_list<uint32_t> const& list);
+bool OC_GAME_API L_HAS_TAG(uint32_t id, sol::table);
 
-TSLua::Array<TSNumber<uint16> > TC_GAME_API LGetActiveGameEvents();
+TSLua::Array<TSNumber<uint16> > OC_GAME_API LGetActiveGameEvents();

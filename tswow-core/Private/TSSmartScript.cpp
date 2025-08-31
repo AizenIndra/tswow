@@ -1,4 +1,4 @@
-#include "TSSmartScript.h"
+﻿#include "TSSmartScript.h"
 
 #include "ConditionMgr.h"
 #include "Unit.h"
@@ -20,7 +20,7 @@ TSSmartScriptValues::TSSmartScriptValues (
     , bool bvar
     , SpellInfo const* spell
     , GameObject* gameObject
-#if TRINITY
+#if ORSTET
     , TSObjectVector* targets
 #endif
 )
@@ -32,7 +32,7 @@ TSSmartScriptValues::TSSmartScriptValues (
     , m_bvar(bvar)
     , m_spell(spell)
     , m_gameObject(gameObject)
-#if TRINITY
+#if ORSTET
     , m_targets(targets)
 #endif
 {}
@@ -158,7 +158,7 @@ TSNumber<uint32> TSSmartScriptValues::GetTimer()
 }
 TSNumber<uint32> TSSmartScriptValues::GetPriority()
 {
-#if TRINITY
+#if ORSTET
     return m_holder->priority;
 #endif
 }
@@ -170,7 +170,7 @@ TSUnit TSSmartScriptValues::GetLastInvoker()
 
 TSArray<TSWorldObject> TSSmartScriptValues::GetTargets()
 {
-#if TRINITY
+#if ORSTET
     if (!m_targets)
     {
         return TSArray<TSWorldObject>();
@@ -192,14 +192,14 @@ void TSSmartScriptValues::StoreTargetList(TSArray<TSWorldObject> objects, uint32
     {
         objectsOut->push_back(objects[i].obj);
     }
-#if TRINITY
+#if ORSTET
     m_script->StoreTargetList(*objectsOut, id);
 #endif
 }
 
 TSArray<TSWorldObject> TSSmartScriptValues::GetTargetList(uint32 id, TSWorldObject ref)
 {
-#if TRINITY
+#if ORSTET
     TSObjectVector const* vec = m_script->GetStoredTargetVector(id, *ref.obj);
     TSArray<TSWorldObject> out(vec->size());
     for (int i = 0; i < vec->size(); ++i) {
@@ -211,7 +211,7 @@ TSArray<TSWorldObject> TSSmartScriptValues::GetTargetList(uint32 id, TSWorldObje
 
 void TSSmartScriptValues::StoreCounter(uint32 id, uint32 value, uint32 reset)
 {
-#if TRINITY
+#if ORSTET
     m_script->StoreCounter(id, value, reset);
 #endif
 }
@@ -253,7 +253,7 @@ TSGameObject TSSmartScriptValues::GetGameObjectArg()
 
 TSWorldObject TSSmartScriptValues::GetSelf()
 {
-#if TRINITY
+#if ORSTET
     return TSWorldObject(m_script->GetBaseObjectOrPlayerTrigger());
 #endif
 }
@@ -339,7 +339,7 @@ bool TSCondition::IsNegativeCondition()
 
 std::string TSCondition::ToString(bool ext)
 {
-#if TRINITY
+#if ORSTET
     return m_condition->ToString();
 #endif
 }

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "TSMain.h"
 #include "TSLua.h"
@@ -7,7 +7,7 @@
 class TSPlayer;
 class TSMap;
 
-class TC_GAME_API TSMainThreadContext {
+class OC_GAME_API TSMainThreadContext {
 public:
     TSMainThreadContext* operator->() { return this; }
     TSArray<TSPlayer> GetAllPlayers();

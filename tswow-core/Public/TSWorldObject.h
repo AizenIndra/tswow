@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -40,7 +40,7 @@ class TSGUID;
 
 class TSFactionTemplate;
 
-class TC_GAME_API TSWorldObject : public TSObject, public TSWorldEntityProvider<TSWorldObject> {
+class OC_GAME_API TSWorldObject : public TSObject, public TSWorldEntityProvider<TSWorldObject> {
 public:
     WorldObject* obj;
     TSWorldObject();
@@ -188,7 +188,7 @@ private:
     TSPlayer LGetPlayer1(TSNumber<uint32> lowGuid);
 };
 
-class TC_GAME_API TSCollisionEntry {
+class OC_GAME_API TSCollisionEntry {
 public:
     TSDictionary<uint64,uint32> hitmap;
     CollisionCallback callback;
@@ -203,7 +203,7 @@ public:
     bool Tick(TSWorldObject value, bool force = true);
 };
 
-class TC_GAME_API TSCollisions {
+class OC_GAME_API TSCollisions {
 public:
     std::vector<TSCollisionEntry> callbacks;
     TSCollisionEntry* Add(std::string const& id, float range, uint32_t minDelay, uint32_t maxHits, CollisionCallback callback);
@@ -212,14 +212,14 @@ public:
     void Tick(TSWorldObject obj);
 };
 
-class TC_GAME_API TSMutableWorldObject
+class OC_GAME_API TSMutableWorldObject
 {
     TS_CLASS_DECLARATION(TSMutableWorldObject, WorldObject, m_obj)
     TSWorldObject get();
     void set(TSWorldObject value);
 };
 
-class TC_GAME_API TSWorldObjectCollection
+class OC_GAME_API TSWorldObjectCollection
 {
     TS_CLASS_DECLARATION(TSWorldObjectCollection, std::list<WorldObject*>, m_info)
     void filterInPlace(std::function<bool(TSWorldObject)> callback);

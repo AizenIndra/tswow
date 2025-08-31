@@ -27,9 +27,9 @@ import { Identifier } from './Identifiers';
 import { NodeConfig } from './NodeConfig';
 
 /**
- * Contains functions for extracting map data from the client that TrinityCore uses for its AI.
+ * Contains functions for extracting map data from the client that OrstetCore uses for its AI.
  * If you're familiar with wow server emulation from before, this module
- * runs `mapextractor`, `vmap4extractor`, `vmap4assembler` etc. and installs the results to TrinityCore.
+ * runs `mapextractor`, `vmap4extractor`, `vmap4assembler` etc. and installs the results to OrstetCore.
  */
 export namespace MapData {
     export function dbc (
@@ -42,7 +42,7 @@ export namespace MapData {
       wsys.exec(
         `${ipaths.bin.core.pick(dataset.config.EmulatorCore).build.pick(type).mapextractor.get()}`
           + ` -e 2`
-          + (dataset.config.EmulatorCore === 'trinitycore' ? ` -d 0` : '')
+          + (dataset.config.EmulatorCore === 'orstetcore' ? ` -d 0` : '')
           + ` -o ${dataset.path.dbc_temp.abs()}`
           + ` -i ${dataset.client.path.abs()}`
         , 'inherit')
@@ -77,7 +77,7 @@ export namespace MapData {
       //, tiles: number[] = []
     ) {
       switch(dataset.config.EmulatorCore) {
-        case 'trinitycore':
+        case 'orstetcore':
           term.debug('misc', `Extracting vmaps from ${dataset.client.path.abs()}`)
           let prog = `${ipaths.bin.core.pick(dataset.config.EmulatorCore).build.pick(type).vmap4extractor.get()}`
             + ` -o ${dataset.path.Buildings.abs()}`
@@ -92,7 +92,7 @@ export namespace MapData {
       , type: BuildType = NodeConfig.DefaultBuildType
     ) {
       switch(dataset.config.EmulatorCore) {
-        case 'trinitycore':
+        case 'orstetcore':
           break;
       }
         term.debug('misc', `Assembling vmaps from ${dataset.client.path.abs()}`)

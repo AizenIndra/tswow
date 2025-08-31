@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2021 tswow <https://github.com/tswow/>
  *
@@ -80,7 +80,7 @@ std::string TSCreatureTemplate::GetName()
 
 std::string TSCreatureTemplate::GetTitle()
 {
-#if TRINITY
+#if ORSTET
     return ct->Title;
 #endif
 }
@@ -292,7 +292,7 @@ TSNumber<float> TSCreatureTemplate::GetModArmor()
 }
 TSNumber<float> TSCreatureTemplate::GetModDamage()
 {
-#if TRINITY
+#if ORSTET
     return ct->ModDamage;
 #endif
 }
@@ -338,13 +338,13 @@ TSNumber<uint32> TSCreatureTemplate::GetFirstValidModelID() const
 }
 TSNumber<uint32> TSCreatureTemplate::GetFirstInvisibleModel() const
 {
-#if TRINITY
+#if ORSTET
     return ct->GetFirstInvisibleModel();
 #endif
 }
 TSNumber<uint32> TSCreatureTemplate::GetFirstVisibleModel() const
 {
-#if TRINITY
+#if ORSTET
     return ct->GetFirstVisibleModel();
 #endif
 }

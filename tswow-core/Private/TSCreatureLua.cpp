@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSCreature.h"
 #include "TSCreature.h"
 #include "TSPlayer.h"
@@ -46,7 +46,7 @@ void TSLua::load_creature_methods(sol::state & state)
     LUA_FIELD(ts_creature, TSCreature, IsDamageEnoughForLootingAndReward);
     LUA_FIELD(ts_creature, TSCreature, CanStartAttack);
     LUA_FIELD(ts_creature, TSCreature, HasLootMode);
-    #if TRINITY
+    #if ORSTET
     LUA_FIELD(ts_creature, TSCreature, GetAttackDistance);
     #endif
     LUA_FIELD(ts_creature, TSCreature, GetRespawnDelay);

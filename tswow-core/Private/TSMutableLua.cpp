@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSMutable.h"
 
 #define BIND_MUTABLE(state,type,rep)\

@@ -1,4 +1,4 @@
-#include <algorithm>
+﻿#include <algorithm>
 #include <map>
 #include <set>
 #include <stdexcept>
@@ -304,17 +304,17 @@ std::vector<std::vector<uint8_t> > Png2Blp::createDxtCompression(const std::vect
         uint32_t format;
         switch (dxtFormat) {
             case FORMAT_DXT1: {
-                format = GL_COMPRESSED_RGBA_S3TC_DXT1_EXT;
+                format = GL_COMPRESSED_RGBA_S3OC_DXT1_EXT;
                 break;
             }
 
             case FORMAT_DXT3: {
-                format = GL_COMPRESSED_RGBA_S3TC_DXT3_EXT;
+                format = GL_COMPRESSED_RGBA_S3OC_DXT3_EXT;
                 break;
             }
 
             case FORMAT_DXT5: {
-                format = GL_COMPRESSED_RGBA_S3TC_DXT5_EXT;
+                format = GL_COMPRESSED_RGBA_S3OC_DXT5_EXT;
                 break;
             }
 

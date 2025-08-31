@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -26,7 +26,7 @@
 
 struct CreatureTemplate;
 
-class TC_GAME_API TSCreatureTemplate : public TSEntityProvider
+class OC_GAME_API TSCreatureTemplate : public TSEntityProvider
 {
 public:
     CreatureTemplate * ct;
@@ -135,5 +135,5 @@ public:
     bool      GetIsRooted();
 };
 
-TC_GAME_API TSCreatureTemplate GetCreatureTemplate(uint32 entry);
+OC_GAME_API TSCreatureTemplate GetCreatureTemplate(uint32 entry);
 LUA_PTR_TYPE(TSCreatureTemplate);

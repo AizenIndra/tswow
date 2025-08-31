@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -21,7 +21,7 @@
 #include "TSLua.h"
 
 class WorldSocket;
-class TC_GAME_API TSWorldSocket {
+class OC_GAME_API TSWorldSocket {
 public:
     std::shared_ptr<WorldSocket> socket;
     TSWorldSocket(std::shared_ptr<WorldSocket> socket);

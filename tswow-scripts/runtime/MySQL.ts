@@ -429,14 +429,14 @@ export namespace mysql {
                  `No character tables found for ${connection.cfg.database},`
                + ` creating them...`);
             switch(core) {
-                case 'trinitycore':
+                case 'orstetcore':
                     await connection.query(ipaths.bin.sql.characters_create_sql.readString());
                     break;
             }
         }
 
         switch(core) {
-            case 'trinitycore':
+            case 'orstetcore':
                 await applySQLFiles(connection,'characters');
                 break;
         }

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2021 tswow <https://github.com/tswow/>
  *
@@ -25,17 +25,17 @@
 #include <memory>
 #include "TSMain.h"
 
-#if TRINITY
+#if ORSTET
 
 class TSPlayer;
 class Player;
 
-class TC_GAME_API TSTestException : public std::runtime_error {
+class OC_GAME_API TSTestException : public std::runtime_error {
 public:
     TSTestException(std::string const& what);
 };
 
-class TC_GAME_API TSAssert {
+class OC_GAME_API TSAssert {
 public:
     TSAssert * operator->() { return this; }
     void IsTrue(bool expression, std::string const& message = "");
@@ -52,7 +52,7 @@ public:
     }
 };
 
-class TC_GAME_API TSTestBase {
+class OC_GAME_API TSTestBase {
     virtual std::string searchName() const = 0;
 public:
     TSTestBase(
@@ -66,7 +66,7 @@ public:
 };
 
 typedef std::function<void(TSPlayer,TSAssert)> TSTestCallback;
-class TC_GAME_API TSAutomaticTest : public TSTestBase {
+class OC_GAME_API TSAutomaticTest : public TSTestBase {
     const TSTestCallback m_callback;
     virtual std::string searchName() const;
 public:
@@ -82,7 +82,7 @@ public:
 };
 
 typedef std::function<void(TSPlayer)> TSStepSetup;
-class TC_GAME_API TSManualStep : public TSTestBase {
+class OC_GAME_API TSManualStep : public TSTestBase {
     const uint32_t m_stepIndex;
     virtual std::string searchName() const;
 public:
@@ -105,7 +105,7 @@ public:
     bool operator < (TSManualStep const& step) const;
 };
 
-class TC_GAME_API TSManualStepBuilder {
+class OC_GAME_API TSManualStepBuilder {
     TSManualStep* m_step;
 public:
     TSManualStepBuilder(
@@ -121,7 +121,7 @@ public:
 };
 
 typedef std::function<void(TSManualStepBuilder*)> TSStepBuilderCallback;
-class TC_GAME_API TSManualTestBuilder {
+class OC_GAME_API TSManualTestBuilder {
     std::string m_modName;
     std::string m_testName;
     std::vector<TSManualStepBuilder> m_steps;
@@ -136,14 +136,14 @@ public:
     TSManualTestBuilder * step(std::string const& name, TSStepBuilderCallback callback);
 };
 
-void TC_GAME_API ClearTest(std::string name);
-void TC_GAME_API ClearTests();
-void TC_GAME_API UnloadTestModule();
-void TC_GAME_API StartTestSession(Player * player, std::string const& sessionName, std::string const& filter);
-void TC_GAME_API NextTestStep(Player * player, std::string const& sessionName, bool isFail, std::string const& failMessage);
-void TC_GAME_API RegisterAutomaticTest(std::string const& modName,std::string const& name, TSTestCallback callback);
-void TC_GAME_API PrintSessionStatus(Player* player, std::string const& sessionName);
+void OC_GAME_API ClearTest(std::string name);
+void OC_GAME_API ClearTests();
+void OC_GAME_API UnloadTestModule();
+void OC_GAME_API StartTestSession(Player * player, std::string const& sessionName, std::string const& filter);
+void OC_GAME_API NextTestStep(Player * player, std::string const& sessionName, bool isFail, std::string const& failMessage);
+void OC_GAME_API RegisterAutomaticTest(std::string const& modName,std::string const& name, TSTestCallback callback);
+void OC_GAME_API PrintSessionStatus(Player* player, std::string const& sessionName);
 
-std::shared_ptr<TSManualTestBuilder> TC_GAME_API RegisterManualTest(std::string const& modName, std::string const& name);
+std::shared_ptr<TSManualTestBuilder> OC_GAME_API RegisterManualTest(std::string const& modName, std::string const& name);
 
 #endif

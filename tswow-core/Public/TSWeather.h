@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "TSNumber.h"
 #include "TSMain.h"
@@ -6,7 +6,7 @@
 class Weather;
 class TSMap;
 
-class TC_GAME_API TSWeather
+class OC_GAME_API TSWeather
 {
     TS_CLASS_DECLARATION(TSWeather, Weather, m_weather);
 

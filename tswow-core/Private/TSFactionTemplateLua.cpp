@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSFactionTemplate.h"
 
 void TSLua::load_faction_template_methods(sol::state& state)

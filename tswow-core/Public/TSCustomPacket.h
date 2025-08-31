@@ -1,8 +1,8 @@
-#pragma once
+﻿#pragma once
 
 #include "TSMain.h"
 #include "TSLua.h"
-#define CUSTOM_PACKET_API TC_GAME_API
+#define CUSTOM_PACKET_API OC_GAME_API
 #include "CustomPacketRead.h"
 #include "CustomPacketWrite.h"
 #include "CustomPacketBuffer.h"
@@ -12,7 +12,7 @@ class TSPlayer;
 class TSMap;
 class TSBattleground;
 
-class TC_GAME_API TSPacketWrite
+class OC_GAME_API TSPacketWrite
 {
 	CustomPacketWrite* write;
 public:
@@ -54,7 +54,7 @@ public:
 	void BroadcastAround(TSWorldObject obj, float range, bool self = true);
 };
 
-class TC_GAME_API TSPacketRead
+class OC_GAME_API TSPacketRead
 {
 	CustomPacketRead* read;
 public:
@@ -101,7 +101,7 @@ public:
 	virtual void OnError(CustomPacketResult error) override final;
 };
 
-TC_GAME_API TSPacketWrite CreateCustomPacket(
+OC_GAME_API TSPacketWrite CreateCustomPacket(
 		opcode_t opcode
 	, totalSize_t size
 );

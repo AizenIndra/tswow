@@ -1,4 +1,4 @@
-
+﻿
 
 #ifndef PNG_BLP_PNG2BLP_H
 #define PNG_BLP_PNG2BLP_H

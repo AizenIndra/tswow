@@ -1,4 +1,4 @@
-
+﻿
 
 #ifndef PNG_BLP_BINARYWRITER_H
 #define PNG_BLP_BINARYWRITER_H

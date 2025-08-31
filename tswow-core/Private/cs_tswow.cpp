@@ -1,4 +1,4 @@
-#include "ScriptMgr.h"
+﻿#include "ScriptMgr.h"
 #include "Chat.h"
 #include <vector>
 #include <fstream>
@@ -9,11 +9,11 @@
 #include "TSTests.h"
 #include <boost/filesystem.hpp>
 
-#if TRINITY
-using namespace Trinity::ChatCommands;
+#if ORSTET
+using namespace ORSTET::ChatCommands;
 #endif
 
-#if TRINITY_COMPILER == TRINITY_COMPILER_GNU
+#if ORSTET_COMPILER == ORSTET_COMPILER_GNU
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
 
@@ -63,7 +63,7 @@ public:
 
     std::vector<ChatCommand> GetCommands() const override
     {
-#if TRINITY
+#if ORSTET
         static std::vector<ChatCommand> testTable = {
             { "start", HandleTestStartCommand, rbac::RBAC_PERM_TEST, Console::No},
             { "pass", HandleTestPassCommand, rbac::RBAC_PERM_TEST, Console::No},
@@ -72,7 +72,7 @@ public:
         };
 #endif
 
-#if TRINITY
+#if ORSTET
         static std::vector<ChatCommand> commandTable = {
             { "at", At, rbac::RBAC_PERM_AT, Console::No},
             { "clearat", ClearAt, rbac::RBAC_PERM_CLEAR_AT, Console::No},
@@ -83,7 +83,7 @@ public:
         return commandTable;
     }
 
-#if TRINITY
+#if ORSTET
     static bool HandleTestStartCommand(ChatHandler* handler, char const* args)
     {
         std::pair<std::string, std::string> sessionArgs = parseSessionWArgs(args);

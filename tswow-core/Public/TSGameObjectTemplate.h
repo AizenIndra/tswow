@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "TSBase.h"
 #include "TSMain.h"
@@ -9,7 +9,7 @@
 
 struct GameObjectTemplate;
 
-class TC_GAME_API TSGameObjectTemplate : public TSEntityProvider {
+class OC_GAME_API TSGameObjectTemplate : public TSEntityProvider {
 public:
     GameObjectTemplate * gt;
     TSGameObjectTemplate(GameObjectTemplate * gt);
@@ -30,5 +30,5 @@ public:
     TSEntity * GetData();
 };
 
-TSGameObjectTemplate TC_GAME_API GetGameObjectTemplate(uint32 id);
+TSGameObjectTemplate OC_GAME_API GetGameObjectTemplate(uint32 id);
 LUA_PTR_TYPE(TSGameObjectTemplate)

@@ -1,5 +1,5 @@
-#include "TSGameObjectTemplate.h"
-#if TRINITY
+﻿#include "TSGameObjectTemplate.h"
+#if ORSTET
 #include "GameObjectData.h"
 #endif
 #include "ObjectMgr.h"

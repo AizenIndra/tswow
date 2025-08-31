@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "TSLua.h"
 #include "TSEntityLua.h"

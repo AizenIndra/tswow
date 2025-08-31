@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -35,14 +35,14 @@ TSNumber<uint8> TSAuctionEntry::GetHouseID()
 
 TSNumber<uint32> TSAuctionEntry::GetItemID()
 {
-#if TRINITY
+#if ORSTET
     return entry->itemGUIDLow;
 #endif
 }
 
 TSNumber<uint32> TSAuctionEntry::GetItemEntry()
 {
-#if TRINITY
+#if ORSTET
     return entry->itemEntry;
 #endif
 }
@@ -89,7 +89,7 @@ TSNumber<uint32> TSAuctionEntry::GetDeposit()
 
 TSNumber<uint32> TSAuctionEntry::GetETime()
 {
-#if TRINITY
+#if ORSTET
     return entry->etime;
 #endif
 }
@@ -97,7 +97,7 @@ TSNumber<uint32> TSAuctionEntry::GetETime()
 TSArray<TSGUID> TSAuctionEntry::GetBidders()
 {
     TSArray<TSGUID> arr;
-#if TRINITY
+#if ORSTET
     for(auto& bidder: entry->bidders)
     {
         arr.push(TSGUID(bidder));
@@ -108,7 +108,7 @@ TSArray<TSGUID> TSAuctionEntry::GetBidders()
 
 TSNumber<uint32> TSAuctionEntry::GetFlags()
 {
-#if TRINITY
+#if ORSTET
     return entry->Flags;
 #endif
 }
@@ -121,14 +121,14 @@ void TSAuctionEntry::SetOwnerID(uint64 ownerId)
 
 void TSAuctionEntry::SetItemID(uint64 itemId)
 {
-#if TRINITY
+#if ORSTET
     entry->itemGUIDLow = ObjectGuid(itemId);
 #endif
 }
 
 void TSAuctionEntry::SetItemEntry(uint32 itemEntry)
 {
-#if TRINITY
+#if ORSTET
     entry->itemEntry = itemEntry;
 #endif
 }
@@ -165,14 +165,14 @@ void TSAuctionEntry::SetDeposit(uint32 deposit)
 
 void TSAuctionEntry::SetETime(uint32 etime)
 {
-#if TRINITY
+#if ORSTET
     entry->etime = etime;
 #endif
 }
 
 void TSAuctionEntry::SetFlags(uint32 flags)
 {
-#if TRINITY
+#if ORSTET
     entry->Flags = AuctionEntryFlag(flags);
 #endif
 }

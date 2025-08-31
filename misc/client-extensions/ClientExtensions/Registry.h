@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #define RETVAL 1
 #define ARGS 1

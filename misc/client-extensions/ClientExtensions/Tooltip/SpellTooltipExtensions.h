@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "TooltipDefines.h"
 
 class SpellTooltipExtensions {

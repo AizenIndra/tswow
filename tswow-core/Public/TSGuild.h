@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -25,7 +25,7 @@
 
 class TSGUID;
 
-class TC_GAME_API TSGuild {
+class OC_GAME_API TSGuild {
 public:
     Guild *guild;
     TSGuild(Guild *guild);
@@ -56,8 +56,8 @@ private:
     TSLua::Array<TSPlayer> LGetMembers();
 };
 
-TSGuild TC_GAME_API GetGuild(uint32 id);
-TSGuild TC_GAME_API GetGuildByName(std::string const& name);
-TSGuild TC_GAME_API GetGuildByLeader(uint64 owner);
+TSGuild OC_GAME_API GetGuild(uint32 id);
+TSGuild OC_GAME_API GetGuildByName(std::string const& name);
+TSGuild OC_GAME_API GetGuildByLeader(uint64 owner);
 
 LUA_PTR_TYPE(TSGuild)

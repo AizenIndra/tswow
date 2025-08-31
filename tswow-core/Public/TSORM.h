@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2021 tswow <https://github.com/tswow/>
  *
  * This program is free software: you can redistribute it and/or
@@ -28,7 +28,7 @@ class DBEntry: public TSClass {};
 
 template <typename T>
 class DBContainer;
-class TC_GAME_API DBArrayEntry: public TSClass {
+class OC_GAME_API DBArrayEntry: public TSClass {
 public:
     void MarkDirty();
     void Delete();

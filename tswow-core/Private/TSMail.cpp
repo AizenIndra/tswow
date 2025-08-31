@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -145,7 +145,7 @@ void TSMail::RemoveAllItems()
 void TSMail::AddItem(uint32 entry, uint8 count, TSPlayer player)
 {
     auto guid = Item::CreateItem(entry,count,player->player)->GetGUID();
-#if TRINITY
+#if ORSTET
     mail->AddItem(guid,entry);
 #endif
 }
@@ -158,7 +158,7 @@ void TSMail::SetSender(uint8 type, TSNumber<uint32> guid)
 void TSMail::SetSender(uint8 type, TSGUID guid)
 {
     mail->messageType = type;
-#if TRINITY
+#if ORSTET
     mail->sender = guid.asGUID();
 #endif
 }
@@ -185,35 +185,35 @@ TSMailDraft::TSMailDraft(MailDraft* draft)
 
 TSNumber<uint16> TSMailDraft::GetTemplateID()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return draft->m_mailTemplateId;
 #endif
 }
 
 std::string TSMailDraft::GetSubject()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return draft->m_subject;
 #endif
 }
 
 std::string TSMailDraft::GetBody()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return draft->m_body;
 #endif
 }
 
 TSNumber<uint32> TSMailDraft::GetMoney()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return draft->m_money;
 #endif
 }
 
 TSNumber<uint32> TSMailDraft::GetCOD()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return draft->m_COD;
 #endif
 }
@@ -240,21 +240,21 @@ TSItem TSMailDraft::GetItem(TSGUID item)
 
 void TSMailDraft::SetTemplateID(uint16 id)
 {
-#if TRINITY
+#if ORSTET
     draft->m_mailTemplateId = id;
 #endif
 }
 
 void TSMailDraft::SetSubject(std::string const& subject)
 {
-#if TRINITY
+#if ORSTET
     draft->m_subject = subject;
 #endif
 }
 
 void TSMailDraft::SetBody(std::string const& body)
 {
-#if TRINITY
+#if ORSTET
     draft->m_body = body;
 #endif
 }

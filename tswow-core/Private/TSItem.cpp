@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -183,7 +183,7 @@ bool TSItem::IsEquipped()
  */
 bool TSItem::HasQuest(uint32 quest)
 {
-#if defined TRINITY
+#if defined ORSTET
     return item->hasQuest(quest);
 #else
     return item->HasQuest(quest);
@@ -259,7 +259,7 @@ bool TSItem::IsConjuredConsumable()
  */
 std::string TSItem::GetItemLink(uint8 locale)
 {
-#if TRINITY
+#if ORSTET
     const ItemTemplate* temp = item->GetTemplate();
     std::string name = temp->Name1;
     if (ItemLocale const* il = eObjectMgr->GetItemLocale(temp->ItemId))
@@ -575,7 +575,7 @@ TSNumber<uint32> TSItem::GetBagSize()
 void TSItem::SetOwner(TSPlayer _player)
 {
     auto player = _player.player;
-#if defined TRINITY
+#if defined ORSTET
     item->SetOwnerGUID(player->TS_GET_GUID());
 #else
     item->SetOwnerGuid(player->TS_GET_GUID());
@@ -663,7 +663,7 @@ bool TSItem::ClearEnchantment(uint32 slot)
  */
 void TSItem::SaveToDB()
 {
-#if defined TRINITY
+#if defined ORSTET
     CharacterDatabaseTransaction trans = CharacterDatabaseTransaction(nullptr);
     item->SaveToDB(trans);
 #else

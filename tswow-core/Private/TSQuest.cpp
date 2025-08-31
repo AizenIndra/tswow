@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -68,7 +68,7 @@ bool TSQuest::log()
  */
 bool TSQuest::HasFlag(uint32 flag)
 {
-#if defined TRINITY
+#if defined ORSTET
     return quest->HasFlag(flag);
 #else
     return quest->HasQuestFlag((QuestFlags)flag);
@@ -164,7 +164,7 @@ TSNumber<int32> TSQuest::GetNextQuestInChain()
  */
 TSNumber<uint32> TSQuest::GetFlags()
 {
-#if defined TRINITY
+#if defined ORSTET
     return quest->GetFlags();
 #else
     return quest->GetQuestFlags();

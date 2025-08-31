@@ -1,4 +1,4 @@
-//
+﻿//
 //  nearest.h
 //  pngquant
 //

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -68,7 +68,7 @@ bool TSMap::IsArena()
  */
 bool TSMap::IsBG()
 {
-#if defined TRINITY
+#if defined ORSTET
     return map->IsBattleground();
 #else
     return map->IsBattleGround();
@@ -97,7 +97,7 @@ bool TSMap::IsDungeon()
  */
 bool TSMap::IsEmpty()
 {
-#if TRINITY
+#if ORSTET
     return map->isEmpty();
 #endif
 }
@@ -220,7 +220,7 @@ TSNumber<uint32> TSMap::GetAreaID(float x,float y,float z,float phasemask)
 TSWorldObject TSMap::GetWorldObject(TSGUID guid)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     switch (GUID_HIPART(guid.asGUID()))
     {
         case HIGHGUID_PLAYER:
@@ -273,7 +273,7 @@ void TSMap::SetWeather(uint32 zoneId,uint32 weatherType,float grade)
 {
     (void)map; // ensure that the variable is referenced in order to pass compiler checks
 
-#if TRINITY
+#if ORSTET
     if (Weather * weather = map->GetOrGenerateZoneDefaultWeather(zoneId))
         weather->SetWeather((WeatherType)weatherType, grade);
 #else
@@ -318,7 +318,7 @@ TSArray<TSPlayer> TSMap::GetPlayers(uint32 team)
     tbl.vec->reserve(players.getSize());
     for (Map::PlayerList::const_iterator itr = players.begin(); itr != players.end(); ++itr)
     {
-#if defined TRINITY
+#if defined ORSTET
         Player* player = itr->GetSource();
 #else
         Player* player = itr->getSource();
@@ -393,14 +393,14 @@ TSArray<TSCreature> TSMap::GetCreatures(uint32 entry)
 
 TSCreature TSMap::GetCreatureByDBGUID(uint32 dbGuid)
 {
-#if TRINITY
+#if ORSTET
     return TSCreature(map->GetCreatureBySpawnId(dbGuid));
 #endif
 }
 
 TSGameObject TSMap::GetGameObjectByDBGUID(uint32 dbGuid)
 {
-#if TRINITY
+#if ORSTET
     return TSGameObject(map->GetGameObjectBySpawnId(dbGuid));
 #endif
 }
@@ -415,7 +415,7 @@ TSGameObject TSMap::SpawnGameObject(uint32 entry, float x, float y, float z, flo
     const GameObjectTemplate* objectInfo = eObjectMgr->GetGameObjectTemplate(entry);
     GameObject* object = new GameObject;
     uint32 guidLow = map->GenerateLowGuid<HighGuid::GameObject>();
-#if TRINITY
+#if ORSTET
     QuaternionData rot = QuaternionData::fromEulerAnglesZYX(o, 0.f, 0.f);
     if (!object->Create(guidLow, objectInfo->entry, map, phase, Position(x, y, z, o), rot, 0, GO_STATE_READY))
 #endif
@@ -449,7 +449,7 @@ TSInstance TSMap::ToInstance()
 
 void TSMap::DoDelayed(std::function<void(TSMap, TSMainThreadContext)> callback)
 {
-#if TRINITY
+#if ORSTET
     map->m_delayCallbacks.push_back(callback);
 #endif
 }
@@ -491,7 +491,7 @@ bool TSMap::IsInLineOfSight(float x1,float y1,float z1, float x2, float y2, floa
 
 void TSMap::LDoDelayed(sol::function callback)
 {
-#if TRINITY
+#if ORSTET
     map->m_delayLuaCallbacks.push_back(callback);
 #endif
 }
@@ -559,7 +559,7 @@ TSGameObject TSMap::LGetGameObject1(TSNumber<uint32> guid)
     return GetGameObject(guid);
 }
 
-TC_GAME_API TSInstance ToInstance(TSMap map)
+OC_GAME_API TSInstance ToInstance(TSMap map)
 {
     if (map.map && map->IsInstance())
     {
@@ -572,7 +572,7 @@ TC_GAME_API TSInstance ToInstance(TSMap map)
     }
 }
 
-TC_GAME_API TSBattleground ToBattleground(TSMap map)
+OC_GAME_API TSBattleground ToBattleground(TSMap map)
 {
     if (map.map && map->IsBG())
     {

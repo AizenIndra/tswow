@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSQuest.h"
 
 void TSLua::load_quest_methods(sol::state& state)

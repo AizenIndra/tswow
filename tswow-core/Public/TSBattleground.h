@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -31,7 +31,7 @@ class TSWorldPacket;
 struct BattlegroundScore;
 class TSGUID;
 
-class TC_GAME_API TSBattlegroundPlayer: public TSEntityProvider {
+class OC_GAME_API TSBattlegroundPlayer: public TSEntityProvider {
     uint64 m_guid;
     uint32 m_team;
     int64 m_offlineRemoveTime;
@@ -49,7 +49,7 @@ public:
 #define TS_TEAM_HORDE 1
 #define TS_TEAM_NEUTRAL 2
 
-class TC_GAME_API TSBattlegroundScore
+class OC_GAME_API TSBattlegroundScore
 {
     TS_CLASS_DECLARATION(TSBattlegroundScore, BattlegroundScore, m_score);
     TSNumber<uint32> GetKillingBlows() const;
@@ -107,7 +107,7 @@ class TC_GAME_API TSBattlegroundScore
     void ModCustomAttr(std::string const& key, int32 mod);
 };
 
-class TC_GAME_API TSBattleground: public TSMap {
+class OC_GAME_API TSBattleground: public TSMap {
 public:
     friend class TSBattlegroundPlayer;
     Battleground* bg;

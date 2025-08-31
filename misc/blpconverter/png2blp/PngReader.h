@@ -1,4 +1,4 @@
-
+﻿
 
 #ifndef PNG_BLP_PNGREADER_H
 #define PNG_BLP_PNGREADER_H

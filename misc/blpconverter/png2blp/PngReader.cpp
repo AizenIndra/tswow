@@ -1,4 +1,4 @@
-
+﻿
 #include <sstream>
 #include "PngReader.h"
 #include <png.hpp>

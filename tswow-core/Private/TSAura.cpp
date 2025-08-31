@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -105,7 +105,7 @@ TSNumber<uint32> TSAuraEffect::GetTickNumber()
 
 TSNumber<uint32> TSAuraEffect::GetRemainingTicks()
 {
-#if TRINITY
+#if ORSTET
     return aura->GetRemainingTicks();
 #endif
 }
@@ -169,7 +169,7 @@ bool TSAuraApplication::IsPositive()
 
 bool TSAuraApplication::IsSelfCast()
 {
-#if TRINITY
+#if ORSTET
     return aura->IsSelfcast();
 #endif
 }
@@ -232,7 +232,7 @@ TSGUID TSAura::GetCasterGUID()
  */
 TSNumber<uint32> TSAura::GetCasterLevel()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return aura->GetCaster()->GetLevel();
 #else
     return aura->GetCaster()->getLevel();
@@ -246,7 +246,7 @@ TSNumber<uint32> TSAura::GetCasterLevel()
  */
 TSNumber<int32> TSAura::GetDuration()
 {
-#if defined TRINITY
+#if defined ORSTET
     return aura->GetDuration();
 #else
     return aura->GetAuraDuration();
@@ -273,7 +273,7 @@ TSNumber<uint32> TSAura::GetAuraID()
  */
 TSNumber<int32> TSAura::GetMaxDuration()
 {
-#if defined TRINITY
+#if defined ORSTET
     return aura->GetMaxDuration();
 #else
     return aura->GetAuraMaxDuration();
@@ -299,7 +299,7 @@ TSNumber<uint32> TSAura::GetStackAmount()
  */
 TSWorldObject  TSAura::GetOwner()
 {
-#if defined TRINITY
+#if defined ORSTET
      return TSWorldObject(aura->GetOwner());
 #else
      return TSWorldObject(aura->GetTarget());
@@ -313,7 +313,7 @@ TSWorldObject  TSAura::GetOwner()
  */
 void TSAura::SetDuration(int32 duration)
 {
-#if defined TRINITY
+#if defined ORSTET
     aura->SetDuration(duration);
 #else
     aura->GetHolder()->SetAuraDuration(duration);
@@ -335,7 +335,7 @@ void TSAura::SetDuration(int32 duration)
  */
 void TSAura::SetMaxDuration(int32 duration)
 {
-#if defined TRINITY
+#if defined ORSTET
     aura->SetMaxDuration(duration);
 #else
     aura->GetHolder()->SetAuraMaxDuration(duration);
@@ -357,7 +357,7 @@ void TSAura::SetMaxDuration(int32 duration)
  */
 void TSAura::SetStackAmount(uint8 amount)
 {
-#if defined TRINITY
+#if defined ORSTET
     aura->SetStackAmount(amount);
 #else
     aura->GetHolder()->SetStackAmount(amount);
@@ -369,7 +369,7 @@ void TSAura::SetStackAmount(uint8 amount)
  */
 void TSAura::Remove()
 {
-#if defined TRINITY
+#if defined ORSTET
     aura->Remove();
 #else
     aura->GetTarget()->RemoveSpellAuraHolder(aura->GetHolder(), AURA_REMOVE_BY_CANCEL);

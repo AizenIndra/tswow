@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2021 tswow <https://github.com/tswow/>
  *
@@ -23,7 +23,7 @@
 struct AreaTriggerEntry;
 struct TSAreaTriggerEvents;
 
-class TC_GAME_API TSAreaTriggerEntry {
+class OC_GAME_API TSAreaTriggerEntry {
     AreaTriggerEntry* m_entry;
 public:
     TSAreaTriggerEntry(AreaTriggerEntry* entry);

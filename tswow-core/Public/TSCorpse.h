@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -24,7 +24,7 @@
 
 class TSGUID;
 
-class TC_GAME_API TSCorpse : public TSWorldObject {
+class OC_GAME_API TSCorpse : public TSWorldObject {
 public:
     Corpse* corpse;
     bool IsNull() { return corpse==nullptr; };

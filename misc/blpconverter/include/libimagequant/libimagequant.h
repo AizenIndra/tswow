@@ -1,4 +1,4 @@
-/*
+﻿/*
  * https://pngquant.org
  */
 

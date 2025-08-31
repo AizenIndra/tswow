@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 //class TSBossAI : public ScriptedAI
 #include "ScriptedCreature.h"
 #include "Creature.h"

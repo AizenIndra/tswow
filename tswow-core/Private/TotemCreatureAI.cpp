@@ -1,4 +1,4 @@
-// @tswow-begin
+﻿// @tswow-begin
 #include "TotemCreature.h"
 #include "TotemCreatureAI.h"
 #include "MotionMaster.h"
@@ -6,7 +6,7 @@
 
 int32 TotemCreatureAI::Permissible(Creature const* creature)
 {
-#if TRINITY
+#if ORSTET
     if(creature->m_isTempCreature)
 #endif
     {

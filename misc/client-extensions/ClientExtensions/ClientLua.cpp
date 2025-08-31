@@ -1,4 +1,4 @@
-#include "ClientLua.h"
+﻿#include "ClientLua.h"
 #include "Logger.h"
 #include "ClientDetours.h"
 #include "SharedDefines.h"

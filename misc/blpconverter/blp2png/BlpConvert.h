@@ -1,4 +1,4 @@
-#ifndef CYTHON_BLP_BLPCONVERT_H
+﻿#ifndef CYTHON_BLP_BLPCONVERT_H
 #define CYTHON_BLP_BLPCONVERT_H
 
 #include <string>

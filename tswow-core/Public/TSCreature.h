@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -33,7 +33,7 @@
 
 class TSOutfit;
 
-class TC_GAME_API TSCreature : public TSUnit {
+class OC_GAME_API TSCreature : public TSUnit {
 public:
     Creature *creature;
 

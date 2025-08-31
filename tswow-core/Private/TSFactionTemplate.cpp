@@ -1,4 +1,4 @@
-#include "TSFactionTemplate.h"
+﻿#include "TSFactionTemplate.h"
 
 #include "DBCStructure.h"
 #include "DBCStores.h"
@@ -69,7 +69,7 @@ bool TSFactionTemplate::IsContestedGuardFaction()
     return m_faction->IsContestedGuardFaction();
 }
 
-TC_GAME_API TSFactionTemplate GetFactionTemplate(uint32 entry)
+OC_GAME_API TSFactionTemplate GetFactionTemplate(uint32 entry)
 {
     return TSFactionTemplate(sFactionTemplateStore.LookupEntry(entry));
 }

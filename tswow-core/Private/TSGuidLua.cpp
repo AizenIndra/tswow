@@ -1,4 +1,4 @@
-#include "TSGUID.h"
+﻿#include "TSGUID.h"
 #include "TSLua.h"
 
 void TSLua::load_guid_methods(sol::state& state)

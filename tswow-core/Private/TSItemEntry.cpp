@@ -1,4 +1,4 @@
-#include "TSItemEntry.h"
+﻿#include "TSItemEntry.h"
 
 TSItemEntry::TSItemEntry(uint32 entry, uint32 count)
     : m_entry(entry)

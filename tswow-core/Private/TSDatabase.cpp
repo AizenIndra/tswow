@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
  * This program is free software: you can redistribute it and/or
@@ -26,7 +26,7 @@
 #include <memory>
 #include <algorithm>
 
-class TC_GAME_API TSDatabaseImpl final : public TSDatabaseResult {
+class OC_GAME_API TSDatabaseImpl final : public TSDatabaseResult {
     Field* field = nullptr;
     QueryResult result;
 public:
@@ -61,7 +61,7 @@ public:
         return v;
     }
 
-#if TRINITY
+#if ORSTET
 #define TSGet(TC,AC) TC()
 #endif
 
@@ -80,7 +80,7 @@ public:
     TSNumber<double> GetDouble(int index) final { return field[index].TSGet(GetDouble,double); }
 
     std::string GetString(int index) final { 
-#if TRINITY
+#if ORSTET
         return field[index].GetString(); 
 #endif
     }
@@ -92,7 +92,7 @@ public:
 };
 
 // todo: don't copypaste
-class TC_GAME_API TSDatabaseResultPrepared final : public TSDatabaseResult{
+class OC_GAME_API TSDatabaseResultPrepared final : public TSDatabaseResult{
     Field * field = nullptr;
     PreparedQueryResult result;
 public:
@@ -142,7 +142,7 @@ public:
     TSNumber<double> GetDouble(int index) final { return field[index].TSGet(GetDouble,double); }
 
     std::string GetString(int index) final { 
-#if TRINITY
+#if ORSTET
         return field[index].GetString(); 
 #endif
 
@@ -230,7 +230,7 @@ std::shared_ptr<TSDatabaseResult> TSPreparedStatementBase::Send(TSCharactersData
 
 TSPreparedStatementBase* TSPreparedStatementBase::SetNull(const uint8 index)
 {
-#if TRINITY
+#if ORSTET
     m_statement->setNull(index);
 #endif
     return this;
@@ -238,7 +238,7 @@ TSPreparedStatementBase* TSPreparedStatementBase::SetNull(const uint8 index)
 
 TSPreparedStatementBase* TSPreparedStatementBase::SetUInt8(const uint8 index, const uint8 value)
 {
-#if TRINITY
+#if ORSTET
     m_statement->setUInt8(index, value);
 #endif
     return this;
@@ -246,7 +246,7 @@ TSPreparedStatementBase* TSPreparedStatementBase::SetUInt8(const uint8 index, co
 
 TSPreparedStatementBase* TSPreparedStatementBase::SetInt8(const uint8 index, const int8 value)
 {
-#if TRINITY
+#if ORSTET
     m_statement->setInt8(index, value);
 #endif
     return this;
@@ -254,7 +254,7 @@ TSPreparedStatementBase* TSPreparedStatementBase::SetInt8(const uint8 index, con
 
 TSPreparedStatementBase* TSPreparedStatementBase::SetUInt16(const uint8 index, const uint16 value)
 {
-#if TRINITY
+#if ORSTET
     m_statement->setUInt16(index, value);
 #endif
     return this;
@@ -262,7 +262,7 @@ TSPreparedStatementBase* TSPreparedStatementBase::SetUInt16(const uint8 index, c
 
 TSPreparedStatementBase* TSPreparedStatementBase::SetInt16(const uint8 index, const int16 value)
 {
-#if TRINITY
+#if ORSTET
     m_statement->setInt16(index, value);
 #endif 
     return this;
@@ -270,7 +270,7 @@ TSPreparedStatementBase* TSPreparedStatementBase::SetInt16(const uint8 index, co
 
 TSPreparedStatementBase* TSPreparedStatementBase::SetUInt32(const uint8 index, const uint32 value)
 {
-#if TRINITY
+#if ORSTET
     m_statement->setUInt32(index, value);
 #endif
     return this;
@@ -278,7 +278,7 @@ TSPreparedStatementBase* TSPreparedStatementBase::SetUInt32(const uint8 index, c
 
 TSPreparedStatementBase* TSPreparedStatementBase::SetInt32(const uint8 index, const int32 value)
 {
-#if TRINITY
+#if ORSTET
     m_statement->setInt32(index, value);
 #endif
     return this;
@@ -286,7 +286,7 @@ TSPreparedStatementBase* TSPreparedStatementBase::SetInt32(const uint8 index, co
 
 TSPreparedStatementBase* TSPreparedStatementBase::SetUInt64(const uint8 index, const uint64 value)
 {
-#if TRINITY
+#if ORSTET
     m_statement->setUInt64(index, value);
 #endif
     return this;
@@ -294,7 +294,7 @@ TSPreparedStatementBase* TSPreparedStatementBase::SetUInt64(const uint8 index, c
 
 TSPreparedStatementBase* TSPreparedStatementBase::SetGUIDNumber(const uint8 index, const TSGUID value)
 {
-#if TRINITY
+#if ORSTET
     m_statement->setUInt64(index, value.asGUID().GetRawValue());
 #endif
     return this;
@@ -302,7 +302,7 @@ TSPreparedStatementBase* TSPreparedStatementBase::SetGUIDNumber(const uint8 inde
 
 TSPreparedStatementBase* TSPreparedStatementBase::SetInt64(const uint8 index, const int64 value)
 {
-#if TRINITY
+#if ORSTET
     m_statement->setInt64(index, value);
 #endif
     return this;
@@ -310,7 +310,7 @@ TSPreparedStatementBase* TSPreparedStatementBase::SetInt64(const uint8 index, co
 
 TSPreparedStatementBase* TSPreparedStatementBase::SetFloat(const uint8 index, const float value)
 {
-#if TRINITY
+#if ORSTET
     m_statement->setFloat(index, value);
 #endif
     return this;
@@ -318,7 +318,7 @@ TSPreparedStatementBase* TSPreparedStatementBase::SetFloat(const uint8 index, co
 
 TSPreparedStatementBase* TSPreparedStatementBase::SetDouble(const uint8 index, const double value)
 {
-#if TRINITY
+#if ORSTET
     m_statement->setDouble(index, value);
 #endif
     return this;
@@ -326,7 +326,7 @@ TSPreparedStatementBase* TSPreparedStatementBase::SetDouble(const uint8 index, c
 
 TSPreparedStatementBase* TSPreparedStatementBase::SetString(const uint8 index, std::string const& value)
 {
-#if TRINITY
+#if ORSTET
     m_statement->setString(index, value);
 #endif
     return this;
@@ -345,7 +345,7 @@ TSPreparedStatementBase TSPreparedStatement::Create()
 
 std::shared_ptr<TSDatabaseResult> TSPreparedStatementWorld::Send(TSPreparedStatementBase* stmnt)
 {
-#if TRINITY
+#if ORSTET
     auto ptr = std::make_shared<TSDatabaseResultPrepared>(WorldDatabase.QueryCustomStatement(m_id, stmnt->m_statement));
     delete stmnt->m_statement;
     return ptr;
@@ -354,7 +354,7 @@ std::shared_ptr<TSDatabaseResult> TSPreparedStatementWorld::Send(TSPreparedState
 
 std::shared_ptr<TSDatabaseResult> TSPreparedStatementCharacters::Send(TSPreparedStatementBase* stmnt)
 {
-#if TRINITY
+#if ORSTET
     auto ptr = std::make_shared<TSDatabaseResultPrepared>(CharacterDatabase.QueryCustomStatement(m_id, stmnt->m_statement));
     delete stmnt->m_statement;
     return ptr;
@@ -363,7 +363,7 @@ std::shared_ptr<TSDatabaseResult> TSPreparedStatementCharacters::Send(TSPrepared
 
 std::shared_ptr<TSDatabaseResult> TSPreparedStatementAuth::Send(TSPreparedStatementBase* stmnt)
 {
-#if TRINITY
+#if ORSTET
     auto ptr = std::make_shared<TSDatabaseResultPrepared>(LoginDatabase.QueryCustomStatement(m_id, stmnt->m_statement));
     delete stmnt->m_statement;
     return ptr;
@@ -393,34 +393,34 @@ TSPreparedStatement::TSPreparedStatement(std::string const& sql, uint32 id)
 }
 
 TSPreparedStatementWorld::TSPreparedStatementWorld(std::string const& sql)
-#if TRINITY
+#if ORSTET
     : TSPreparedStatement(sql, WorldDatabase.PrepareCustomStatement(sql))
 #endif
 {}
 
 TSPreparedStatementCharacters::TSPreparedStatementCharacters(std::string const& sql)
-#if TRINITY
+#if ORSTET
     : TSPreparedStatement(sql, CharacterDatabase.PrepareCustomStatement(sql))
 #endif
 {}
 
 TSPreparedStatementAuth::TSPreparedStatementAuth(std::string const& sql)
-#if TRINITY
+#if ORSTET
     : TSPreparedStatement(sql, LoginDatabase.PrepareCustomStatement(sql))
 #endif
 {}
 
-TC_GAME_API TSPreparedStatementWorld PrepareWorldQuery(std::string const& query)
+OC_GAME_API TSPreparedStatementWorld PrepareWorldQuery(std::string const& query)
 {
     return TSPreparedStatementWorld(query);
 }
 
-TC_GAME_API TSPreparedStatementCharacters PrepareCharactersQuery(std::string const& query)
+OC_GAME_API TSPreparedStatementCharacters PrepareCharactersQuery(std::string const& query)
 {
     return TSPreparedStatementCharacters(query);
 }
 
-TC_GAME_API TSPreparedStatementAuth PrepareAuthQuery(std::string const& query)
+OC_GAME_API TSPreparedStatementAuth PrepareAuthQuery(std::string const& query)
 {
     return TSPreparedStatementAuth(query);
 }
@@ -457,7 +457,7 @@ std::shared_ptr<TSDatabaseResult> TSWorldDatabaseConnection::Query(std::string c
 
 std::shared_ptr<TSDatabaseResult> TSWorldDatabaseConnection::Query(TSPreparedStatementBase * stmnt)
 {
-#if TRINITY
+#if ORSTET
     auto res = std::make_shared<TSDatabaseResultPrepared>(
         WorldDatabase.QueryCustomStatement(
             stmnt->m_holder->m_id, stmnt->m_statement, m_connection
@@ -469,7 +469,7 @@ std::shared_ptr<TSDatabaseResult> TSWorldDatabaseConnection::Query(TSPreparedSta
 
 void TSWorldDatabaseConnection::Unlock()
 {
-#if TRINITY
+#if ORSTET
     m_connection->Unlock();
 #endif
 }
@@ -487,7 +487,7 @@ std::shared_ptr<TSDatabaseResult> TSAuthDatabaseConnection::Query(std::string co
 
 std::shared_ptr<TSDatabaseResult> TSAuthDatabaseConnection::Query(TSPreparedStatementBase* stmnt)
 {
-#if TRINITY
+#if ORSTET
     auto res = std::make_shared<TSDatabaseResultPrepared>(
         LoginDatabase.QueryCustomStatement(
             stmnt->m_holder->m_id, stmnt->m_statement, m_connection
@@ -499,7 +499,7 @@ std::shared_ptr<TSDatabaseResult> TSAuthDatabaseConnection::Query(TSPreparedStat
 
 void TSAuthDatabaseConnection::Unlock()
 {
-#if TRINITY
+#if ORSTET
     m_connection->Unlock();
 #endif
 }
@@ -517,7 +517,7 @@ std::shared_ptr<TSDatabaseResult> TSCharactersDatabaseConnection::Query(std::str
 
 std::shared_ptr<TSDatabaseResult> TSCharactersDatabaseConnection::Query(TSPreparedStatementBase* stmnt)
 {
-#if TRINITY
+#if ORSTET
     auto res = std::make_shared<TSDatabaseResultPrepared>(
         CharacterDatabase.QueryCustomStatement(
             stmnt->m_holder->m_id, stmnt->m_statement, m_connection
@@ -529,43 +529,43 @@ std::shared_ptr<TSDatabaseResult> TSCharactersDatabaseConnection::Query(TSPrepar
 
 void TSCharactersDatabaseConnection::Unlock()
 {
-#if TRINITY
+#if ORSTET
     m_connection->Unlock();
 #endif
 }
 
-TC_GAME_API TSWorldDatabaseConnection GetWorldDBConnection()
+OC_GAME_API TSWorldDatabaseConnection GetWorldDBConnection()
 {
-#if TRINITY
+#if ORSTET
     return TSWorldDatabaseConnection(WorldDatabase.GetFreeConnection());
 #endif
 }
 
-TC_GAME_API TSAuthDatabaseConnection GetAuthDBConnection()
+OC_GAME_API TSAuthDatabaseConnection GetAuthDBConnection()
 {
-#if TRINITY
+#if ORSTET
     return TSAuthDatabaseConnection(LoginDatabase.GetFreeConnection());
 #endif
 }
 
-TC_GAME_API TSCharactersDatabaseConnection GetCharactersDBConnection()
+OC_GAME_API TSCharactersDatabaseConnection GetCharactersDBConnection()
 {
-#if TRINITY
+#if ORSTET
     return TSCharactersDatabaseConnection(CharacterDatabase.GetFreeConnection());
 #endif
 }
 
-TC_GAME_API void QueryWorldAsync(std::string const& query)
+OC_GAME_API void QueryWorldAsync(std::string const& query)
 {
     WorldDatabase.AsyncQuery(query.c_str());
 }
 
-TC_GAME_API void QueryCharactersAsync(std::string const& query)
+OC_GAME_API void QueryCharactersAsync(std::string const& query)
 {
     CharacterDatabase.AsyncQuery(query.c_str());
 }
 
-TC_GAME_API void QueryAuthAsync(std::string const& query)
+OC_GAME_API void QueryAuthAsync(std::string const& query)
 {
     LoginDatabase.AsyncQuery(query.c_str());
 }

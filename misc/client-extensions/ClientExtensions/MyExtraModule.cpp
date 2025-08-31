@@ -1,4 +1,4 @@
-#include "ClientLua.h"
+﻿#include "ClientLua.h"
 #include "Logger.h"
 
 CLIENT_LUA(luaping) {

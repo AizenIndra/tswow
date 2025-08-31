@@ -1,4 +1,4 @@
-#include "TSCustomPacket.h"
+﻿#include "TSCustomPacket.h"
 #include "TSPlayer.h"
 #include "TSEvents.h"
 #include "WorldPacket.h"
@@ -40,7 +40,7 @@ void TSPacketWrite::BroadcastMap(TSMap map, uint32_t teamOnly)
 		for (auto const& ref : map.map->GetPlayers())
 		{
 			Player* player = ref.GetSource();
-#if TRINITY
+#if ORSTET
 			if (teamOnly == 0 || player->GetTeam() == teamOnly)
 #endif
 			{

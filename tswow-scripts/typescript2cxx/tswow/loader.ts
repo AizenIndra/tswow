@@ -47,7 +47,7 @@ export function writeLoader(outDir: string) {
     cpp.BeginBlock();
     cpp.writeStringNewLine(
           `return `
-        + `"${ipaths.bin.revisions.trinitycore.readString()}";`)
+                        + `"${ipaths.bin.revisions.orstetcore.readString()}";`)
     cpp.EndBlock();
 
     cpp.writeStringNewLine(`void AddTSScripts(TSEvents* handlers)`);

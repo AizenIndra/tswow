@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -32,7 +32,7 @@ TSChannel::TSChannel()
 
 std::string TSChannel::GetName(uint32 locale)
 {
-#if TRINITY
+#if ORSTET
     return channel->GetName(LocaleConstant(locale));
 #endif
 }
@@ -46,18 +46,18 @@ bool TSChannel::IsConstant() { return channel->IsConstant(); }
 bool TSChannel::IsLFG() { return channel->IsLFG(); }
 bool TSChannel::IsAnnounce(){ return channel->IsAnnounce(); }
 void TSChannel::SetAnnounce(bool announce) { 
-#if TRINITY
+#if ORSTET
     channel->SetAnnounce(announce); 
 #endif
 }
 void TSChannel::SetDirty() { 
-#if TRINITY
+#if ORSTET
     channel->SetDirty();
 #endif
 }
 void TSChannel::SetPassword(std::string const& password) { channel->SetPassword(password); }
 bool TSChannel::CheckPassword(std::string const& password) { 
-#if TRINITY
+#if ORSTET
     return channel->CheckPassword(password); 
 #endif
 }
@@ -76,7 +76,7 @@ void TSChannel::LeaveChannel(TSPlayer player, bool send)
 
 void TSChannel::SetInvisible(TSPlayer player, bool on)
 {
-#if TRINITY
+#if ORSTET
     channel->SetInvisible(player->player,on);
 #endif
 }

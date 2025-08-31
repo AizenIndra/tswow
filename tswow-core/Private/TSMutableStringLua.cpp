@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSMutableString.h"
 
 void TSLua::load_mutablestring_methods(sol::state& state)

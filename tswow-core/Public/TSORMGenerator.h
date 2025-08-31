@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2021 tswow <https://github.com/tswow/>
  *
  * This program is free software: you can redistribute it and/or
@@ -37,5 +37,5 @@ enum class DatabaseType {
     CHARACTERS
 };
 
-void TC_GAME_API CreateDatabaseSpec(uint32 type, std::string const& dbName, std::string const& name, std::vector<FieldSpec> fields);
-void TC_GAME_API LCreateDatabaseSpec(uint32 type, std::string const& dbName, std::string const& name, sol::table fields);
+void OC_GAME_API CreateDatabaseSpec(uint32 type, std::string const& dbName, std::string const& name, std::vector<FieldSpec> fields);
+void OC_GAME_API LCreateDatabaseSpec(uint32 type, std::string const& dbName, std::string const& name, sol::table fields);

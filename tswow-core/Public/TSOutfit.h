@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -50,8 +50,8 @@ enum Outfit : uint32_t {
     EVERYTHING = GEAR | SOUND_ID | GUILD | CLASS
 };
 
-class TC_GAME_API TSOutfit {
-#if TRINITY
+class OC_GAME_API TSOutfit {
+#if ORSTET
     std::shared_ptr<CreatureOutfit> m_outfit;
     friend class TSCreature;
 public:
@@ -154,7 +154,7 @@ private:
 #endif
 };
 
-#if TRINITY
-TSOutfit TC_GAME_API CreateOutfit(uint32_t race, uint32_t gender);
+#if ORSTET
+TSOutfit OC_GAME_API CreateOutfit(uint32_t race, uint32_t gender);
 LUA_PTR_TYPE(TSOutfit)
 #endif

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -124,7 +124,7 @@ TSNumber<uint32> TSSpell::GetPowerCost()
  */
 TSNumber<int32> TSSpell::GetDuration()
 {
-#if defined TRINITY
+#if defined ORSTET
     return spell->GetSpellInfo()->GetDuration();
 #else
     return GetSpellDuration(spell->m_spellInfo);
@@ -140,7 +140,7 @@ TSNumber<int32> TSSpell::GetDuration()
  */
 TSPosition TSSpell::GetTargetDest()
 {
-#if defined TRINITY
+#if defined ORSTET
     float x, y, z;
     spell->m_targets.GetDstPos()->GetPosition(x, y, z);
 #else
@@ -164,7 +164,7 @@ TSPosition TSSpell::GetTargetDest()
  */
 TSObject  TSSpell::GetTarget()
 {
-#if defined TRINITY
+#if defined ORSTET
     if (GameObject* target = spell->m_targets.GetGOTarget())
          return TSObject(target);
     else if (Item* target = spell->m_targets.GetItemTarget())
@@ -241,7 +241,7 @@ bool TSSpell::IsTriggered()
 
 bool TSSpell::IsTriggeredByAura(uint32 aura)
 {
-#if TRINITY
+#if ORSTET
     return spell->IsTriggeredByAura(sSpellMgr->GetSpellInfo(aura));
 #endif
 }

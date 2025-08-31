@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSBattleground.h"
 #include "TSLuaVarargs.h"
 
@@ -67,7 +67,7 @@ void TSLua::load_battleground_methods(sol::state& state)
     LUA_FIELD(ts_battleground_score, TSBattlegroundScore, ModCustomAttr);
 
     sol::usertype<TSBattleground> ts_battleground = state.new_usertype<TSBattleground>("TSBattleground", sol::base_classes, sol::bases<TSMap, TSWorldEntityProvider<TSMap>, TSEntityProvider>());
-    #if TRINITY
+    #if ORSTET
     LUA_FIELD(ts_battleground, TSBattleground, GetBracketID);
     #endif
     LUA_FIELD(ts_battleground, TSBattleground, GetAlivePlayersCountByTeam);

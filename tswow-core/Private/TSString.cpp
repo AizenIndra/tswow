@@ -1,4 +1,4 @@
-#include "TSString.h"
+﻿#include "TSString.h"
 #include "TSArray.h"
 
 std::string __ts_string_substring(std::string const& str, double begin, double end)

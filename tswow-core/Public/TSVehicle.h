@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -19,7 +19,7 @@
 #include "TSMain.h"
 #include "TSClasses.h"
 
-class TC_GAME_API TSVehicle {
+class OC_GAME_API TSVehicle {
 public:
     Vehicle *vehicle;
     TSVehicle(Vehicle *vehicle);

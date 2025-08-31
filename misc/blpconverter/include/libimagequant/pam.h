@@ -1,4 +1,4 @@
-/* pam.h - pam (portable alpha map) utility library
+﻿/* pam.h - pam (portable alpha map) utility library
  **
  ** Colormap routines.
  **
@@ -127,7 +127,7 @@ inline static rgba_pixel f_to_rgb(const float gamma, const f_pixel px)
     g = powf(g, gamma/internal_gamma);
     b = powf(b, gamma/internal_gamma);
 
-    // 256, because numbers are in range 1..255.9999… rounded down
+    // 256, because numbers are in range 1..255.9999вЂ¦ rounded down
     r *= 256.f;
     g *= 256.f;
     b *= 256.f;

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "TSMain.h"
 
@@ -71,7 +71,7 @@ inline type_in& sol_lua_get(sol::types<type_in> types, lua_State* L, int index, 
 
 #define LUA_PTR_TYPE(type_in) LUA_PTR_TYPE_CON(type_in,type_in(nullptr))
 
-class TC_GAME_API TSLua
+class OC_GAME_API TSLua
 {
 public:
     template <typename T>
@@ -146,7 +146,7 @@ private:
 };
 
 // used by the pointer system to get class references even when we have to fake them
-TC_GAME_API void* add_lua_garbage(size_t size);
-TC_GAME_API void clear_lua_garbage();
-TC_GAME_API size_t GetLuaGarbageCur();
-TC_GAME_API size_t GetLuaGarbageTotal();
+OC_GAME_API void* add_lua_garbage(size_t size);
+OC_GAME_API void clear_lua_garbage();
+OC_GAME_API size_t GetLuaGarbageCur();
+OC_GAME_API size_t GetLuaGarbageTotal();

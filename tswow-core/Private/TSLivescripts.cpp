@@ -1,4 +1,4 @@
-#include "TSLivescripts.h"
+﻿#include "TSLivescripts.h"
 
 #include "Config.h"
 
@@ -35,7 +35,7 @@ static std::map<fs::path, TSLibrary> libraries;
 
 void TSLivescripts::Load()
 {
-#if TRINITY
+#if ORSTET
     fs::path libPath = fs::path(sConfigMgr->GetStringDefault("DataDir", "./")) / "lib" / LIVESCRIPT_BUILD_TYPE;
 #endif
     // Unload libraries

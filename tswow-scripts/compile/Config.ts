@@ -20,7 +20,7 @@ import { isWindows } from '../util/Platform';
 import { wsys } from '../util/System';
 import { term } from '../util/Terminal';
 import { bpaths, spaths } from './CompilePaths';
-import { TrinityCore } from './TrinityCore';
+import { OrstetCore } from './OrstetCore';
 
 export namespace Config {
 
@@ -63,8 +63,8 @@ export namespace Config {
         new NodeConfigClass(ipaths.node_conf.get()).generateIfNotExists();
 
         spaths.misc.install_config.addons.copy(ipaths.bin.addons);
-        spaths.cores.TrinityCore.sql.updates.copy(ipaths.bin.sql.updates)
-        spaths.cores.TrinityCore.sql.custom.copy(ipaths.bin.sql.custom)
+        spaths.cores.OrstetCore.sql.updates.copy(ipaths.bin.sql.updates)
+        spaths.cores.OrstetCore.sql.custom.copy(ipaths.bin.sql.custom)
 
         // Serverside lua includes
         spaths.misc.install_config.include_lua.copy(bpaths.include_lua),
@@ -157,7 +157,7 @@ export namespace Config {
             })
         })
 
-        TrinityCore.headers(false);
+        OrstetCore.headers(false);
         spaths.misc.install_config.snippet_example.copy(ipaths.vscode.snippets_out)
 
         let commit = wsys.exec('git rev-parse HEAD','pipe').split('\n').join('');

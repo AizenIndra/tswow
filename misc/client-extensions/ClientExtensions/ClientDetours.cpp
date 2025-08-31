@@ -1,4 +1,4 @@
-#include "ClientDetours.h"
+﻿#include "ClientDetours.h"
 #include "Logger.h"
 #include "FSRoot.h"
 

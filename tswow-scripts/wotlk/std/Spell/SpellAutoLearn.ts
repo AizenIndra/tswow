@@ -1,5 +1,5 @@
 import { makeMaskCell32, MaskCellWrite, MaskCon } from "../../../data/cell/cells/MaskCell";
-import { isTrinityCore } from "../../../data/Settings";
+import { isOrstetCore } from "../../../data/Settings";
 import { SqlRow } from "../../../data/sql/SQLRow";
 import { spell_autolearnRow } from "../../sql/spell_autolearn";
 import { SQL } from "../../SQLFiles";
@@ -9,7 +9,7 @@ import { RaceMask } from "../Race/RaceType";
 import { Spell } from "./Spell";
 import { SpellRegistry } from "./Spells";
 
-if(isTrinityCore()) {
+if(isOrstetCore()) {
     SQL.Databases.world_dest.read(`DELETE FROM \`spell_autolearn\`;`);
     SQL.spell_autolearn.queryAll({})
         .forEach(x=>{

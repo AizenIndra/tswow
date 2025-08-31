@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "TSMain.h"
 
@@ -7,7 +7,7 @@
 #include <functional>
 
 class TSWorldObject;
-class TC_GAME_API TSWorldObjectGroup {
+class OC_GAME_API TSWorldObjectGroup {
     std::set<TSWorldObject> entries;
 public:
     ~TSWorldObjectGroup();
@@ -26,7 +26,7 @@ public:
     void filterInPlace(std::function<bool(TSWorldObject)> callback);
 };
 
-class TC_GAME_API TSWorldObjectGroups {
+class OC_GAME_API TSWorldObjectGroups {
     std::map<std::string, TSWorldObjectGroup> groups;
 public:
     TSWorldObjectGroup* GetGroup(std::string const& key);

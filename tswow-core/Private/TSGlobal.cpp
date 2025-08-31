@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
  * This program is free software: you can redistribute it and/or
@@ -29,7 +29,7 @@
 
 TSItemTemplate CreateItemTemplate(uint32 entry,uint32 copyItemID)
 {
-#if TRINITY
+#if ORSTET
     return sObjectMgr->CreateItemTemplate(entry,copyItemID);
 #endif
 }
@@ -57,17 +57,17 @@ std::string SyncHttpGet(std::string const& url)
     return std::string{response.body.begin(), response.body.end()};
 }
 
-bool TC_GAME_API IsGameEventActive(uint16_t event_id)
+bool OC_GAME_API IsGameEventActive(uint16_t event_id)
 {
     return IsEventActive(event_id);
 }
 
-bool TC_GAME_API IsHolidayActive(uint16_t holiday_id)
+bool OC_GAME_API IsHolidayActive(uint16_t holiday_id)
 {
     return IsHolidayActive(HolidayIds(holiday_id));
 }
 
-TSArray<TSNumber<uint16> > TC_GAME_API GetActiveGameEvents()
+TSArray<TSNumber<uint16> > OC_GAME_API GetActiveGameEvents()
 {
     TSArray<TSNumber<uint16> > arr;
     for (auto const& evt: sGameEventMgr->GetActiveEventList())
@@ -111,7 +111,7 @@ bool L_HAS_TAG(uint32_t id, sol::table list)
     return false;
 }
 
-TSLua::Array<TSNumber<uint16>> TC_GAME_API LGetActiveGameEvents()
+TSLua::Array<TSNumber<uint16>> OC_GAME_API LGetActiveGameEvents()
 {
     return sol::as_table(*GetActiveGameEvents().vec);
 }

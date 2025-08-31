@@ -1,4 +1,4 @@
-#include "CustomPacketWrite.h"
+﻿#include "CustomPacketWrite.h"
 
 CustomPacketWrite::CustomPacketWrite(
       opcode_t opcode

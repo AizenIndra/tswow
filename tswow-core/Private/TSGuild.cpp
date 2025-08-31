@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -56,7 +56,7 @@ TSArray<TSPlayer> TSGuild::GetMembers()
  */
 TSNumber<uint32> TSGuild::GetMemberCount()
 {
-#if defined TRINITY
+#if defined ORSTET
     return guild->GetMemberCount();
 #else
     return guild->GetMemberSize();
@@ -70,7 +70,7 @@ TSNumber<uint32> TSGuild::GetMemberCount()
  */
 TSPlayer  TSGuild::GetLeader()
 {
-#if defined TRINITY
+#if defined ORSTET
      return TSPlayer(eObjectAccessor()FindPlayer(guild->GetLeaderGUID()));
 #else
      return TSPlayer(eObjectAccessor()FindPlayer(guild->GetLeaderGuid()));
@@ -124,7 +124,7 @@ std::string TSGuild::GetMOTD()
  */
 std::string TSGuild::GetInfo()
 {
-#if defined TRINITY
+#if defined ORSTET
      return guild->GetInfo();
 #else
      return guild->GetGINFO();
@@ -141,7 +141,7 @@ void TSGuild::SetLeader(TSPlayer _player)
 {
     auto player = _player.player;
 
-#if defined TRINITY
+#if defined ORSTET
     guild->HandleSetLeader(player->GetSession(), player->GetName());
 #else
     guild->SetLeader(player->TS_GET_GUID());
@@ -158,7 +158,7 @@ void TSGuild::SetLeader(TSPlayer _player)
  */
 void TSGuild::SetBankTabText(uint8 tabId,std::string const& text)
 {
-#if defined TRINITY
+#if defined ORSTET
     guild->SetBankTabText(tabId, text);
 #else
     guild->SetGuildBankTabText(tabId, text);
@@ -231,7 +231,7 @@ void TSGuild::AddMember(TSPlayer _player,uint8 rankId)
 {
     auto player = _player.player;
 
-#ifdef TRINITY
+#ifdef ORSTET
 CharacterDatabaseTransaction trans(nullptr);
     guild->AddMember(trans, player->TS_GET_GUID(), rankId);
 #else
@@ -249,7 +249,7 @@ void TSGuild::DeleteMember(TSPlayer _player,bool isDisbanding)
 {
     auto player = _player.player;
 
-#if defined TRINITY
+#if defined ORSTET
 CharacterDatabaseTransaction trans(nullptr);
     guild->DeleteMember(trans, player->TS_GET_GUID(), isDisbanding);
 #else
@@ -267,7 +267,7 @@ void TSGuild::SetMemberRank(TSPlayer _player,uint8 newRank)
 {
     auto player = _player.player;
 
-#ifdef TRINITY
+#ifdef ORSTET
 CharacterDatabaseTransaction trans(nullptr);
     guild->ChangeMemberRank(trans, player->TS_GET_GUID(), newRank);
 #else

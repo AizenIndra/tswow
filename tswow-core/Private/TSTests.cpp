@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2021 tswow <https://github.com/tswow/>
  *
@@ -45,7 +45,7 @@
 #define STEP_TYPE_FIELD " stepType "
 #define ERROR_MESSAGE_FIELD " errorMessage "
 
-#ifdef TRINITY
+#ifdef ORSTET
 
 static uint32_t stmnt_createSession =
     CharacterDatabase.PrepareCustomStatement(
@@ -408,7 +408,7 @@ void RegisterAutomaticTest(std::string const& modName, std::string const& testNa
     automaticTests.insert(TSAutomaticTest(modName, testName, callback));
 }
 
-std::shared_ptr<TSManualTestBuilder> TC_GAME_API RegisterManualTest(std::string const& modName, std::string const& name)
+std::shared_ptr<TSManualTestBuilder> OC_GAME_API RegisterManualTest(std::string const& modName, std::string const& name)
 {
     return std::make_shared<TSManualTestBuilder>(modName,name);
 }
@@ -418,7 +418,7 @@ void UnloadTestModule()
     manualSteps.clear();
 }
 
-void TC_GAME_API StartTestSession(Player * player, std::string const& sessionName, std::string const& filter)
+void OC_GAME_API StartTestSession(Player * player, std::string const& sessionName, std::string const& filter)
 {
     std::regex regexFilter;
     try {
@@ -515,7 +515,7 @@ static void endSession(Player* player, std::string const& sessionName, uint32_t 
     PrintSessionStatus(player, sessionName);
 }
 
-void TC_GAME_API NextTestStep(Player * player, std::string const& sessionName, bool isFail, std::string const& failMessage)
+void OC_GAME_API NextTestStep(Player * player, std::string const& sessionName, bool isFail, std::string const& failMessage)
 {
     PreparedStatementBase params(0, 1);
     params.setString(0, sessionName);

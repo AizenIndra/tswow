@@ -1,4 +1,4 @@
-import { isTrinityCore } from "../Settings";
+import { isOrstetCore } from "../Settings";
 import { SqlConnection } from "./SQLConnection";
 
 export function cleanSQL() {
@@ -41,14 +41,14 @@ export function cleanSQL() {
     col('spell_custom_attr');
     col('spell_proc')
     col('spell_group')
-    if(isTrinityCore()) {
+    if(isOrstetCore()) {
         col('spell_autolearn')
     }
     col('creature_queststarter')
     col('creature_questender')
     col('gameobject_template')
     col('areatrigger_teleport')
-    if(isTrinityCore()) {
+    if(isOrstetCore()) {
         col('instance_addon')
         col('instance_boss_boundary')
         col('instance_boss_creature')
@@ -61,7 +61,7 @@ export function cleanSQL() {
     col('smart_scripts')
     col('gossip_menu_option')
     col('gossip_menu')
-    if(isTrinityCore()) {
+    if(isOrstetCore()) {
         col('trainer_spell')
     }
     col('waypoints')
@@ -85,19 +85,19 @@ export function cleanSQL() {
     col('skinning_loot_template')
     col('spell_loot_template')
     col('creature_text')
-    if(isTrinityCore()) {
+    if(isOrstetCore()) {
         col('creature_template_outfits')
     }
     col('transports')
     col('quest_poi_points')
     col('quest_poi')
     col('lfg_dungeon_template')
-    if(isTrinityCore()) {
+    if(isOrstetCore()) {
         col('access_requirement')
     }
 
     col('game_event')
-    if(isTrinityCore()) {
+    if(isOrstetCore()) {
         col('game_event_condition')
     }
 }

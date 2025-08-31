@@ -4,7 +4,7 @@ on:
   pull_request:
   workflow_dispatch:
 jobs:
-  ubuntu-clang-trinitycore:
+  ubuntu-clang-orstetcore:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
@@ -15,7 +15,7 @@ jobs:
         shell: bash
         run: npm run build noac
 
-  windows-msvc-trinitycore:
+  windows-msvc-orstetcore:
     runs-on: windows-2022
     steps:
       # Build

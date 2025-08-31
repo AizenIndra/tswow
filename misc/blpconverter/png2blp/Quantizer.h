@@ -1,4 +1,4 @@
-
+﻿
 
 #ifndef PNG_BLP_QUANTIZER_H
 #define PNG_BLP_QUANTIZER_H

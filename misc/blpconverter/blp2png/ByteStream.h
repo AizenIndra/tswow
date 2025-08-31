@@ -1,4 +1,4 @@
-#ifndef CYTHON_BLP_BYTESTREAM_H
+﻿#ifndef CYTHON_BLP_BYTESTREAM_H
 #define CYTHON_BLP_BYTESTREAM_H
 
 #include <stdint.h>

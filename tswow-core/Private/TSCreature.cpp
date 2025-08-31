@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -26,7 +26,7 @@
 #include "SpellInfo.h"
 #include "TSSpellInfo.h"
 #include "TSGameObject.h"
-#if TRINITY
+#if ORSTET
 #include "SpellHistory.h"
 #include "ThreatManager.h"
 #endif
@@ -36,7 +36,7 @@
 #include "Player.h"
 #include "TSMap.h"
 #include "TSOutfit.h"
-#if TRINITY
+#if ORSTET
 #include "CreatureOutfit.h"
 #endif
 #include "SmartAI.h"
@@ -72,7 +72,7 @@ bool TSCreature::IsReputationGainDisabled()
 bool TSCreature::CanCompleteQuest(uint32 quest_id)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     return creature->hasInvolvedQuest(quest_id);
 #else
     return creature->HasInvolvedQuest(quest_id);
@@ -133,7 +133,7 @@ bool TSCreature::IsTappedBy(TSPlayer _player)
 {
     auto player = _player.player;
 
-#if defined TRINITY
+#if defined ORSTET
     return creature->isTappedBy(player);
 #else
     return creature->IsTappedBy(player);
@@ -148,7 +148,7 @@ bool TSCreature::IsTappedBy(TSPlayer _player)
  */
 bool TSCreature::HasLootRecipient()
 {
-#if defined TRINITY
+#if defined ORSTET
     return creature->hasLootRecipient();
 #else
     return creature->HasLootRecipient();
@@ -163,7 +163,7 @@ bool TSCreature::HasLootRecipient()
  */
 bool TSCreature::CanAggro()
 {
-#if defined TRINITY
+#if defined ORSTET
     return !creature->HasFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_IMMUNE_TO_NPC);
 #else
     return creature->CanInitiateAttack();
@@ -212,7 +212,7 @@ bool TSCreature::IsInEvadeMode()
  */
 bool TSCreature::IsElite()
 {
-#if defined TRINITY
+#if defined ORSTET
     return creature->isElite();
 #else
     return creature->IsElite();
@@ -260,7 +260,7 @@ bool TSCreature::IsRacialLeader()
  */
 bool TSCreature::IsWorldBoss()
 {
-#if defined TRINITY
+#if defined ORSTET
     return creature->isWorldBoss();
 #else
     return creature->IsWorldBoss();
@@ -277,7 +277,7 @@ bool TSCreature::IsWorldBoss()
 bool TSCreature::HasCategoryCooldown(uint32 spell)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     if (const SpellInfo* info = sSpellMgr->GetSpellInfo(spell))
         return info->GetCategory() && creature->GetSpellHistory()->HasCooldown(spell);
     else
@@ -309,7 +309,7 @@ bool TSCreature::HasSpell(uint32 id)
 bool TSCreature::HasQuest(uint32 questId)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     return creature->hasQuest(questId);
 #else
     return creature->HasQuest(questId);
@@ -326,7 +326,7 @@ bool TSCreature::HasQuest(uint32 questId)
 bool TSCreature::HasSpellCooldown(uint32 spellId)
 {
 
-#ifdef TRINITY
+#ifdef ORSTET
     return creature->GetSpellHistory()->HasCooldown(spellId);
 #else
     return creature->HasSpellCooldown(spellId);
@@ -344,7 +344,7 @@ bool TSCreature::CanFly()
     return creature->CanFly();
 }
 
-#if defined TRINITY
+#if defined ORSTET
 /**
  * Returns `true` if the [Creature] is an invisible trigger,
  *   and returns `false` otherwise.
@@ -413,14 +413,14 @@ TSNumber<uint32> TSCreature::GetRespawnDelay()
  */
 TSNumber<float> TSCreature::GetWanderRadius()
 {
-#if defined TRINITY
+#if defined ORSTET
     return creature->GetWanderDistance();
 #else
     return creature->GetRespawnRadius();
 #endif
 }
 
-#if defined TRINITY
+#if defined ORSTET
 /**
  * Returns the current waypoint path ID of the [Creature].
  *
@@ -439,7 +439,7 @@ TSNumber<uint32> TSCreature::GetWaypointPath()
  */
 TSNumber<uint32> TSCreature::GetCurrentWaypointID()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return creature->GetCurrentWaypointInfo().first;
 #else
     return creature->GetMotionMaster()->getLastReachedWaypoint();
@@ -466,7 +466,7 @@ TSNumber<float> TSCreature::GetAggroRange(TSUnit _target)
 {
     auto target = _target.unit;
 
-#if defined TRINITY
+#if defined ORSTET
     return creature->GetAggroRange(target);
 #else
     float AttackDist = creature->GetAttackDistance(target);
@@ -486,7 +486,7 @@ TSNumber<float> TSCreature::GetAggroRange(TSUnit _target)
  */
 TSNumber<float> TSCreature::GetAttackDistance(TSUnit _target)
 {
-#if TRINITY
+#if ORSTET
     auto target = _target.unit;
     return creature->GetAttackDistance(target);
 #endif
@@ -499,7 +499,7 @@ TSNumber<float> TSCreature::GetAttackDistance(TSUnit _target)
  */
 TSGroup TSCreature::GetLootRecipientGroup()
 {
-#if defined TRINITY
+#if defined ORSTET
      return TSGroup(creature->GetLootRecipientGroup());
 #else
      return TSGroup(creature->GetGroupLootRecipient());
@@ -566,7 +566,7 @@ TSNumber<uint32> TSCreature::GetScriptID()
 TSNumber<uint32> TSCreature::GetCreatureSpellCooldownDelay(uint32 spell)
 {
 
-#ifdef TRINITY
+#ifdef ORSTET
     if (SpellInfo const* spellInfo = sSpellMgr->GetSpellInfo(spell))
         return creature->GetSpellHistory()->GetRemainingCooldown(spellInfo);
     else
@@ -598,7 +598,7 @@ TSNumber<uint32> TSCreature::GetCorpseDelay()
 TSPosition TSCreature::GetHomePosition()
 {
     float x, y, z, o;
-#if defined TRINITY
+#if defined ORSTET
     creature->GetHomePosition(x, y, z, o);
 #else
     creature->GetRespawnCoord(x, y, z, &o);
@@ -618,7 +618,7 @@ TSPosition TSCreature::GetHomePosition()
 void TSCreature::SetHomePosition(float x,float y,float z,float o)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     creature->SetHomePosition(x, y, z, o);
 #else
     creature->SetRespawnCoord(x, y, z, o);
@@ -682,7 +682,7 @@ bool ObjectDistanceOrderPred::operator()(WorldObject const* pLeft, WorldObject c
 */
 TSUnit  TSCreature::FindThreatListEntry(uint32 targetType,bool playerOnly,uint32 position,float dist,int32 aura)
 {
-#if TRINITY
+#if ORSTET
     auto const& threatlist = creature->GetThreatManager().GetSortedThreatList();
 #endif
 
@@ -690,7 +690,7 @@ TSUnit  TSCreature::FindThreatListEntry(uint32 targetType,bool playerOnly,uint32
 
     for (auto const* itr : threatlist)
     {
-#if TRINITY
+#if ORSTET
         Unit* target = itr->GetVictim();
 #endif
         if (!target)
@@ -805,7 +805,7 @@ TSNumber<uint32> TSCreature::GetShieldBlockValue()
 }
 #endif
 
-#if defined TRINITY
+#if defined ORSTET
 TSNumber<uint16> TSCreature::GetLootMode()
 {
     return creature->GetLootMode();
@@ -819,7 +819,7 @@ TSNumber<uint16> TSCreature::GetLootMode()
  */
 TSNumber<uint32> TSCreature::GetDBTableGUIDLow()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return creature->GetSpawnId();
 #endif
 }
@@ -844,14 +844,14 @@ void TSCreature::SetNPCFlags(uint32 flags)
 void TSCreature::SetDisableGravity(bool disable)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     creature->SetDisableGravity(disable);
 #else
     creature->SetLevitate(disable);
 #endif
 }
 
-#if defined TRINITY
+#if defined ORSTET
 void TSCreature::SetLootMode(uint16 lootMode)
 {
 
@@ -867,7 +867,7 @@ void TSCreature::SetLootMode(uint16 lootMode)
 void TSCreature::SetDeathState(int32 state)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     creature->setDeathState((DeathState)state);
 #else
     creature->SetDeathState((DeathState)state);
@@ -895,7 +895,7 @@ void TSCreature::SetWalk(bool enable)
 void TSCreature::SetEquipmentSlots(uint32 main_hand,uint32 off_hand,uint32 ranged)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     creature->SetUInt32Value(UNIT_VIRTUAL_ITEM_SLOT_ID + 0, main_hand);
     creature->SetUInt32Value(UNIT_VIRTUAL_ITEM_SLOT_ID + 1, off_hand);
     creature->SetUInt32Value(UNIT_VIRTUAL_ITEM_SLOT_ID + 2, ranged);
@@ -914,7 +914,7 @@ void TSCreature::SetEquipmentSlots(uint32 main_hand,uint32 off_hand,uint32 range
 void TSCreature::SetAggroEnabled(bool allow)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     if (allow)
         creature->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_IMMUNE_TO_NPC);
     else
@@ -947,7 +947,7 @@ void TSCreature::SetDisableReputationGain(bool disable)
  */
 void TSCreature::SetInCombatWithZone()
 {
-#if defined TRINITY
+#if defined ORSTET
     if (creature->IsAIEnabled())
         creature->AI()->DoZoneInCombat();
 #else
@@ -963,7 +963,7 @@ void TSCreature::SetInCombatWithZone()
 void TSCreature::SetWanderRadius(float dist)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     creature->SetWanderDistance(dist);
 #else
     creature->SetRespawnRadius(dist);
@@ -1022,7 +1022,7 @@ void TSCreature::SetNoCallAssistance(bool val)
 void TSCreature::SetHover(bool enable)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     creature->SetHover(enable);
 #else
     // Copy paste from Aura::HandleAuraHover
@@ -1059,7 +1059,7 @@ void TSCreature::SetCanFly(bool enable)
  */
 void TSCreature::DespawnOrUnsummon(uint32 msTimeToDespawn)
 {
-#if defined TRINITY
+#if defined ORSTET
     creature->DespawnOrUnsummon(Milliseconds(msTimeToDespawn));
 #endif
 }
@@ -1085,7 +1085,7 @@ void TSCreature::RemoveCorpse()
  */
 void TSCreature::MoveWaypoint()
 {
-#if defined TRINITY
+#if defined ORSTET
     creature->GetMotionMaster()->MovePath(creature->GetWaypointPath(), true);
 #else
     creature->GetMotionMaster()->MoveWaypoint();
@@ -1156,7 +1156,7 @@ void TSCreature::SaveToDB()
  */
 TSUnit  TSCreature::SelectVictim()
 {
-#if defined TRINITY
+#if defined ORSTET
      return TSUnit(creature->SelectVictim());
 #else
      return TSUnit(creature->SelectHostileTarget());
@@ -1172,14 +1172,14 @@ TSUnit  TSCreature::SelectVictim()
 void TSCreature::UpdateEntry(uint32 entry,uint32 dataGuidLow)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     creature->UpdateEntry(entry, dataGuidLow ? eObjectMgr->GetCreatureData(dataGuidLow) : NULL);
 #else
     creature->UpdateEntry(entry, ALLIANCE, dataGuidLow ? eObjectMgr->GetCreatureData(dataGuidLow) : NULL);
 #endif
 }
 
-#if defined TRINITY
+#if defined ORSTET
 /**
  * Resets [Creature]'s loot mode to default
  */
@@ -1217,7 +1217,7 @@ void TSCreature::AddLootMode(uint16 lootMode)
  * <pre>
  * enum CreatureFamily
  * {
- *     CREATURE_FAMILY_NONE                = 0,    // TrinityCore only
+ *     CREATURE_FAMILY_NONE                = 0,    // ORSTETCore only
  *     CREATURE_FAMILY_WOLF                = 1,
  *     CREATURE_FAMILY_CAT                 = 2,
  *     CREATURE_FAMILY_SPIDER              = 3,
@@ -1268,7 +1268,7 @@ TSNumber<uint32> TSCreature::GetCreatureFamily()
 {
     uint32 entry = creature->GetEntry();
 
-#if defined TRINITY
+#if defined ORSTET
     CreatureTemplate const* cInfo = sObjectMgr->GetCreatureTemplate(entry);
     return cInfo->family;
 #else
@@ -1289,27 +1289,27 @@ TSCreatureTemplate TSCreature::GetTemplate()
 
 void TSCreature::UpdateLevelDependantStats()
 {
-#if TRINITY
+#if ORSTET
     creature->UpdateLevelDependantStats();
 #endif
 }
 
 void TSCreature::SetOutfit(TSOutfit const& outfit)
 {
-#if TRINITY
+#if ORSTET
     creature->SetOutfit(outfit.m_outfit);
 #endif
 }
 
 void TSCreature::FireSmartEvent(uint32 e, TSUnit unit, uint32 var0, uint32 var1, bool bvar, TSSpellInfo spell, TSGameObject gobj)
 {
-#if TRINITY
+#if ORSTET
     if (!creature->IsAIEnabled()) return;
 #endif
     auto ai = creature->AI();
     if (SmartAI * sai = dynamic_cast<SmartAI*>(ai))
     {
-#if TRINITY
+#if ORSTET
         sai->ProcessEventsFor(SMART_EVENT(e), unit.unit, var0, var1, bvar, spell.info, gobj.go);
 #endif
     }
@@ -1317,7 +1317,7 @@ void TSCreature::FireSmartEvent(uint32 e, TSUnit unit, uint32 var0, uint32 var1,
 
 bool TSCreature::IsAIEnabled()
 {
-#if TRINITY
+#if ORSTET
     return creature->IsAIEnabled();
 #endif
 }
@@ -1359,14 +1359,14 @@ TSNumber<uint32> TSCreature::GetRangedEquip()
 
 TSOutfit TSCreature::GetOutfit()
 {
-#if TRINITY
+#if ORSTET
     return creature->GetOutfit();
 #endif
 }
 
 TSOutfit TSCreature::GetOutfitCopy(Outfit settings, int32_t race, int32_t gender)
 {
-#if TRINITY
+#if ORSTET
     return TSOutfit(GetOutfit(), settings, race, gender);
 #endif
 }

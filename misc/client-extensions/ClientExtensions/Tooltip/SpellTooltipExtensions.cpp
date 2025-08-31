@@ -1,4 +1,4 @@
-#include "SpellTooltipExtensions.h"
+﻿#include "SpellTooltipExtensions.h"
 #include "windows.h"
 
 void SpellTooltipExtensions::Apply()

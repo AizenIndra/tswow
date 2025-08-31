@@ -35,7 +35,7 @@ import { MySQL } from './MySQL';
 import { NodeJS } from './Node';
 import { OpenSSL } from './OpenSSL';
 import { Scripts } from './Scripts';
-import { TrinityCore } from './TrinityCore';
+import { OrstetCore } from './OrstetCore';
 setContext('build');
 
 let buildingScripts = false;
@@ -59,11 +59,11 @@ async function compile(type: string, compileArgs: string[]) {
     if (isWindows()) { await IMInstall.install() }
 
     if (types.includes('full') || types.includes('release')) {
-        await TrinityCore.install(cmake, openssl, mysql, 'RelWithDebInfo', compileArgs.concat(['dynamic']));
+        await OrstetCore.install(cmake, openssl, mysql, 'RelWithDebInfo', compileArgs.concat(['dynamic']));
     } else {
-        if (type == 'trinitycore-release') { await TrinityCore.install(cmake, openssl, mysql, 'Release', compileArgs); }
-        if (isType('trinitycore') || isType('trinitycore-relwithdebinfo')) { await TrinityCore.install(cmake, openssl, mysql, 'RelWithDebInfo', compileArgs); }
-        if (type == 'trinitycore-debug') { await TrinityCore.install(cmake, openssl, mysql, 'Debug', compileArgs); }
+        if (type == 'orstetcore-release') { await OrstetCore.install(cmake, openssl, mysql, 'Release', compileArgs); }
+        if (isType('orstetcore') || isType('orstetcore-relwithdebinfo')) { await OrstetCore.install(cmake, openssl, mysql, 'RelWithDebInfo', compileArgs); }
+        if (type == 'orstetcore-debug') { await OrstetCore.install(cmake, openssl, mysql, 'Debug', compileArgs); }
     }
 
     if (isType('mpqbuilder')) { await MPQBuilder.create(cmake); }
@@ -100,10 +100,10 @@ async function main() {
 
     const installedPrograms =
         [
-              'trinitycore'
-            , 'trinitycore-release'
-            , 'trinitycore-relwithdebinfo'
-            , 'trinitycore-debug'
+              'orstetcore'
+            , 'orstetcore-release'
+            , 'orstetcore-relwithdebinfo'
+            , 'orstetcore-debug'
             , 'mpqbuilder'
             , 'blpconverter'
             , 'config'
@@ -124,7 +124,7 @@ async function main() {
     build.addCommand('base', '', 'Builds only base dependencies', async(args) => await compile('', args));
 
     commands.addCommand('headers','','',async(args)=>{
-        TrinityCore.headers(Args.hasFlag('global-only',args));
+        OrstetCore.headers(Args.hasFlag('global-only',args));
     });
 
     commands.enterLoop();
@@ -133,11 +133,11 @@ async function main() {
 
 (async function(){
     if(!spaths.tswow_scripts.wotlk.global_d_ts.exists()) {
-        TrinityCore.headers(true);
+        OrstetCore.headers(true);
     }
 
     if(Args.hasFlag('gdts-only', [process.argv])) {
-        TrinityCore.headers(true);
+        OrstetCore.headers(true);
         process.exit(0);
     }
 

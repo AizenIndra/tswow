@@ -14,7 +14,7 @@ project(${buildModule})
 
 # Core settings
 file (GLOB libs "${
-    emu === 'trinitycore'
+    emu === 'orstetcore'
         ? ipaths.bin.libraries.build.pick(buildType).abs('FORWARD')
         : ipaths.bin.libraries_ac.build.pick(buildType).abs('FORWARD')
 }/${(isWindows()?'*.lib':'*.so')}")
@@ -55,7 +55,7 @@ filter_items(source_files "/lib/")
 add_library(${buildModule} SHARED \${transpiler_files} \${source_files})
 target_link_libraries(${buildModule} \${libs})
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-target_compile_definitions(${buildModule} PUBLIC "TRINITY=1")
+target_compile_definitions(${buildModule} PUBLIC "ORSTET=1")
 
 source_group("Transpiled" FILES \${transpiler_files})
 source_group("Source" FILES \${source_files})
@@ -78,8 +78,8 @@ target_precompile_headers(${buildModule} PUBLIC \${headers})
 # defines
 ${(()=>{
     switch(emu) {
-        case 'trinitycore':
-            return `target_compile_definitions(${buildModule} PUBLIC TRINITY=1)`
+        case 'orstetcore':
+            return `target_compile_definitions(${buildModule} PUBLIC ORSTET=1)`
         default:
             return ''
     }

@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSMutex.h"
 
 static TSMutex _CreateMutexLock()

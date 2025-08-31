@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2021 tswow <https://github.com/tswow/>
  *
  * This program is free software: you can redistribute it and/or

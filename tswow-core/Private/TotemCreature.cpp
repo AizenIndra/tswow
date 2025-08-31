@@ -1,12 +1,12 @@
-// @tswow-begin
+﻿// @tswow-begin
 #include "TotemCreature.h"
 
 TotemCreature::TotemCreature(SummonPropertiesEntry const* properties, Unit* owner)
-#if TRINITY
+#if ORSTET
     : Minion(properties, owner, false)
 #endif
 {
-#if TRINITY
+#if ORSTET
     this->m_isTempCreature = true;
 #endif
     InitCharmInfo();
@@ -29,7 +29,7 @@ void TotemCreature::SetupTotemStats()
         return;
     }
 
-#if TRINITY
+#if ORSTET
     uint32 petlevel = owner->GetLevel();
     bool isNewLevel = GetLevel() != petlevel;
 #endif

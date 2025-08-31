@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2021 tswow <https://github.com/tswow/>
  *
@@ -21,7 +21,7 @@
 
 #include <vector>
 
-#if TRINITY
+#if ORSTET
 
 TSAreaTriggerEntry::TSAreaTriggerEntry(AreaTriggerEntry* entry)
 : m_entry(entry)
@@ -29,7 +29,7 @@ TSAreaTriggerEntry::TSAreaTriggerEntry(AreaTriggerEntry* entry)
 
 TSNumber<uint32> TSAreaTriggerEntry::GetEntry()
 {
-#if TRINITY
+#if ORSTET
     return m_entry->ID;
 #endif
 }

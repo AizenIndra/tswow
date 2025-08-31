@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -21,7 +21,7 @@
 #include "TSMap.h"
 #include "TSInstance.h"
 #include "TSBattleground.h"
-#if TRINITY
+#if ORSTET
 #include "MapManager.h"
 #endif
 #include "GameObject.h"

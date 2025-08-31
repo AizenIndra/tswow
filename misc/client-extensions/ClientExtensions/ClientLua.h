@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "ClientMacros.h"
 #include "lua.hpp"

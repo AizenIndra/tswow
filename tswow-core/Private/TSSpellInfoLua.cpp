@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSSpellInfo.h"
 
 void TSLua::load_spell_info_methods(sol::state& state)

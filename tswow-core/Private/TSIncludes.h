@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -15,7 +15,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 #pragma once
-#define CORE_NAME               "TrinityCore"
+#define CORE_NAME               "ORSTETCore"
 #define CORE_VERSION            (GitRevision::GetDate())
 #define eWorld                  (sWorld)
 #define eMapMgr                 (sMapMgr)

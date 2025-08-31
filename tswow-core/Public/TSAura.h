@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -34,7 +34,7 @@ class TSHealInfo;
 class TSDamageInfo;
 class TSGUID;
 
-class TC_GAME_API TSAuraEffect : public TSEntityProvider {
+class OC_GAME_API TSAuraEffect : public TSEntityProvider {
     TS_CLASS_DECLARATION(TSAuraEffect,AuraEffect,aura)
     TSUnit GetCaster();
     TSGUID GetCasterGUID();
@@ -59,7 +59,7 @@ class TC_GAME_API TSAuraEffect : public TSEntityProvider {
 };
 
 class AuraApplication;
-class TC_GAME_API TSAuraApplication : public TSEntityProvider {
+class OC_GAME_API TSAuraApplication : public TSEntityProvider {
     TS_CLASS_DECLARATION(TSAuraApplication,AuraApplication,aura)
     TSUnit GetTarget();
     TSAura GetAura();
@@ -72,7 +72,7 @@ class TC_GAME_API TSAuraApplication : public TSEntityProvider {
     bool IsSelfCast();
 };
 
-class TC_GAME_API TSAura : public TSEntityProvider {
+class OC_GAME_API TSAura : public TSEntityProvider {
 public:
     Aura *aura;
     TSAura(Aura *aura);
@@ -100,7 +100,7 @@ private:
     friend class TSLua;
 };
 
-class TC_GAME_API TSProcEventInfo
+class OC_GAME_API TSProcEventInfo
 {
     TS_CLASS_DECLARATION(TSProcEventInfo, ProcEventInfo, m_info)
     TSUnit GetActor();

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -27,7 +27,7 @@
 class TSGUID;
 
 struct MailItemInfo;
-struct TC_GAME_API TSMailItemInfo {
+struct OC_GAME_API TSMailItemInfo {
     MailItemInfo* info;
 
     TSMailItemInfo() { info = nullptr; }
@@ -41,7 +41,7 @@ struct TC_GAME_API TSMailItemInfo {
 };
 
 struct Mail;
-struct TC_GAME_API TSMail {
+struct OC_GAME_API TSMail {
     Mail* mail;
     TSMail(Mail* mail);
     TSMail* operator->(){return this;}
@@ -84,7 +84,7 @@ private:
 };
 
 class MailDraft;
-struct TC_GAME_API TSMailDraft {
+struct OC_GAME_API TSMailDraft {
     MailDraft* draft;
     TSMailDraft() { draft = nullptr; }
     TSMailDraft(MailDraft* draft);

@@ -1,4 +1,4 @@
-#include "windows.h"
+﻿#include "windows.h"
 #include "detours.h"
 #include <vector>
 #include "ClientDetours.h"

@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSWorldEntity.h"
 
 void TSLua::load_worldentity_methods(sol::state & state)

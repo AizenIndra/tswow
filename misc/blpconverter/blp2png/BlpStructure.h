@@ -1,4 +1,4 @@
-#ifndef CYTHON_BLP_BLPSTRUCTURE_H
+﻿#ifndef CYTHON_BLP_BLPSTRUCTURE_H
 #define CYTHON_BLP_BLPSTRUCTURE_H
 
 #include <stdint.h>

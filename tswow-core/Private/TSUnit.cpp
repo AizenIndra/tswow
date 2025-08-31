@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -101,7 +101,7 @@ bool TSUnit::IsMounted()
  */
 bool TSUnit::IsRooted()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return unit->IsRooted() || unit->HasUnitMovementFlag(MOVEMENTFLAG_ROOT);
 #endif
 #ifdef CMANGOS
@@ -133,7 +133,7 @@ bool TSUnit::IsInAccessiblePlaceFor(TSCreature _creature)
 {
     auto creature = _creature.creature;
 
-#if defined TRINITY
+#if defined ORSTET
     return unit->isInAccessiblePlaceFor(creature);
 #else
     return unit->isInAccessablePlaceFor(creature);
@@ -147,7 +147,7 @@ bool TSUnit::IsInAccessiblePlaceFor(TSCreature _creature)
  */
 bool TSUnit::IsAuctioneer()
 {
-#if defined TRINITY
+#if defined ORSTET
     return unit->IsAuctioner();
 #else
     return unit->isAuctioner();
@@ -434,7 +434,7 @@ bool TSUnit::IsPvPFlagged()
  */
 bool TSUnit::IsOnVehicle()
 {
-#if defined TRINITY
+#if defined ORSTET
     return unit->GetVehicle();
 #else
     return unit->IsBoarded();
@@ -540,7 +540,7 @@ bool TSUnit::HasAura(uint32 spell, TSGUID casterGUID , TSGUID itemCasterGUID, ui
  */
 bool TSUnit::IsCasting()
 {
-#if defined TRINITY
+#if defined ORSTET
     return unit->HasUnitState(UNIT_STATE_CASTING);
 #else
     return unit->IsNonMeleeSpellCasted(false);
@@ -555,7 +555,7 @@ bool TSUnit::IsCasting()
  */
 bool TSUnit::HasUnitState(uint32 state)
 {
-#if defined TRINITY
+#if defined ORSTET
     return unit->HasUnitState(state);
 #else
     return unit->hasUnitState(state);
@@ -644,7 +644,7 @@ TSGUID TSUnit::GetCharmerGUID()
  */
 TSGUID TSUnit::GetCharmGUID()
 {
-#if TRINITY
+#if ORSTET
     return TSGUID(unit->GetCharmedGUID());
 #endif
 }
@@ -720,7 +720,7 @@ TSNumber<uint32> TSUnit::GetBaseSpellPower(uint32 spellschool)
  */
 TSUnit  TSUnit::GetVictim()
 {
-#if defined TRINITY
+#if defined ORSTET
      return TSUnit(unit->GetVictim());
 #else
      return TSUnit(unit->getVictim());
@@ -754,7 +754,7 @@ TSSpell  TSUnit::GetCurrentSpell(uint32 type)
  */
 TSNumber<uint8> TSUnit::GetStandState()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return unit->GetStandState();
 #else
     return unit->getStandState();
@@ -788,7 +788,7 @@ TSNumber<uint32> TSUnit::GetNativeDisplayID()
  */
 TSNumber<uint8> TSUnit::GetLevel()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return unit->GetLevel();
 #else
     return unit->getLevel();
@@ -807,7 +807,7 @@ TSNumber<uint32> TSUnit::GetHealth()
 
 TSNumber<uint32> TSUnit::PowerSelectorHelper(TSUnit unit, int powerType)
 {
-#ifdef TRINITY
+#ifdef ORSTET
     if (powerType == -1)
         return unit.unit->GetPowerType();
 #else
@@ -892,7 +892,7 @@ TSNumber<float> TSUnit::GetPowerPct(int type)
 {
     Powers power = (Powers) PowerSelectorHelper(TSUnit(unit), type);
 
-#if (!defined(TRINITY) && defined(WOTLK))
+#if (!defined(ORSTET) && defined(WOTLK))
     float percent = ((float)unit->GetPower(power) / (float)unit->GetMaxPower(power)) * 100.0f;
 #else
     float percent = ((float)unit->GetPower(power) / (float)unit->GetMaxPower(power)) * 100.0f;
@@ -920,7 +920,7 @@ TSNumber<float> TSUnit::GetPowerPct(int type)
  */
 TSNumber<uint32> TSUnit::GetPowerType()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return unit->GetPowerType();
 #else
     return unit->GetPowerType();
@@ -944,7 +944,7 @@ TSNumber<uint32> TSUnit::GetMaxHealth()
  */
 TSNumber<float> TSUnit::GetHealthPct()
 {
-#if defined TRINITY
+#if defined ORSTET
     return unit->GetHealthPct();
 #else
     return unit->GetHealthPercent();
@@ -958,7 +958,7 @@ TSNumber<float> TSUnit::GetHealthPct()
  */
 TSNumber<uint8> TSUnit::GetGender()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return unit->GetGender();
 #else
     return unit->getGender();
@@ -972,7 +972,7 @@ TSNumber<uint8> TSUnit::GetGender()
  */
 TSNumber<uint32> TSUnit::GetRace()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return unit->GetRace();
 #else
     return (Races) unit->getRace();
@@ -986,7 +986,7 @@ TSNumber<uint32> TSUnit::GetRace()
  */
 TSNumber<uint32> TSUnit::GetClass()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return unit->GetClass();
 #else
     return unit->getClass();
@@ -1000,7 +1000,7 @@ TSNumber<uint32> TSUnit::GetClass()
 */
 TSNumber<uint32> TSUnit::GetRaceMask()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return unit->GetRaceMask();
 #else
     return unit->getRaceMask();
@@ -1014,7 +1014,7 @@ TSNumber<uint32> TSUnit::GetRaceMask()
 */
 TSNumber<uint32> TSUnit::GetClassMask()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return unit->GetClassMask();
 #else
     return unit->getClassMask();
@@ -1072,7 +1072,7 @@ TSNumber<uint32> TSUnit::GetCreatureType()
 std::string TSUnit::GetClassAsString(uint8 locale)
 {
 
-#ifdef TRINITY
+#ifdef ORSTET
     const ChrClassesEntry* entry = sChrClassesStore.LookupEntry(unit->GetClass());
     return entry->Name[locale];
 #endif
@@ -1101,7 +1101,7 @@ std::string TSUnit::GetClassAsString(uint8 locale)
 std::string TSUnit::GetRaceAsString(uint8 locale)
 {
 
-#ifdef TRINITY
+#ifdef ORSTET
     const ChrRacesEntry* entry = sChrRacesStore.LookupEntry(unit->GetRace());
     return entry->Name[locale];
 #endif
@@ -1125,7 +1125,7 @@ TSNumber<uint32> TSUnit::GetFaction()
  */
 TSAura  TSUnit::GetAura(uint32 spellID, TSGUID casterGUID, TSGUID itemCasterGUID, uint8 reqEffMask)
 {
-#if defined TRINITY
+#if defined ORSTET
      return TSAura(unit->GetAura(spellID, casterGUID.asGUID(), itemCasterGUID.asGUID(), reqEffMask));
 #else
      return TSAura(unit->GetAura(spellID, EFFECT_INDEX_0));
@@ -1134,7 +1134,7 @@ TSAura  TSUnit::GetAura(uint32 spellID, TSGUID casterGUID, TSGUID itemCasterGUID
 
 TSAura  TSUnit::GetAuraOfRankedSpell(uint32 spellID, TSGUID casterGUID, TSGUID itemCasterGUID, uint8 reqEffMask)
 {
-#if defined TRINITY
+#if defined ORSTET
      return TSAura(unit->GetAuraOfRankedSpell(spellID, casterGUID.asGUID(), itemCasterGUID.asGUID(), reqEffMask));
 #else
      return TSAura(unit->GetAura(spellID, EFFECT_INDEX_0));
@@ -1173,7 +1173,7 @@ TSArray<TSUnit> TSUnit::GetUnfriendlyUnitsInRange(float range)
  */
 TSVehicle  TSUnit::GetVehicleKit()
 {
-#if defined TRINITY
+#if defined ORSTET
      return TSVehicle(unit->GetVehicleKit());
 #else
      return TSVehicle(unit->GetVehicleInfo());
@@ -1219,7 +1219,7 @@ TSGUID TSUnit::GetCritterGUID()
 TSNumber<float> TSUnit::GetSpeed(uint32 type)
 {
 
-#ifndef TRINITY
+#ifndef ORSTET
     return unit->GetSpeedRate((UnitMoveType)type);
 #else
     return unit->GetSpeed((UnitMoveType)type);
@@ -1336,7 +1336,7 @@ void TSUnit::SetName(std::string const& name)
 void TSUnit::SetSpeed(uint32 type,float rate,bool forced)
 {
     (void)forced; // ensure that the variable is referenced in order to pass compiler checks
-#if defined TRINITY
+#if defined ORSTET
     unit->SetSpeedRate((UnitMoveType)type, rate);
 #else
     unit->SetSpeedRate((UnitMoveType)type, rate, forced);
@@ -1492,7 +1492,7 @@ void TSUnit::SetMaxPower(int type,uint32 amt)
 void TSUnit::SetPowerType(uint32 type)
 {
 
-#ifdef TRINITY
+#ifdef ORSTET
     unit->SetPowerType((Powers)type);
 #else
     unit->SetPowerType((Powers)type);
@@ -1547,7 +1547,7 @@ void TSUnit::SetFacingToObject(TSWorldObject _obj)
  */
 void TSUnit::SetCreatorGUID(TSGUID guid)
 {
-#if defined TRINITY
+#if defined ORSTET
     unit->SetCreatorGUID(guid.asGUID());
 #else
     unit->SetCreatorGuid(ObjectGuid(guid));
@@ -1561,7 +1561,7 @@ void TSUnit::SetCreatorGUID(TSGUID guid)
  */
 void TSUnit::SetPetGUID(TSGUID guid)
 {
-#if defined TRINITY
+#if defined ORSTET
     unit->SetPetGUID(guid.asGUID());
 #else
     unit->SetPetGuid(ObjectGuid(guid));
@@ -1575,7 +1575,7 @@ void TSUnit::SetPetGUID(TSGUID guid)
  */
 void TSUnit::SetWaterWalk(bool enable)
 {
-#if defined TRINITY
+#if defined ORSTET
     unit->SetWaterWalking(enable);
 #else
     unit->SetWaterWalk(enable);
@@ -1601,7 +1601,7 @@ void TSUnit::SetStandState(uint8 state)
 void TSUnit::SetFFA(bool apply)
 {
 
-#ifdef TRINITY
+#ifdef ORSTET
     if (apply)
     {
         unit->SetByteFlag(UNIT_FIELD_BYTES_2, 1, UNIT_BYTE2_FLAG_FFA_PVP);
@@ -1640,7 +1640,7 @@ void TSUnit::SetSanctuary(bool apply)
 
 void TSUnit::SetCritterGUID(TSGUID guid)
 {
-#if defined TRINITY
+#if defined ORSTET
     unit->SetCritterGUID(guid.asGUID());
 #else
     unit->SetCritterGuid(ObjectGuid(guid));
@@ -1660,7 +1660,7 @@ unit->SetControlled(apply, UNIT_STATE_STUNNED);
  */
 void TSUnit::SetRooted(bool apply)
 {
-#if defined TRINITY
+#if defined ORSTET
     unit->SetControlled(apply, UNIT_STATE_ROOT);
 #else
     unit->SetRoot(apply);
@@ -1674,7 +1674,7 @@ void TSUnit::SetRooted(bool apply)
  */
 void TSUnit::SetConfused(bool apply)
 {
-#if defined TRINITY
+#if defined ORSTET
     unit->SetControlled(apply, UNIT_STATE_CONFUSED);
 #else
     unit->SetConfused(apply);
@@ -1688,7 +1688,7 @@ void TSUnit::SetConfused(bool apply)
  */
 void TSUnit::SetFeared(bool apply)
 {
-#if defined TRINITY
+#if defined ORSTET
     unit->SetControlled(apply, UNIT_STATE_FLEEING);
 #else
     unit->SetFeared(apply);
@@ -1710,7 +1710,7 @@ void TSUnit::SetFeared(bool apply)
  */
 void TSUnit::ClearThreatList(bool apply,bool x)
 {
-#ifdef TRINITY
+#ifdef ORSTET
     unit->GetThreatManager().ClearAllThreat();
 #else
     unit->GetThreatManager().clearReferences();
@@ -1735,7 +1735,7 @@ void TSUnit::Dismount()
 {
     if (unit->IsMounted())
     {
-#if defined TRINITY
+#if defined ORSTET
         unit->Dismount();
         unit->RemoveAurasByType(SPELL_AURA_MOUNTED);
 #else
@@ -1800,7 +1800,7 @@ void TSUnit::SendChatMessageToPlayer(uint8 type,uint32 lang, std::string const& 
     auto target = _target.player;
 
     WorldPacket data;
-#if TRINITY
+#if ORSTET
     ChatHandler::BuildChatPacket(data, ChatMsg(type), Language(lang), unit, target, msg);
     //ChatHandler::BuildChatPacket(data, ChatMsg(type), Language(lang), unit, target, msg);
 #endif
@@ -1822,7 +1822,7 @@ void TSUnit::MoveStop()
  */
 void TSUnit::MoveExpire(bool reset)
 {
-#ifdef TRINITY
+#ifdef ORSTET
      // ensure that the variable is referenced in order to pass compiler checks
     unit->GetMotionMaster()->Clear();
 #else
@@ -1837,7 +1837,7 @@ void TSUnit::MoveExpire(bool reset)
  */
 void TSUnit::MoveClear(bool reset)
 {
-#ifdef TRINITY
+#ifdef ORSTET
      // ensure that the variable is referenced in order to pass compiler checks
     unit->GetMotionMaster()->Clear();
 #else
@@ -1862,7 +1862,7 @@ void TSUnit::MoveRandom(float radius)
 {
     float x, y, z;
     unit->GetPosition(x, y, z);
-#if defined TRINITY
+#if defined ORSTET
     unit->GetMotionMaster()->MoveRandom(radius);
 #else
     unit->GetMotionMaster()->MoveRandomAroundPoint(x, y, z, radius);
@@ -2118,11 +2118,11 @@ TSAura TSUnit::AddAura(uint32 spell,TSUnit _target)
 #ifdef MANGOS
     SpellEntry const* spellEntry = sSpellStore.LookupEntry(spell);
 #endif
-#ifdef TRINITY
+#ifdef ORSTET
     SpellInfo const* spellEntry = sSpellMgr->GetSpellInfo(spell);
 #endif
 
-#if defined TRINITY
+#if defined ORSTET
      return TSAura(unit->AddAura(spell, target));
 #else
 
@@ -2173,7 +2173,7 @@ void TSUnit::RemoveAllAuras()
 void TSUnit::AddUnitState(uint32 state)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     unit->AddUnitState(state);
 #else
     unit->addUnitState(state);
@@ -2188,7 +2188,7 @@ void TSUnit::AddUnitState(uint32 state)
 void TSUnit::ClearUnitState(uint32 state)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     unit->ClearUnitState(state);
 #else
     unit->clearUnitState(state);
@@ -2270,7 +2270,7 @@ void TSUnit::DealDamage(TSUnit _target,uint32 damage,bool durabilityloss,uint32 
     SpellInfo const* spellInfo = sSpellMgr->GetSpellInfo(spell);
     if (!spellInfo)
     {
-        TC_LOG_ERROR("scripts", "attempted to do damage with invalid spell id %u", spell);
+        OC_LOG_ERROR("scripts", "attempted to do damage with invalid spell id %u", spell);
         return;
     }
 
@@ -2298,7 +2298,7 @@ void TSUnit::DealDamage(TSUnit _target,uint32 damage,bool durabilityloss,uint32 
 void TSUnit::DealHeal(TSUnit _target,uint32 spell,uint32 amount,bool critical)
 {
     auto target = _target.unit;
-#if defined TRINITY
+#if defined ORSTET
     if (const SpellInfo* info = sSpellMgr->GetSpellInfo(spell))
     {
         HealInfo healInfo(unit, target, amount, info, info->GetSchoolMask());
@@ -2327,7 +2327,7 @@ void TSUnit::Kill(TSUnit _target,bool durLoss)
 {
     auto target = _target.unit;
 
-#if defined TRINITY
+#if defined ORSTET
     Unit::Kill(unit, target, durLoss);
 #else
     unit->DealDamage(target, target->GetHealth(), NULL, DIRECT_DAMAGE, SPELL_SCHOOL_MASK_NORMAL, NULL, durLoss);
@@ -2360,7 +2360,7 @@ void TSUnit::AddThreat(TSUnit _victim,float threat,uint32 spell,uint32 schoolMas
 {
     auto victim = _victim.unit;
 
-#ifdef TRINITY
+#ifdef ORSTET
     unit->GetThreatManager().AddThreat(victim, threat, spell ? sSpellMgr->GetSpellInfo(spell) : NULL, ignoreModifiers, ignoreRedirects, raw);
 #else
 #ifdef CMANGOS
@@ -2379,7 +2379,7 @@ void TSUnit::AddThreat(TSUnit _victim,float threat,uint32 spell,uint32 schoolMas
 
 void TSUnit::ScaleThreat(TSUnit victim, float scale, bool raw)
 {
-#if TRINITY
+#if ORSTET
     unit->GetThreatManager().ScaleThreat(victim.unit, scale, raw);
 #endif
 }

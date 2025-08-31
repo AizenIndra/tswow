@@ -1,4 +1,4 @@
-#include "ClientLua.h"
+﻿#include "ClientLua.h"
 #include "SharedDefines.h"
 
 LUA_FUNCTION(GetSpellDescription, (lua_State* L)) {

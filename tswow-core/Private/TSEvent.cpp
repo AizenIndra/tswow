@@ -1,4 +1,4 @@
-#include "TSEvent.h"
+﻿#include "TSEvent.h"
 
 static std::vector<TSEvent<void*>*> ts_all_events;
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -46,7 +46,7 @@ struct TSWorldEntity {
 
 // The class extended by TSMap/TSWorldObject
 template <typename T>
-class TC_GAME_API TSWorldEntityProvider {
+class OC_GAME_API TSWorldEntityProvider {
     TSWorldEntity<T>* m_entity;
 public:
     TSWorldEntityProvider(TSWorldEntity<T>* entity)

@@ -1,11 +1,11 @@
-#pragma once
+﻿#pragma once
 
 #include "TSMain.h"
 #include "TSLua.h"
 
 struct FactionTemplateEntry;
 
-class TC_GAME_API TSFactionTemplate
+class OC_GAME_API TSFactionTemplate
 {
     TS_CLASS_DECLARATION(TSFactionTemplate, FactionTemplateEntry, m_faction)
     TSNumber<uint32> GetID();
@@ -23,6 +23,6 @@ class TC_GAME_API TSFactionTemplate
     bool IsContestedGuardFaction();
 };
 
-TC_GAME_API TSFactionTemplate GetFactionTemplate(uint32 entry);
+OC_GAME_API TSFactionTemplate GetFactionTemplate(uint32 entry);
 
 LUA_PTR_TYPE(TSFactionTemplate)

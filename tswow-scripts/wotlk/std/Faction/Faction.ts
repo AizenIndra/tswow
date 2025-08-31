@@ -82,7 +82,7 @@ export class Faction extends MainEntity<FactionRow> {
 
     /**
      * How much of this factions reputation spills over to its parent
-     * @note The "Cap" here is not used by TrinityCore
+     * @note The "Cap" here is not used by OrstetCore
      */
     get RepSpilloverUp() {
         return new FactionRepGain(this, 1);

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2021 tswow <https://github.com/tswow/>
  *
@@ -28,7 +28,7 @@
 #include <string>
 
 struct AchievementEntry;
-class TC_GAME_API TSAchievementEntry
+class OC_GAME_API TSAchievementEntry
 {
     AchievementEntry* m_achievement;
 public:
@@ -52,7 +52,7 @@ private:
 };
 
 struct AchievementCriteriaEntry;
-class TC_GAME_API TSAchievementCriteriaEntry
+class OC_GAME_API TSAchievementCriteriaEntry
 {
     AchievementCriteriaEntry* m_criteria;
 public:
@@ -76,11 +76,11 @@ public:
 };
 
 struct TSAchievementEvents;
-TC_GAME_API void InitializeAchievementEvent(uint32 entry, TSAchievementEvents* events);
+OC_GAME_API void InitializeAchievementEvent(uint32 entry, TSAchievementEvents* events);
 TSAchievementEvents* GetAchievementEvent(uint32 entry);
 
-TC_GAME_API TSAchievementEntry GetAchievementTemplate(uint32 entry);
-TC_GAME_API TSAchievementCriteriaEntry GetAchievementCriteria(uint32 entry);
+OC_GAME_API TSAchievementEntry GetAchievementTemplate(uint32 entry);
+OC_GAME_API TSAchievementCriteriaEntry GetAchievementCriteria(uint32 entry);
 
 LUA_PTR_TYPE(TSAchievementEntry);
 LUA_PTR_TYPE(TSAchievementCriteriaEntry);

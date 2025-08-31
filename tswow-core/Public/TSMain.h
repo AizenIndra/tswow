@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -18,40 +18,40 @@
 
 #include "TSBase.h"
 
-#ifndef TC_GAME_API
+#ifndef OC_GAME_API
 #if defined(_MSC_VER)
-#define TC_GAME_API __declspec(dllexport)
+#define OC_GAME_API __declspec(dllexport)
 #else
-#define TC_GAME_API __attribute__((visibility("default")))
+#define OC_GAME_API __attribute__((visibility("default")))
 #endif
 #endif
 
 #ifndef TS_LOG_DEBUG
-#if TRINITY
-#define TS_LOG_DEBUG TC_LOG_DEBUG
+#if ORSTET
+#define TS_LOG_DEBUG OC_LOG_DEBUG
 #endif
 #endif
 
 #ifndef TS_LOG_INFO
-#if TRINITY
-#define TS_LOG_INFO TC_LOG_INFO
+#if ORSTET
+#define TS_LOG_INFO OC_LOG_INFO
 #endif
 #endif
 
 #ifndef TS_LOG_WARNING
-#if TRINITY
-#define TS_LOG_WARNING TC_LOG_WARNING
+#if ORSTET
+#define TS_LOG_WARNING OC_LOG_WARNING
 #endif
 #endif
 
 #ifndef TS_LOG_ERROR
-#if TRINITY
-#define TS_LOG_ERROR TC_LOG_ERROR
+#if ORSTET
+#define TS_LOG_ERROR OC_LOG_ERROR
 #endif
 #endif
 
 #ifndef TS_GUID
-#if TRINITY
+#if ORSTET
 #define TS_GUID(val) val
 #endif
 #endif

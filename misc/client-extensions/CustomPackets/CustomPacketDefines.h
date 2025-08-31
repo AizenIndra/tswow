@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <cstdint>
 
@@ -30,7 +30,7 @@ constexpr totalSize_t BUFFER_QUOTA = 8000000;
 constexpr uint16_t SERVER_TO_CLIENT_OPCODE = 0x102;
 constexpr uint16_t CLIENT_TO_SERVER_OPCODE = 0x51f;
 
-#ifndef TC_GAME_API
+#ifndef OC_GAME_API
 #if defined(_MSC_VER)
 #define CUSTOM_PACKET_API __declspec(dllexport)
 #else

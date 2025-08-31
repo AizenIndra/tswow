@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -20,7 +20,7 @@
 #include <cinttypes>
 #include <ctime>
 
-struct TC_GAME_API MathClass {
+struct OC_GAME_API MathClass {
     constexpr MathClass* operator->()
     {
         return this;

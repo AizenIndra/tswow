@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "CustomPacketChunk.h"
 #include "CustomPacketDefines.h"

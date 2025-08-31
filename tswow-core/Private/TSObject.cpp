@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -161,7 +161,7 @@ TSNumber<uint32> TSObject::GetEntry()
  * However on MaNGOS and cMangos creatures and gameobjects inside different maps can share
  * the same GUID but not on the same map.
  *
- * On TrinityCore this value is unique across all maps
+ * On ORSTETCore this value is unique across all maps
  *
  * @return uint64 guid
  */
@@ -173,7 +173,7 @@ TSGUID TSObject::GetGUID()
 /**
  * Returns the low-part of the [Object]'s GUID.
  *
- * On TrinityCore all low GUIDs are different for all objects of the same type.
+ * On ORSTETCore all low GUIDs are different for all objects of the same type.
  * For example creatures in instances are assigned new GUIDs when the Map is created.
  *
  * On MaNGOS and cMaNGOS low GUIDs are unique only on the same map.
@@ -184,7 +184,7 @@ TSGUID TSObject::GetGUID()
  */
 TSNumber<uint32> TSObject::GetGUIDLow()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return obj->GetGUID().GetCounter();
 #endif
 }
@@ -377,28 +377,28 @@ bool TSObject::IsPlayer()
 
 bool TSObject::IsCreature()
 {
-#if TRINITY
+#if ORSTET
     return obj != nullptr && obj->IsCreature();
 #endif
 }
 
 bool TSObject::IsUnit()
 {
-#if TRINITY
+#if ORSTET
     return obj != nullptr && obj->IsUnit();
 #endif
 }
 
 bool TSObject::IsGameObject()
 {
-#if TRINITY
+#if ORSTET
     return obj != nullptr && obj->IsGameObject();
 #endif
 }
 
 bool TSObject::IsCorpse()
 {
-#if TRINITY
+#if ORSTET
     return obj != nullptr && obj->IsCorpse();
 #endif
 }

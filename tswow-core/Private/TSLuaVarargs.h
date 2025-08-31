@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #define _LUA_OVERLOAD_RET_0_1(cls,fname,v0) [](cls& obj, v0 _v0 ) { return  obj.fname(_v0); },[](cls& obj) { return  obj.fname(); }
 #define _LUA_OVERLOAD_RET_0_2(cls,fname,v0,v1) [](cls& obj, v0 _v0,v1 _v1 ) { return  obj.fname(_v0,_v1); }, _LUA_OVERLOAD_RET_0_1(cls,fname,v0)
 #define _LUA_OVERLOAD_RET_0_3(cls,fname,v0,v1,v2) [](cls& obj, v0 _v0,v1 _v1,v2 _v2 ) { return  obj.fname(_v0,_v1,_v2); }, _LUA_OVERLOAD_RET_0_2(cls,fname,v0,v1)

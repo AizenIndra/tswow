@@ -1,7 +1,7 @@
 import { CellWrapper } from "../../../data/cell/cells/Cell";
 import { DungeonMap } from "./Map";
 
-// also defined in TrinityCore/src/server/game/Scripting/ScriptMgr.h
+// also defined in OrstetCore/src/server/game/Scripting/ScriptMgr.h
 export const CUSTOM_SCRIPT_NAME = 'custom_script'
 
 export class MapInstanceScriptCell extends CellWrapper<string,DungeonMap> {

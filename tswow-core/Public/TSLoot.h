@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -28,7 +28,7 @@ class TSGUID;
 class TSItemTemplate;
 struct LootItem;
 
-struct TC_GAME_API TSLootItem {
+struct OC_GAME_API TSLootItem {
     LootItem* item;
     TSLootItem(LootItem* item);
     TSLootItem* operator->() {return this;}
@@ -54,7 +54,7 @@ struct TC_GAME_API TSLootItem {
 };
 
 struct Loot;
-class TC_GAME_API TSLoot {
+class OC_GAME_API TSLoot {
     public:
         Loot * loot;
         TSLoot(Loot *loot);

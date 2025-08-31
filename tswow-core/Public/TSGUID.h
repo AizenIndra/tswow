@@ -1,10 +1,10 @@
-#pragma once
+﻿#pragma once
 
 #include "TSMain.h"
 
 class ObjectGuid;
 
-class TC_GAME_API TSGUID
+class OC_GAME_API TSGUID
 {
 public:
     explicit TSGUID(uint64 guid);
@@ -40,6 +40,6 @@ private:
     uint64 m_guid;
 };
 
-TC_GAME_API TSGUID CreateGUID(TSNumber<uint32> high, TSNumber<uint32> entry);
-TC_GAME_API TSGUID CreateGUID(TSNumber<uint32> high, TSNumber<uint32> entry, TSNumber<uint32> counter);
-TC_GAME_API TSGUID EmptyGUID();
+OC_GAME_API TSGUID CreateGUID(TSNumber<uint32> high, TSNumber<uint32> entry);
+OC_GAME_API TSGUID CreateGUID(TSNumber<uint32> high, TSNumber<uint32> entry, TSNumber<uint32> counter);
+OC_GAME_API TSGUID EmptyGUID();

@@ -1,4 +1,4 @@
-#include "Logger.h"
+﻿#include "Logger.h"
 #include "FSRoot.h"
 #include "lua.hpp"
 #include "ClientLua.h"

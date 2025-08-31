@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -26,7 +26,7 @@
 struct AuctionEntry;
 class TSGUID;
 
-struct TC_GAME_API TSAuctionEntry {
+struct OC_GAME_API TSAuctionEntry {
     AuctionEntry* entry;
 
     TSAuctionEntry(AuctionEntry* entry);
@@ -68,7 +68,7 @@ private:
 };
 
 class AuctionHouseObject;
-struct TC_GAME_API TSAuctionHouseObject {
+struct OC_GAME_API TSAuctionHouseObject {
     AuctionHouseObject* obj;
     TSAuctionHouseObject(AuctionHouseObject* obj) { this->obj = obj;};
     TSAuctionHouseObject* operator->(){return this;}

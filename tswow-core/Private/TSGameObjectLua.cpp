@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSLuaVarargs.h"
 #include "TSGameObject.h"
 #include "TSGameObjectTemplate.h"

@@ -1,4 +1,4 @@
-#include "ClientExtensions.h"
+﻿#include "ClientExtensions.h"
 
 void ClientExtensions::initialize() {
     CharacterFixes::CharacterCreationFixes();

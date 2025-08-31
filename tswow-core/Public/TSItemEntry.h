@@ -1,8 +1,8 @@
-#pragma once
+﻿#pragma once
 
 #include "TSMain.h"
 
-class TC_GAME_API TSItemEntry
+class OC_GAME_API TSItemEntry
 {
 public:
     TSItemEntry(uint32 entry, uint32 count);
@@ -14,4 +14,4 @@ private:
     uint32 m_count;
 };
 
-TC_GAME_API TSItemEntry CreateItemEntry(uint32 entry, uint32 count);
+OC_GAME_API TSItemEntry CreateItemEntry(uint32 entry, uint32 count);

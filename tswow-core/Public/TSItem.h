@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -24,7 +24,7 @@
 
 class TSGUID;
 
-class TC_GAME_API TSItem : public TSObject {
+class OC_GAME_API TSItem : public TSObject {
 public:
     Item* item;
     bool IsNull() { return item == nullptr; };
@@ -92,5 +92,5 @@ public:
     void SaveToDB();
 };
 
-TC_GAME_API TSItem CreateItem(uint32 entry = 0, uint32 count = 0);
+OC_GAME_API TSItem CreateItem(uint32 entry = 0, uint32 count = 0);
 LUA_PTR_TYPE(TSItem)

@@ -1,9 +1,9 @@
-#pragma once
+﻿#pragma once
 
 #include "TSMain.h"
 #include <mutex>
 
-class TC_GAME_API TSMutex {
+class OC_GAME_API TSMutex {
     std::mutex _lock;
 public:
     TSMutex();

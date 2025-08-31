@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2021 tswow <https://github.com/tswow/>
  *
  * This program is free software: you can redistribute it and/or
@@ -18,8 +18,8 @@
 #include "TSBase.h"
 #include "TSMain.h"
 
-TC_GAME_API std::string ReadFile(std::string const& file, std::string const& def = "");
-TC_GAME_API void WriteFile(std::string const& file, std::string const& value);
-TC_GAME_API void AppendFile(std::string const& file, std::string const& value);
-TC_GAME_API bool FileExists(std::string const& file);
-TC_GAME_API TSArray<std::string> ReadDirectory(std::string const& directory);
+OC_GAME_API std::string ReadFile(std::string const& file, std::string const& def = "");
+OC_GAME_API void WriteFile(std::string const& file, std::string const& value);
+OC_GAME_API void AppendFile(std::string const& file, std::string const& value);
+OC_GAME_API bool FileExists(std::string const& file);
+OC_GAME_API TSArray<std::string> ReadDirectory(std::string const& directory);

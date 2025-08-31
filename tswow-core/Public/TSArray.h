@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -294,7 +294,7 @@ public:
     }
   }
 
-#if TRINITY
+#if ORSTET
   template <typename... Args>
   void push(Args...args) {
     for (const auto& item : { args... })

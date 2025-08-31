@@ -1,4 +1,4 @@
-#include "TSDamageInfo.h"
+﻿#include "TSDamageInfo.h"
 #include "TSUnit.h"
 #include "Unit.h"
 #include "SpellInfo.h"
@@ -9,21 +9,21 @@ TSMeleeDamageInfo::TSMeleeDamageInfo(CalcDamageInfo * info)
 
 TSUnit TSMeleeDamageInfo::GetAttacker()
 {
-#if TRINITY
+#if ORSTET
     return TSUnit(_info->Attacker);
 #endif
 }
 
 TSUnit TSMeleeDamageInfo::GetTarget()
 {
-#if TRINITY
+#if ORSTET
     return TSUnit(_info->Target);
 #endif
 }
 
 TSNumber<uint32> TSMeleeDamageInfo::GetSchool1()
 {
-#if TRINITY
+#if ORSTET
     return _info->Damages[0].DamageSchoolMask;
 #endif
 
@@ -31,42 +31,42 @@ TSNumber<uint32> TSMeleeDamageInfo::GetSchool1()
 
 TSNumber<uint32> TSMeleeDamageInfo::GetSchool2()
 {
-#if TRINITY
+#if ORSTET
     return _info->Damages[1].DamageSchoolMask;
 #endif
 }
 
 TSNumber<uint32> TSMeleeDamageInfo::GetDamage1()
 {
-#if TRINITY
+#if ORSTET
     return _info->Damages[0].Damage;
 #endif
 }
 
 TSNumber<uint32> TSMeleeDamageInfo::GetDamage2()
 {
-#if TRINITY
+#if ORSTET
     return _info->Damages[1].Damage;
 #endif
 }
 
 TSNumber<uint32> TSMeleeDamageInfo::GetAbsorb1()
 {
-#if TRINITY
+#if ORSTET
     return _info->Damages[0].Absorb;
 #endif
 }
 
 TSNumber<uint32> TSMeleeDamageInfo::GetAbsorb2()
 {
-#if TRINITY
+#if ORSTET
     return _info->Damages[1].Absorb;
 #endif
 }
 
 TSNumber<uint32> TSMeleeDamageInfo::GetResist1()
 {
-#if TRINITY
+#if ORSTET
     return _info->Damages[0].Resist;
 #endif
 
@@ -74,14 +74,14 @@ TSNumber<uint32> TSMeleeDamageInfo::GetResist1()
 
 TSNumber<uint32> TSMeleeDamageInfo::GetResist2()
 {
-#if TRINITY
+#if ORSTET
     return _info->Damages[1].Resist;
 #endif
 }
 
 TSNumber<uint32> TSMeleeDamageInfo::GetBlocked()
 {
-#if TRINITY
+#if ORSTET
     return _info->Blocked;
 #endif
 }
@@ -98,35 +98,35 @@ TSNumber<uint32> TSMeleeDamageInfo::GetTargetState()
 
 TSNumber<uint32> TSMeleeDamageInfo::GetAttackType()
 {
-#if TRINITY
+#if ORSTET
     return _info->AttackType;
 #endif 
 }
 
 TSNumber<uint32> TSMeleeDamageInfo::GetProcAttacker()
 {
-#if TRINITY
+#if ORSTET
     return _info->ProcAttacker;
 #endif
 }
 
 TSNumber<uint32> TSMeleeDamageInfo::GetProcVictim()
 {
-#if TRINITY
+#if ORSTET
     return _info->ProcVictim;
 #endif
 }
 
 TSNumber<uint32> TSMeleeDamageInfo::GetCleanDamage()
 {
-#if TRINITY
+#if ORSTET
     return _info->CleanDamage;
 #endif
 }
 
 TSNumber<uint8> TSMeleeDamageInfo::GetMeleeHitOutcome()
 {
-#if TRINITY
+#if ORSTET
     return _info->HitOutCome;
 #endif
 }
@@ -147,7 +147,7 @@ TSUnit TSSpellDamageInfo::GetTarget()
 
 TSNumber<uint32> TSSpellDamageInfo::GetSpellID()
 {
-#if TRINITY
+#if ORSTET
     return _info->SpellID;
 #endif
 }
@@ -179,7 +179,7 @@ TSNumber<uint32> TSSpellDamageInfo::GetResist()
 
 bool TSSpellDamageInfo::GetPeriodicLog()
 {
-#if TRINITY
+#if ORSTET
     return _info->periodicLog;
 #endif
 }
@@ -206,7 +206,7 @@ TSNumber<uint32> TSSpellDamageInfo::GetCleanDamage()
 
 bool TSSpellDamageInfo::GetFullBlock()
 {
-#if TRINITY
+#if ORSTET
     return _info->fullBlock;
 #endif
 }
@@ -219,7 +219,7 @@ void TSHealInfo::AbsorbHeal(uint32 amount)
 }
 void TSHealInfo::SetEffectiveHeal(uint32 amount)
 {
-#if TRINITY
+#if ORSTET
     m_info->SetEffectiveHeal(amount);
 #endif
 }
@@ -238,7 +238,7 @@ TSNumber<uint32> TSHealInfo::GetHeal()
 }
 TSNumber<uint32> TSHealInfo::GetEffectiveHeal()
 {
-#if TRINITY
+#if ORSTET
     return m_info->GetEffectiveHeal();
 #endif
 }
@@ -256,7 +256,7 @@ TSNumber<uint32> TSHealInfo::GetSchoolMask()
 }
 TSNumber<uint32> TSHealInfo::GetHitMask()
 {
-#if TRINITY
+#if ORSTET
     return m_info->GetHitMask();
 #endif
 }
@@ -319,7 +319,7 @@ TSNumber<uint32> TSDamageInfo::GetBlock()
 }
 TSNumber<uint32> TSDamageInfo::GetHitMask()
 {
-#if TRINITY
+#if ORSTET
     return m_info->GetHitMask();
 #endif
 }

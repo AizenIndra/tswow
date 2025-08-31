@@ -32,7 +32,7 @@ export namespace SevenZipInstall {
     }
 
     /**
-     * We need 7zip to unzip TrinityCore TDB database dumps
+     * We need 7zip to unzip OrstetCore TDB database dumps
      */
     export async function install() {
         if(!isWindows()) {

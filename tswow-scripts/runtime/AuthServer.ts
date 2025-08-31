@@ -41,10 +41,10 @@ export namespace AuthServer {
             throw new Error(`Something else started the auth server while it was stopping`);
         }
 
-        ipaths.bin.core.pick('trinitycore').build.pick(type).authserver_conf_dist
+        ipaths.bin.core.pick('orstetcore').build.pick(type).authserver_conf_dist
             .copy(ipaths.coredata.authserver.authserver_conf.get()+'.dist')
 
-        ipaths.bin.core.pick('trinitycore').build.pick(type).authserver_conf_dist
+        ipaths.bin.core.pick('orstetcore').build.pick(type).authserver_conf_dist
             .copyOnNoTarget(ipaths.coredata.authserver.authserver_conf)
 
         term.debug('authserver', 'Setting up realmlist table for authserver')
@@ -59,7 +59,7 @@ export namespace AuthServer {
 
         authserver.startIn(ipaths.coredata.authserver.get(),
             wfs.absPath(
-                  ipaths.bin.core.pick('trinitycore').build.pick(type).authserver.get())
+                  ipaths.bin.core.pick('orstetcore').build.pick(type).authserver.get())
                 , [`-c${wfs.absPath(
                     ipaths.coredata.authserver.authserver_conf.get()
                 )}`]

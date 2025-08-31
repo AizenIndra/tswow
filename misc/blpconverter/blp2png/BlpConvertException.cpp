@@ -1,4 +1,4 @@
-#include "BlpConvertException.h"
+﻿#include "BlpConvertException.h"
 
 namespace python_blp {
 

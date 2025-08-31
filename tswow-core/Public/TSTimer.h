@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "TSMain.h"
 #include "TSLua.h"
@@ -19,7 +19,7 @@ enum class TimerLoops {
     INDEFINITE = -1,
 };
 
-TSNumber<uint64> TC_GAME_API now();
+TSNumber<uint64> OC_GAME_API now();
 
 template <typename T>
 class TSTimer;
@@ -31,7 +31,7 @@ template <typename T>
 using TimerCallback = std::function<void(T, TSTimer<T>*)>;
 
 template <typename T>
-class TC_GAME_API TSTimer {
+class OC_GAME_API TSTimer {
     std::string m_name;
     uint32_t m_delay;
     int32_t m_repeats;

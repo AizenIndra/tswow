@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -48,7 +48,7 @@ TSGameObject::TSGameObject() : TSWorldObject()
 bool TSGameObject::HasQuest(uint32 questId)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     return go->hasQuest(questId);
 #else
     return go->HasQuest(questId);
@@ -170,7 +170,7 @@ TSPlayer  TSGameObject::GetLootRecipient()
  */
 TSGroup  TSGameObject::GetLootRecipientGroup()
 {
-#if defined TRINITY
+#if defined ORSTET
      return TSGroup(go->GetLootRecipientGroup());
 #else
      return TSGroup(go->GetGroupLootRecipient());
@@ -184,7 +184,7 @@ TSGroup  TSGameObject::GetLootRecipientGroup()
  */
 TSNumber<uint32> TSGameObject::GetDBTableGUIDLow()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return go->GetSpawnId();
 #else
     // on mangos based this is same as lowguid
@@ -214,7 +214,7 @@ void TSGameObject::SetGoState(uint32 state)
         go->SetGoState(GO_STATE_READY);
     else if (state == 2)
     {
-#ifdef TRINITY
+#ifdef ORSTET
         go->SetGoState(GO_STATE_DESTROYED);
 #else
         go->SetGoState(GO_STATE_ACTIVE_ALTERNATIVE);
@@ -272,7 +272,7 @@ void TSGameObject::RemoveFromWorld(bool deldb)
 {
 
     // cs_gobject.cpp copy paste
-#if defined TRINITY
+#if defined ORSTET
     ObjectGuid ownerGuid = go->GetOwnerGUID();
 #else
     ObjectGuid ownerGuid = go->GetOwnerGuid();
@@ -286,7 +286,7 @@ void TSGameObject::RemoveFromWorld(bool deldb)
 
     if (deldb)
     {
-#ifdef TRINITY
+#ifdef ORSTET
         GameObject::DeleteFromDB(go->GetSpawnId());
 #else
         go->DeleteFromDB();
@@ -354,7 +354,7 @@ TSLoot TSGameObject::GetLoot()
 
 void TSGameObject::FireSmartEvent(uint32 e, TSUnit unit, uint32 var0, uint32 var1, bool bvar, TSSpellInfo spell, TSGameObject gobj)
 {
-#if TRINITY
+#if ORSTET
     auto ai = go->AI();
     if (!ai) return;
     if (SmartAI* sai = dynamic_cast<SmartAI*>(ai))

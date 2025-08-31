@@ -1,4 +1,4 @@
-#include <cstring>
+﻿#include <cstring>
 #include <stdexcept>
 #include <libimagequant.h>
 #include "Quantizer.h"

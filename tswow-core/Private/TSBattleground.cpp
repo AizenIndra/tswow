@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -39,7 +39,7 @@
 #include "TSWorldPacket.h"
 #include "TSGUID.h"
 
-#if TRINITY
+#if ORSTET
 #define TSTeamId(x) x
 #endif
 
@@ -417,7 +417,7 @@ void TSBattlegroundScore::ApplyBaseToPacket(TSBattleground bg, TSWorldPacket pac
 }
 
 TSBattlegroundPlayer::TSBattlegroundPlayer(TSBattleground bg, uint64 guid, uint32 team, int64 offlineRemoveTime)
-#if TRINITY
+#if ORSTET
     : TSEntityProvider(&bg.bg->m_playerEntityMap[guid])
 #endif
     , m_guid(guid)
@@ -497,7 +497,7 @@ TSNumber<uint32> TSBattleground::GetBonusHonorFromKillCount(uint32 kills)
  */
 TSNumber<uint32> TSBattleground::GetBracketID()
 {
-#if TRINITY
+#if ORSTET
     return bg->GetBracketId();
 #endif
 }
@@ -641,7 +641,7 @@ TSArray<TSBattlegroundPlayer> TSBattleground::GetBGPlayers()
         players.push(TSBattlegroundPlayer(
               *this
             , player.first.GetRawValue()
-#if TRINITY
+#if ORSTET
             , player.second.Team
             , player.second.OfflineRemoveTime
 #endif
@@ -682,7 +682,7 @@ TSBattlegroundPlayer TSBattleground::GetBGPlayer(TSGUID guid)
             return TSBattlegroundPlayer(
                   *this
                 , player.first.GetRawValue()
-#if TRINITY
+#if ORSTET
                 , player.second.Team
                 , player.second.OfflineRemoveTime
 #endif
@@ -747,7 +747,7 @@ void TSBattleground::PlaySound(uint32 sound, uint32 team)
     }
     else
     {
-#if TRINITY
+#if ORSTET
         bg->PlaySoundToTeam(sound, team);
 #endif
     }
@@ -844,21 +844,21 @@ TSNumber<uint32> TSBattleground::GetBGAlivePlayerCount(uint32 team)
 }
 TSCreature TSBattleground::AddCreature(uint32 entry, uint32 type, float x, float y, float z, float o, uint32 respawnTime, uint32 teamId)
 {
-#if TRINITY
+#if ORSTET
     return TSCreature(bg->AddCreature(entry, type, Position(x, y, z, o), TeamId(teamId), respawnTime));
 #endif
 }
 
 bool TSBattleground::AddObject(uint32 type, uint32 entry, float x, float y, float z, float o, float rot0, float rot1, float rot2, float rot3, uint32 respawnTime, uint32 goState)
 {
-#if TRINITY
+#if ORSTET
     return bg->AddObject(type, entry, Position(x, y, z, o), rot0, rot1, rot2, rot3, respawnTime, GOState(goState));
 #endif
 }
 
 void TSBattleground::AddSpiritGuide(uint32 type, float x, float y, float z, float o, uint32 teamId)
 {
-#if TRINITY
+#if ORSTET
     bg->AddSpiritGuide(type, Position(x, y, z, o), TeamId(teamId));
 #endif
 }
@@ -927,7 +927,7 @@ bool TSBattleground::RemoveObject(uint32 type)
 }
 bool TSBattleground::RemoveObjectFromWorld(uint32 type)
 {
-#if TRINITY
+#if ORSTET
     return bg->RemoveObjectFromWorld(type);
 #endif
 }
@@ -941,21 +941,21 @@ void TSBattleground::SetHoliday(bool isHoliday)
 }
 bool TSBattleground::IsHoliday()
 {
-#if TRINITY
+#if ORSTET
     return bg->m_HonorMode == BG_HOLIDAY;
 #endif
 }
 
 TSGameObject TSBattleground::GetBGGameObject(uint32 type, bool logErrors)
 {
-#if TRINITY
+#if ORSTET
     return TSGameObject(bg->GetBGObject(type, logErrors));
 #endif
 }
 
 TSCreature TSBattleground::GetBGCreature(uint32 type, bool logErrors)
 {
-#if TRINITY
+#if ORSTET
     return TSCreature(bg->GetBGCreature(type, logErrors));
 #endif
 }

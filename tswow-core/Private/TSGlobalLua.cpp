@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSGlobal.h"
 
 void TSLua::load_global_functions(sol::state& state)

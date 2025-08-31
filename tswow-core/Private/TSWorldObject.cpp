@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -87,7 +87,7 @@ TSNumber<uint32> TSWorldObject::GetPhaseMask()
 
 TSNumber<uint64> TSWorldObject::GetPhaseID()
 {
-#if TRINITY
+#if ORSTET
     return uint32(obj->m_phase_id);
 #endif
 }
@@ -100,7 +100,7 @@ TSNumber<uint64> TSWorldObject::GetPhaseID()
 */
 void TSWorldObject::SetPhaseMask(uint32 phaseMask,bool update, uint64 id)
 {
-#if TRINITY
+#if ORSTET
     obj->SetPhaseMask(phaseMask, update, id);
 #endif
 }
@@ -261,7 +261,7 @@ TSPosition TSWorldObject::GetRelativePoint(float dist,float rad) {
 TSNumber<float> TSWorldObject::GetAngle(TSWorldObject _target,float x,float y)
 {
     auto target = _target.obj;
-#if defined TRINITY
+#if defined ORSTET
     if (target)
         return obj->GetAbsoluteAngle(target);
     else
@@ -311,7 +311,7 @@ void TSWorldObject::SendPacket(TSWorldPacket _data)
  */
 TSGameObject  TSWorldObject::SummonGameObject(uint32 entry,float x,float y,float z,float o,uint32 respawnDelay)
 {
-#ifdef TRINITY
+#ifdef ORSTET
     QuaternionData rot = QuaternionData::fromEulerAnglesZYX(o, 0.f, 0.f);
     return TSGameObject(obj->SummonGameObject(entry, Position(x, y, z, o), rot, std::chrono::seconds(respawnDelay)));
 #else
@@ -360,7 +360,7 @@ TSCreature  TSWorldObject::SpawnCreature(uint32 entry,float x,float y,float z,fl
             type = TEMPSUMMON_TIMED_DESPAWN;
             break;
         case 4:
-#if defined TRINITY
+#if defined ORSTET
             type = TEMPSUMMON_TIMED_DESPAWN_OUT_OF_COMBAT;
 #else
             type = TEMPSUMMON_TIMED_OOC_DESPAWN;
@@ -378,7 +378,7 @@ TSCreature  TSWorldObject::SpawnCreature(uint32 entry,float x,float y,float z,fl
         case 8:
             type = TEMPSUMMON_MANUAL_DESPAWN;
             break;
-#if !defined TRINITY
+#if !defined ORSTET
         case 9:
             type = TEMPSUMMON_TIMED_OOC_OR_CORPSE_DESPAWN;
             break;
@@ -387,7 +387,7 @@ TSCreature  TSWorldObject::SpawnCreature(uint32 entry,float x,float y,float z,fl
             break;
 #endif
     }
-#ifdef TRINITY
+#ifdef ORSTET
     auto c = (Creature*) (obj->SummonCreature(entry, x, y, z, o, type, std::chrono::milliseconds(despawnTimer)));
 #endif
     return TSCreature(c);
@@ -719,7 +719,7 @@ bool WorldObjectInRangeCheck::operator()(WorldObject* u)
             {
                 if (i_obj_fact)
                 {
-#if defined TRINITY
+#if defined ORSTET
                     if ((i_obj_fact->IsHostileTo(*target->GetFactionTemplateEntry())) != (i_hostile == 1))
                         return false;
 #else
@@ -742,10 +742,10 @@ bool WorldObjectInRangeCheck::operator()(WorldObject* u)
 TSArray<TSCreature> TSWorldObject::GetCreaturesInRange(float range, uint32 entry, uint32 hostile, uint32 dead)
 {
     TSArray<TSCreature> arr;
-#if TRINITY
+#if ORSTET
     std::list<Creature*> list;
     WorldObjectInRangeCheck checker(false, obj, range, TYPEMASK_UNIT, entry, hostile, dead);
-    Trinity::CreatureListSearcher<WorldObjectInRangeCheck> searcher(obj, list, checker);
+    ORSTET::CreatureListSearcher<WorldObjectInRangeCheck> searcher(obj, list, checker);
     Cell::VisitAllObjects(obj, searcher, range);
     for (std::list<Creature*>::const_iterator it = list.begin(); it != list.end(); ++it)
     {
@@ -758,10 +758,10 @@ TSArray<TSCreature> TSWorldObject::GetCreaturesInRange(float range, uint32 entry
 TSArray<TSUnit> TSWorldObject::GetUnitsInRange(float range, uint32 hostile, uint32 dead)
 {
     TSArray<TSUnit> arr;
-#if TRINITY
+#if ORSTET
     std::list<Unit*> list;
     WorldObjectInRangeCheck checker(false, obj, range, TYPEMASK_UNIT, 0, hostile, dead);
-    Trinity::UnitListSearcher<WorldObjectInRangeCheck> searcher(obj, list, checker);
+    ORSTET::UnitListSearcher<WorldObjectInRangeCheck> searcher(obj, list, checker);
     Cell::VisitAllObjects(obj, searcher, range);
     for (std::list<Unit*>::const_iterator it = list.begin(); it != list.end(); ++it)
     {
@@ -774,10 +774,10 @@ TSArray<TSUnit> TSWorldObject::GetUnitsInRange(float range, uint32 hostile, uint
 TSArray<TSPlayer> TSWorldObject::GetPlayersInRange(float range, uint32 hostile, uint32 dead)
 {
     TSArray<TSPlayer> arr;
-#if TRINITY
+#if ORSTET
     std::list<Player*> list;
     WorldObjectInRangeCheck checker(false, obj, range, TYPEMASK_PLAYER, 0, hostile, dead);
-    Trinity::PlayerListSearcher<WorldObjectInRangeCheck> searcher(obj, list, checker);
+    ORSTET::PlayerListSearcher<WorldObjectInRangeCheck> searcher(obj, list, checker);
     Cell::VisitAllObjects(obj, searcher, range);
     for (std::list<Player*>::const_iterator it = list.begin(); it != list.end(); ++it)
     {
@@ -790,10 +790,10 @@ TSArray<TSPlayer> TSWorldObject::GetPlayersInRange(float range, uint32 hostile, 
 TSArray<TSGameObject> TSWorldObject::GetGameObjectsInRange(float range, uint32 entry, uint32 hostile)
 {
     TSArray<TSGameObject> arr;
-#if TRINITY
+#if ORSTET
     std::list<GameObject*> list;
     WorldObjectInRangeCheck checker(false, obj, range, TYPEMASK_GAMEOBJECT, entry, hostile);
-    Trinity::GameObjectListSearcher<WorldObjectInRangeCheck> searcher(obj, list, checker);
+    ORSTET::GameObjectListSearcher<WorldObjectInRangeCheck> searcher(obj, list, checker);
     Cell::VisitAllObjects(obj, searcher, range);
     for (std::list<GameObject*>::const_iterator it = list.begin(); it != list.end(); ++it)
     {
@@ -805,10 +805,10 @@ TSArray<TSGameObject> TSWorldObject::GetGameObjectsInRange(float range, uint32 e
 
 TSPlayer TSWorldObject::GetNearestPlayer(float range, uint32 hostile, uint32 dead)
 {
-#if TRINITY
+#if ORSTET
     Unit* target = NULL;
     WorldObjectInRangeCheck checker(true, obj, range, TYPEMASK_PLAYER, 0, hostile, dead);
-    Trinity::UnitLastSearcher<WorldObjectInRangeCheck> searcher(obj, target, checker);
+    ORSTET::UnitLastSearcher<WorldObjectInRangeCheck> searcher(obj, target, checker);
     Cell::VisitAllObjects(obj, searcher, range);
     return target ? TSPlayer(target->ToPlayer()) : TSPlayer(nullptr);
 #endif
@@ -816,10 +816,10 @@ TSPlayer TSWorldObject::GetNearestPlayer(float range, uint32 hostile, uint32 dea
 
 TSGameObject TSWorldObject::GetNearestGameObject(float range, uint32 entry, uint32 hostile)
 {
-#if TRINITY
+#if ORSTET
     GameObject* target = NULL;
     WorldObjectInRangeCheck checker(true, obj, range, TYPEMASK_GAMEOBJECT, entry, hostile);
-    Trinity::GameObjectLastSearcher<WorldObjectInRangeCheck> searcher(obj, target, checker);
+    ORSTET::GameObjectLastSearcher<WorldObjectInRangeCheck> searcher(obj, target, checker);
     Cell::VisitAllObjects(obj, searcher, range);
     return target ? TSGameObject(target->ToGameObject()) : TSGameObject(nullptr);
 #endif
@@ -827,10 +827,10 @@ TSGameObject TSWorldObject::GetNearestGameObject(float range, uint32 entry, uint
 
 TSCreature TSWorldObject::GetNearestCreature(float range, uint32 entry, uint32 hostile, uint32 dead)
 {
-#if TRINITY
+#if ORSTET
     Unit* target = NULL;
     WorldObjectInRangeCheck checker(true, obj, range, TYPEMASK_UNIT, entry, hostile);
-    Trinity::UnitLastSearcher<WorldObjectInRangeCheck> searcher(obj, target, checker);
+    ORSTET::UnitLastSearcher<WorldObjectInRangeCheck> searcher(obj, target, checker);
     Cell::VisitAllObjects(obj, searcher, range);
     return target ? TSCreature(target->ToCreature()) : TSCreature(nullptr);
 #endif
@@ -1045,21 +1045,21 @@ bool TSWorldObject::IsActive()
 
 bool TSWorldObject::IsFriendlyTo(TSWorldObject object)
 {
-#if TRINITY
+#if ORSTET
     return obj->IsFriendlyTo(object.obj);
 #endif
 }
 
 bool TSWorldObject::IsHostileTo(TSWorldObject object)
 {
-#if TRINITY
+#if ORSTET
     return obj->IsHostileTo(object.obj);
 #endif
 }
 
 bool TSWorldObject::IsFriendlyToPlayers()
 {
-#if TRINITY
+#if ORSTET
     return !obj->IsHostileToPlayers();
 #endif
 
@@ -1067,14 +1067,14 @@ bool TSWorldObject::IsFriendlyToPlayers()
 
 bool TSWorldObject::IsHostileToPlayers()
 {
-#if TRINITY
+#if ORSTET
     return obj->IsHostileToPlayers();
 #endif
 }
 
 bool TSWorldObject::IsNeutralToAll()
 {
-#if TRINITY
+#if ORSTET
     return obj->IsNeutralToAll();
 #endif
 }
@@ -1107,7 +1107,7 @@ TSNumber<uint32> TSWorldObject::CastSpell(TSItem _target, uint32 spell, bool tri
  */
 TSNumber<uint32> TSWorldObject::CastSpellAoF(float _x, float _y, float _z, uint32 spell, bool triggered)
 {
-#if TRINITY
+#if ORSTET
     CastSpellExtraArgs args;
     if (triggered)
         args.TriggerFlags = TRIGGERED_FULL_MASK;
@@ -1195,7 +1195,7 @@ TSNumber<uint32> TSWorldObject::CastCustomSpell(
 
 void TSWorldObject::DoDelayed(std::function<void(TSWorldObject, TSMainThreadContext)> callback)
 {
-#if TRINITY
+#if ORSTET
     obj->m_delayedCallbacks.push_back(callback);
     obj->GetMap()->m_delayedGuids.insert(obj->GetGUID());
 #endif
@@ -1204,7 +1204,7 @@ void TSWorldObject::DoDelayed(std::function<void(TSWorldObject, TSMainThreadCont
 
 void TSWorldObject::LDoDelayed(sol::protected_function callback)
 {
-#if TRINITY
+#if ORSTET
     obj->m_delayedLuaCallbacks.push_back(callback);
     obj->GetMap()->m_delayedGuids.insert(obj->GetGUID());
 #endif

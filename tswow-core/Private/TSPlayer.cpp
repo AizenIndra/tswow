@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  * Copyright (C) 2010 - 2016 Eluna Lua Engine <http://emudevs.com/>
  *
@@ -37,7 +37,7 @@
 #include "TSMail.h"
 #include "TSGUID.h"
 
-#if TRINITY
+#if ORSTET
 #include "SpellHistory.h"
 #include "Trainer.h"
 #endif
@@ -111,7 +111,7 @@ bool TSPlayer::HasTalent(uint32 spellId,uint8 spec)
  */
 bool TSPlayer::HasAchieved(uint32 achievementId)
 {
-#if defined TRINITY
+#if defined ORSTET
     return player->HasAchieved(achievementId);
 #else
     return player->GetAchievementMgr().HasAchievement(achievementId);
@@ -245,7 +245,7 @@ bool TSPlayer::CanUseItem(TSItem _item,uint32 entry)
 bool TSPlayer::HasSpellCooldown(uint32 spellId)
 {
 
-#ifdef TRINITY
+#ifdef ORSTET
     return player->GetSpellHistory()->HasCooldown(spellId);
 #else
     return player->HasSpellCooldown(spellId);
@@ -270,7 +270,7 @@ bool TSPlayer::CanShareQuest(uint32 entry)
  */
 bool TSPlayer::CanSpeak()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return player->GetSession()->CanSpeak();
 #else
     return player->CanSpeak();
@@ -419,7 +419,7 @@ bool TSPlayer::IsInGuild()
  */
 bool TSPlayer::IsGM()
 {
-#if defined TRINITY
+#if defined ORSTET
     return player->IsGameMaster();
 #else
     return player->isGameMaster();
@@ -618,7 +618,7 @@ bool TSPlayer::IsRested()
  */
 bool TSPlayer::InBGQueue()
 {
-#if defined TRINITY
+#if defined ORSTET
     return player->InBattlegroundQueue();
 #else
     return player->InBattleGroundQueue();
@@ -644,7 +644,7 @@ bool TSPlayer::InArena()
  */
 bool TSPlayer::InBG()
 {
-#if defined TRINITY
+#if defined ORSTET
     return player->InBattleground();
 #else
     return player->InBattleGround();
@@ -802,7 +802,7 @@ TSNumber<uint32> TSPlayer::GetShieldBlockValue()
 TSNumber<uint32> TSPlayer::GetSpellCooldownDelay(uint32 spellId)
 {
 
-#ifdef TRINITY
+#ifdef ORSTET
     if (SpellInfo const* spellInfo = sSpellMgr->GetSpellInfo(spellId))
         return player->GetSpellHistory()->GetRemainingCooldown(spellInfo);
     else
@@ -822,7 +822,7 @@ TSNumber<uint32> TSPlayer::GetLatency()
     return player->GetSession()->GetLatency();
 }
 
-#if defined TRINITY
+#if defined ORSTET
 /**
  * Returns the faction ID the [Player] is currently flagged as champion for
  *
@@ -903,7 +903,7 @@ TSNumber<uint32> TSPlayer::GetXPRestBonus(uint32 xp)
  */
 TSNumber<uint32> TSPlayer::GetBGTypeID()
 {
-#if defined TRINITY
+#if defined ORSTET
     return player->GetBattlegroundTypeId();
 #else
     return player->GetBattleGroundTypeId();
@@ -917,7 +917,7 @@ TSNumber<uint32> TSPlayer::GetBGTypeID()
  */
 TSNumber<uint32> TSPlayer::GetBattlegroundID()
 {
-#if defined TRINITY
+#if defined ORSTET
     return player->GetBattlegroundId();
 #else
     return player->GetBattleGroundId();
@@ -1045,7 +1045,7 @@ TSNumber<float> TSPlayer::GetHealthBonusFromStamina()
 /**
  * Returns raid or dungeon difficulty
  *
- * @param bool isRaid = true : argument is TrinityCore only
+ * @param bool isRaid = true : argument is ORSTETCore only
  * @return int32 difficulty
  */
 TSNumber<int32> TSPlayer::GetDifficulty(bool isRaid)
@@ -1107,7 +1107,7 @@ TSNumber<int32> TSPlayer::GetReputation(uint32 faction)
  */
 TSUnit  TSPlayer::GetComboTarget()
 {
-#if defined TRINITY
+#if defined ORSTET
      return TSUnit(ObjectAccessor::GetUnit(*player,player->GetComboTarget()->GetGUID()));
 #else
      return TSUnit(player->GetMap()->GetUnit(player->GetComboTargetGuid()));
@@ -1178,7 +1178,7 @@ TSNumber<uint32> TSPlayer::GetQuestLevel(TSQuest _quest)
 {
     auto quest = _quest.quest;
 
-#if defined TRINITY
+#if defined ORSTET
     return player->GetQuestLevel(quest);
 #else
     return player->GetQuestLevelForPlayer(quest);
@@ -1297,7 +1297,7 @@ TSNumber<uint32> TSPlayer::GetGossipTextID(TSWorldObject _obj)
  */
 TSUnit  TSPlayer::GetSelection()
 {
-#if defined TRINITY
+#if defined ORSTET
      return TSUnit(player->GetSelectedUnit());
 #else
      return TSUnit(player->GetMap()->GetUnit(player->GetSelectionGuid()));
@@ -1480,14 +1480,14 @@ TSNumber<uint32> TSPlayer::GetDbcLocale()
 
 void TSPlayer::RemoveAllItemMods()
 {
-#if TRINITY
+#if ORSTET
    player->_RemoveAllItemMods();
 #endif
 }
 
 void TSPlayer::RemoveItemMods(TSItem item, uint8 slot)
 {
-#if TRINITY
+#if ORSTET
     if (item)
     {
         TSItemTemplate proto = item->GetTemplate();
@@ -1512,21 +1512,21 @@ void TSPlayer::RemoveItemMods(TSItem item, uint8 slot)
 
 void TSPlayer::ApplyAllItemMods()
 {
-#if TRINITY
+#if ORSTET
     player->_ApplyAllItemMods();
 #endif    
 }
 
 void TSPlayer::ApplyItemMods(TSItem item, uint8 slot, bool apply, bool updateAuras)
 {
-#if TRINITY
+#if ORSTET
     player->_ApplyItemMods(item.item, slot, apply, updateAuras);
 #endif  
 }
 
 void TSPlayer::UpdateCache()
 {
-    #if TRINITY
+    #if ORSTET
     QueryResult result = CharacterDatabase.PQuery("SELECT * FROM custom_item_template");
     do
     {
@@ -1611,7 +1611,7 @@ void TSPlayer::SetFactionForRace(uint8 race)
 void TSPlayer::SetSkill(uint16 id,uint16 step,uint16 currVal,uint16 maxVal)
 {
 
-#ifdef TRINITY
+#ifdef ORSTET
     player->SetSkill(id, step, currVal, maxVal);
 #else
     player->SetSkill(id, currVal, maxVal, step);
@@ -1887,7 +1887,7 @@ void TSPlayer::SetBindPoint(float x,float y,float z,uint32 mapId,uint32 areaId)
 {
 
 WorldLocation loc(mapId, x, y, z);
-#if defined TRINITY
+#if defined ORSTET
     player->SetHomebind(loc, areaId);
 #else
     player->SetHomebindToLocation(loc, areaId);
@@ -1913,7 +1913,7 @@ void TSPlayer::UnlockAchievement(uint32 entry)
     player->UnlockAchievement(entry);
 }
 
-#if !defined TRINITY
+#if !defined ORSTET
 /**
  * Toggle the [Player]s FFA flag
  *
@@ -1947,7 +1947,7 @@ void TSPlayer::ResetPetTalents(int32 pType)
  */
 void TSPlayer::ResetAchievements()
 {
-#if defined TRINITY
+#if defined ORSTET
     player->ResetAchievements();
 #else
     player->GetAchievementMgr().Reset();
@@ -2018,7 +2018,7 @@ void TSPlayer::SummonPlayer(TSUnit _summoner)
 {
     auto summoner = _summoner.unit;
 
-#ifdef TRINITY
+#ifdef ORSTET
     player->SendSummonRequestFrom(summoner);
 #else
     float x, y, z;
@@ -2050,7 +2050,7 @@ void TSPlayer::Mute(uint32 muteseconds)
     player->GetSession()->m_muteTime = muteTime;
     std::ostringstream oss;
     oss << "UPDATE account SET mutetime = " << muteTime << " WHERE id = " << player->GetSession()->GetAccountId();
-#if TRINITY
+#if ORSTET
     LoginDatabase.PExecute("{}", oss.str().c_str());
 #endif
 }
@@ -2077,17 +2077,17 @@ void TSPlayer::RewardQuest(uint32 entry)
  */
 void TSPlayer::SendAuctionMenu(TSUnit _unit)
 {
-#ifdef TRINITY
+#ifdef ORSTET
     auto unit = _unit.unit;
 
-#ifdef TRINITY
+#ifdef ORSTET
     AuctionHouseEntry const* ahEntry = AuctionHouseMgr::GetAuctionHouseEntry(unit->GetFaction());
 #else
     AuctionHouseEntry const* ahEntry = AuctionHouseMgr::GetAuctionHouseEntry(unit);
 #endif
 
 WorldPacket data(MSG_AUCTION_HELLO, 12);
-#ifdef TRINITY
+#ifdef ORSTET
     data << uint64(unit->GetGUID().GetCounter());
 #else
     data << uint64(unit->GetGUID().GetCounter());
@@ -2116,7 +2116,7 @@ void TSPlayer::SendTaxiMenu(TSCreature _creature)
 
 void TSPlayer::SendCreatureQueryPacket(uint32 entry)
 {
-#if TRINITY
+#if ORSTET
     if (CreatureTemplate const* ci = sObjectMgr->GetCreatureTemplate(entry))
     {
         WorldSession* curSes = player->GetSession();
@@ -2128,7 +2128,7 @@ void TSPlayer::SendCreatureQueryPacket(uint32 entry)
 
 void TSPlayer::SendGameObjectQueryPacket(uint32 entry)
 {
-#if TRINITY
+#if ORSTET
     if (GameObjectTemplate const* ci = sObjectMgr->GetGameObjectTemplate(entry))
     {
         WorldSession* curSes = player->GetSession();
@@ -2145,7 +2145,7 @@ void TSPlayer::SendItemQueryPacket(uint32 entry)
 
 void TSPlayer::SendItemQueryPacket(TSItemTemplate curItem)
 {
-#if TRINITY
+#if ORSTET
     if (!curItem.IsNull())
     {
         if (sWorld->getBoolConfig(CONFIG_CACHE_DATA_QUERIES))
@@ -2214,7 +2214,7 @@ void TSPlayer::SendTrainerList(TSCreature _obj)
 {
     auto obj = _obj.creature;
 
-#ifdef TRINITY
+#ifdef ORSTET
     player->GetSession()->SendTrainerList(obj);
 #else
     player->GetSession()->SendTrainerList(obj->TS_GET_GUID());
@@ -2230,7 +2230,7 @@ void TSPlayer::SendGuildInvite(TSPlayer _plr)
 {
     auto plr = _plr.player;
 
-#if defined TRINITY
+#if defined ORSTET
     if (Guild* guild = player->GetGuild())
         guild->HandleInviteMember(player->GetSession(), plr->GetName());
 #else
@@ -2254,7 +2254,7 @@ void TSPlayer::LogoutPlayer(bool save)
  */
 void TSPlayer::RemoveFromBGRaid()
 {
-#if defined TRINITY
+#if defined ORSTET
     player->RemoveFromBattlegroundOrBattlefieldRaid();
 #else
     player->RemoveFromBattleGroundRaid();
@@ -2331,7 +2331,7 @@ void TSPlayer::LeaveBG(bool teleToEntryPoint)
  */
 TSNumber<uint32> TSPlayer::DurabilityRepair(uint16 position,bool cost,float discountMod)
 {
-#if TRINITY
+#if ORSTET
     return player->DurabilityRepair(position, cost, discountMod);
 #endif
 }
@@ -2445,7 +2445,7 @@ TSNumber<uint32> TSPlayer::ResetTalentsCost()
 #ifdef CATA
     return player->GetNextResetTalentsCost();
 #else
-#ifdef TRINITY
+#ifdef ORSTET
     return player->ResetTalentsCost();
 #else
     return player->resetTalentsCost();
@@ -2464,7 +2464,7 @@ void TSPlayer::ResetTalents(bool no_cost)
 #ifdef CATA
     player->ResetTalents(no_cost);
 #else
-#ifdef TRINITY
+#ifdef ORSTET
     player->ResetTalents(no_cost);
 #else
     player->resetTalents(no_cost);
@@ -2485,7 +2485,7 @@ void TSPlayer::ResetTalents(bool no_cost)
 void TSPlayer::RemoveSpell(uint32 entry,bool disabled,bool learn_low_rank)
 {
 
-#ifdef TRINITY
+#ifdef ORSTET
     player->RemoveSpell(entry, disabled, learn_low_rank);
 #else
     player->removeSpell(entry, disabled, learn_low_rank);
@@ -2600,7 +2600,7 @@ void TSPlayer::CompleteQuest(uint32 entry)
     // Add quest items for quests that require items
     for (uint8 x = 0; x < QUEST_ITEM_OBJECTIVES_COUNT; ++x)
     {
-#if defined TRINITY
+#if defined ORSTET
         uint32 id = quest->RequiredItemId[x];
         uint32 count = quest->RequiredItemCount[x];
 #else
@@ -2625,7 +2625,7 @@ void TSPlayer::CompleteQuest(uint32 entry)
     // All creature/GO slain/cast (not required, but otherwise it will display "Creature slain 0/10")
     for (uint8 i = 0; i < QUEST_OBJECTIVES_COUNT; ++i)
     {
-#if defined TRINITY
+#if defined ORSTET
         int32 creature = quest->RequiredNpcOrGo[i];
         uint32 creatureCount = quest->RequiredNpcOrGoCount[i];
 
@@ -2672,7 +2672,7 @@ void TSPlayer::CompleteQuest(uint32 entry)
                 player->GetReputationMgr().SetReputation(factionEntry, repValue);
     }
 
-#if defined TRINITY
+#if defined ORSTET
     // If the quest requires a SECOND reputation to complete
     if (uint32 repFaction = quest->GetRepObjectiveFaction2())
     {
@@ -2689,7 +2689,7 @@ void TSPlayer::CompleteQuest(uint32 entry)
     if (ReqOrRewMoney < 0)
         player->ModifyMoney(-ReqOrRewMoney);
 
-#ifdef TRINITY
+#ifdef ORSTET
     if (sWorld->getBoolConfig(CONFIG_QUEST_ENABLE_QUEST_TRACKER)) // check if Quest Tracker is enabled
     {
         // prepare Quest Tracker datas
@@ -2712,11 +2712,11 @@ void TSPlayer::CompleteQuest(uint32 entry)
  */
 void TSPlayer::AddQuest(uint32 entry)
 {
-#if TRINITY
+#if ORSTET
 
     Quest const* quest = eObjectMgr->GetQuestTemplate(entry);
 
-#if defined TRINITY
+#if defined ORSTET
     // check item starting quest (it can work incorrectly if added without item in inventory)
     ItemTemplateContainer const& itc = sObjectMgr->GetItemTemplateStore();
 
@@ -2783,7 +2783,7 @@ void TSPlayer::RemoveQuest(uint32 entry)
             // we ignore unequippable quest items in this case, its' still be equipped
             player->TakeQuestSourceItem(logQuest, false);
 
-#if defined TRINITY
+#if defined ORSTET
             if (quest->HasFlag(QUEST_FLAGS_FLAGS_PVP))
             {
                 player->pvpInfo.IsHostile = player->pvpInfo.IsInHostileArea || player->HasPvPForcingQuest();
@@ -2793,7 +2793,7 @@ void TSPlayer::RemoveQuest(uint32 entry)
         }
     }
 
-#if defined TRINITY
+#if defined ORSTET
     player->RemoveActiveQuest(entry, false);
     player->RemoveRewardedQuest(entry);
 #else
@@ -2810,7 +2810,7 @@ void TSPlayer::RemoveQuest(uint32 entry)
  *
  * @param string text
  * @param uint32 lang : language the [Player] will speak
- * @param [Player] receiver : is the [Player] that will receive the whisper, if TrinityCore
+ * @param [Player] receiver : is the [Player] that will receive the whisper, if ORSTETCore
  */
 void TSPlayer::Whisper(std::string const& _text,uint32 lang,TSPlayer _receiver)
 {
@@ -2870,7 +2870,7 @@ void TSPlayer::GiveXP(uint32 xp,TSUnit _victim)
  */
 void TSPlayer::SetXP(uint32 xp)
 {
-#if TRINITY
+#if ORSTET
     uint32 nextLvlXP = player->GetUInt32Value(PLAYER_NEXT_LEVEL_XP);
     uint32 newXP = player->GetXP() + xp;
     uint8 level = player->GetLevel();
@@ -2890,7 +2890,7 @@ void TSPlayer::SetXP(uint32 xp)
 
 TSNumber<uint32> TSPlayer::GetXP()
 {
-#if TRINITY
+#if ORSTET
     return player->GetXP();
 #endif
 }
@@ -3067,7 +3067,7 @@ void TSPlayer::UnsetKnownTitle(uint32 id)
  */
 void TSPlayer::AdvanceSkillsToMax()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     player->UpdateWeaponsSkillsToMaxSkillsForLevel();
 #else
     player->UpdateSkillsToMaxSkillsForLevel();
@@ -3085,11 +3085,11 @@ void TSPlayer::AdvanceAllSkills(uint32 step)
     {
         if (SkillLineEntry const* entry = sSkillLineStore.LookupEntry(i))
         {
-#if TRINITY
+#if ORSTET
             if (entry->CategoryID == SKILL_CATEGORY_LANGUAGES || entry->CategoryID == SKILL_CATEGORY_GENERIC)
 #endif
                 continue;
-#if TRINITY
+#if ORSTET
             if (player->HasSkill(entry->ID))
                 player->UpdateSkill(entry->ID, step);
 #endif
@@ -3124,7 +3124,7 @@ void TSPlayer::AdvanceSkill(uint32 _skillId,uint32 _step)
  */
 bool TSPlayer::Teleport(uint32 mapId,float x,float y,float z,float o)
 {
-#if defined TRINITY
+#if defined ORSTET
     if (player->IsInFlight())
         player->FinishTaxiFlight();
     else
@@ -3155,7 +3155,7 @@ void TSPlayer::AddLifetimeKills(uint32 val)
 TSItem TSPlayer::AddItem(uint32 itemId,uint32 itemCount, int32 propertyId)
 {
 
-#if defined TRINITY
+#if defined ORSTET
     uint32 noSpaceForCount = 0;
     ItemPosCountVec dest;
     InventoryResult msg = player->CanStoreNewItem(NULL_BAG, NULL_SLOT, dest, itemId, itemCount, &noSpaceForCount);
@@ -3211,7 +3211,7 @@ void TSPlayer::RemoveLifetimeKills(uint32 val)
  */
 void TSPlayer::ResetSpellCooldown(uint32 spellId,bool update)
 {
-#ifdef TRINITY
+#ifdef ORSTET
     player->GetSpellHistory()->ResetCooldown(spellId, update);
 #else
     player->RemoveSpellCooldown(spellId, update);
@@ -3228,7 +3228,7 @@ void TSPlayer::ResetTypeCooldowns(uint32 category,bool update)
 {
     (void)update; // ensure that the variable is referenced in order to pass compiler checks
 
-#ifdef TRINITY
+#ifdef ORSTET
     player->GetSpellHistory()->ResetCooldowns([category](SpellHistory::CooldownStorageType::iterator itr) -> bool
     {
         SpellInfo const* spellInfo = sSpellMgr->GetSpellInfo(itr->first);
@@ -3244,7 +3244,7 @@ void TSPlayer::ResetTypeCooldowns(uint32 category,bool update)
  */
 void TSPlayer::ResetAllCooldowns()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     player->GetSpellHistory()->ResetAllCooldowns();
 #else
     player->RemoveAllSpellCooldown();
@@ -3328,11 +3328,11 @@ void TSPlayer::SendAddonMessage(std::string const& prefix, std::string const& me
 WorldPacket data(SMSG_MESSAGECHAT, 100);
     data << uint8(channel);
     data << int32(LANG_ADDON);
-#if TRINITY
+#if ORSTET
     data << uint64(player->TS_GET_GUID());
 #endif
     data << uint32(0);
-#if TRINITY
+#if ORSTET
     data << uint64(receiver->TS_GET_GUID());
 #endif
     data << uint32(fullmsg.length() + 1);
@@ -3346,7 +3346,7 @@ WorldPacket data(SMSG_MESSAGECHAT, 100);
  */
 void TSPlayer::KickPlayer()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     player->GetSession()->KickPlayer("PlayerMethods::KickPlayer Kick the player");
 #else
     player->GetSession()->KickPlayer();
@@ -3372,7 +3372,7 @@ void TSPlayer::ModifyMoney(int32 amt)
 void TSPlayer::LearnSpell(uint32 id)
 {
 
-#ifdef TRINITY
+#ifdef ORSTET
     player->LearnSpell(id, false);
 #else
     player->learnSpell(id, false);
@@ -3393,7 +3393,7 @@ void TSPlayer::LearnTalent(uint32 id,uint32 rank)
     player->SendTalentsInfoData(false);
 #endif
 
-#if !defined TRINITY
+#if !defined ORSTET
     // if player has a pet, update owner talent auras
     if (player->GetPet())
         player->GetPet()->CastOwnerTalentAuras();
@@ -3432,7 +3432,7 @@ void TSPlayer::ResurrectPlayer(float percent,bool sickness)
  */
 void TSPlayer::GossipMenuAddItem(uint32 _icon, std::string const& msg,uint32 _sender,uint32 _intid,bool _code, std::string const& _promptMsg,uint32 _money)
 {
-#if defined TRINITY
+#if defined ORSTET
     player->PlayerTalkClass->GetGossipMenu().AddMenuItem(-1, GossipOptionIcon(_icon), msg, _sender, _intid, _promptMsg, _money, _code);
 #else
 #ifndef CLASSIC
@@ -3440,7 +3440,7 @@ void TSPlayer::GossipMenuAddItem(uint32 _icon, std::string const& msg,uint32 _se
 #else
     player->PlayerTalkClass->GetGossipMenu().AddMenuItem(_icon, msg._value, _sender, _intid, _promptMsg._value, _code);
 #endif
-#endif//TRINITY
+#endif//ORSTET
 }
 
 /**
@@ -3450,7 +3450,7 @@ void TSPlayer::GossipMenuAddItem(uint32 _icon, std::string const& msg,uint32 _se
  */
 void TSPlayer::GossipComplete()
 {
-#if defined TRINITY
+#if defined ORSTET
     player->PlayerTalkClass->SendCloseGossip();
 #else
     player->PlayerTalkClass->CloseGossip();
@@ -3742,7 +3742,7 @@ TSGroup TSPlayer::GroupCreate(TSPlayer _invited)
     if (!group->IsCreated())
     {
         group->RemoveInvite(player);
-#if defined TRINITY
+#if defined ORSTET
         group->Create(player);
         sGroupMgr->AddGroup(group);
 #else
@@ -3750,7 +3750,7 @@ TSGroup TSPlayer::GroupCreate(TSPlayer _invited)
 #endif
     }
 
-#if defined TRINITY
+#if defined ORSTET
     group->BroadcastGroupUpdate();
 #else
 #endif
@@ -3850,7 +3850,7 @@ void TSPlayer::SetBankBagSlotCount(uint8 count)
 
 void TSPlayer::AddItemToSlotRaw(uint8 bag, uint8 slot, uint32 itemId, uint32 count, int32 propertyId)
 {
-#if TRINITY
+#if ORSTET
     ItemPosCountVec dest;
     dest.push_back(ItemPosCount(bag<<8|slot,count));
     Item* item = player->StoreNewItem(dest, itemId, true, propertyId >= 0 ? propertyId : GenerateItemRandomPropertyId(itemId));
@@ -3860,7 +3860,7 @@ void TSPlayer::AddItemToSlotRaw(uint8 bag, uint8 slot, uint32 itemId, uint32 cou
 
 void TSPlayer::LearnClassSpells(bool trainer, bool quests, bool limitQuestsByLevel)
 {
-#if TRINITY
+#if ORSTET
     ChrClassesEntry const* classEntry = sChrClassesStore.LookupEntry(player->GetClass());
     if (!classEntry)
         return;
@@ -3912,41 +3912,41 @@ void TSPlayer::LearnClassSpells(bool trainer, bool quests, bool limitQuestsByLev
 
 TSNumber<uint8> TSPlayer::GetHairStyle()
 {
-#if TRINITY
+#if ORSTET
     return player->GetHairStyleId();
 #endif
 }
 
 void TSPlayer::SetHairStyle(uint8 style)
 {
-#if TRINITY
+#if ORSTET
     player->SetHairStyleId(style);
 #endif
 }
 
 TSNumber<uint8> TSPlayer::GetHairColor()
 {
-#if TRINITY
+#if ORSTET
     return player->GetHairColorId();
 #endif
 }
 void TSPlayer::SetHairColor(uint8 color)
 {
-#if TRINITY
+#if ORSTET
     player->SetHairColorId(color);
 #endif
 }
 
 TSNumber<uint8> TSPlayer::GetFacialStyle()
 {
-#if TRINITY
+#if ORSTET
     return player->GetFacialStyle();
 #endif
 }
 
 void TSPlayer::SetFacialStyle(uint8 style)
 {
-#if TRINITY
+#if ORSTET
     player->SetFacialStyle(style);
 #endif
 
@@ -3954,28 +3954,28 @@ void TSPlayer::SetFacialStyle(uint8 style)
 
 TSNumber<uint8> TSPlayer::GetSkinColor()
 {
-#if TRINITY
+#if ORSTET
     return player->GetSkinId();
 #endif
 }
 
 void TSPlayer::SetSkinColor(uint8 color)
 {
-#if TRINITY
+#if ORSTET
     player->SetSkinId(color);
 #endif
 }
 
 TSNumber<uint8> TSPlayer::GetFace()
 {
-#if TRINITY
+#if ORSTET
     return player->GetFaceId();
 #endif
 }
 
 void TSPlayer::SetFace(uint8 face)
 {
-#if TRINITY
+#if ORSTET
     player->SetFaceId(face);
 #endif
 }
@@ -3987,7 +3987,7 @@ void TSPlayer::SendUpdateWorldState(uint32 worldState, uint32 value)
 
 void TSPlayer::SendUpdateEventStates(uint32 eventId)
 {
-#if TRINITY
+#if ORSTET
     sGameEventMgr->SendWorldStateUpdate(player, eventId);
 #endif
 }
@@ -4009,14 +4009,14 @@ TSBattlegroundPlayer TSPlayer::GetBGPlayer()
 
 TSOutfit TSPlayer::GetOutfitCopy(uint32_t settings, int32_t race, int32_t gender)
 {
-#if TRINITY
+#if ORSTET
     return TSOutfit(*this, settings, race, gender);
 #endif
 }
 
 bool TSPlayer::CanBeTank()
 {
-#if TRINITY
+#if ORSTET
     return sObjectMgr->GetPlayerClassRoleMask(GetClass())
         & lfg::LfgRoles::PLAYER_ROLE_TANK;
 #endif
@@ -4025,7 +4025,7 @@ bool TSPlayer::CanBeTank()
 
 bool TSPlayer::CanBeHealer()
 {
-#if TRINITY
+#if ORSTET
     return sObjectMgr->GetPlayerClassRoleMask(GetClass())
         & lfg::LfgRoles::PLAYER_ROLE_HEALER;
 #endif
@@ -4034,7 +4034,7 @@ bool TSPlayer::CanBeHealer()
 
 bool TSPlayer::CanBeDPS()
 {
-#if TRINITY
+#if ORSTET
     return sObjectMgr->GetPlayerClassRoleMask(GetClass())
         & lfg::LfgRoles::PLAYER_ROLE_DAMAGE;
 #endif
@@ -4043,7 +4043,7 @@ bool TSPlayer::CanBeDPS()
 
 bool TSPlayer::CanBeLeader()
 {
-#if TRINITY
+#if ORSTET
     return sObjectMgr->GetPlayerClassRoleMask(GetClass())
         & lfg::LfgRoles::PLAYER_ROLE_LEADER;
 #endif
@@ -4051,7 +4051,7 @@ bool TSPlayer::CanBeLeader()
 
 TSNumber<uint32> TSPlayer::GetTalentPointsInTree(uint32 tabId)
 {
-#if TRINITY
+#if ORSTET
     return player->GetTalentPointsInTree(tabId);
 #endif
 }

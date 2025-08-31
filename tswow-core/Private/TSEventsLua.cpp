@@ -1,4 +1,4 @@
-#include "TSEvents.h"
+﻿#include "TSEvents.h"
 #include "TSLua.h"
 
 #define LUA_HANDLE(target, category,name) target.set_function(#name,&TSEvents::category::L##name)
@@ -414,7 +414,7 @@ void TSLua::load_events(sol::state& state)
     lua_events["Battleground"] = &TSEvents::Battleground;
     lua_events["Item"] = &TSEvents::Item;
     lua_events["Quest"] = &TSEvents::Quest;
-#if TRINITY
+#if ORSTET
     lua_events["AreaTrigger"] = &TSEvents::AreaTrigger;
 #endif
     lua_events["Map"] = &TSEvents::Map;

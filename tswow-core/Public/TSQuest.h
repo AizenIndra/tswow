@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -20,7 +20,7 @@
 #include "TSClasses.h"
 #include "TSLua.h"
 
-class TC_GAME_API TSQuest {
+class OC_GAME_API TSQuest {
 public:
     Quest const* quest;
     TSQuest();

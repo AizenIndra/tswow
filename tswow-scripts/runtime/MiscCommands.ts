@@ -40,7 +40,7 @@ export class MiscCommands {
         commands.addCommand('revision','','',()=>{
             console.log(
                   `TSWoW Revision: ${ipaths.bin.revisions.tswow.readString().slice(0,7)}\n`
-                + `TrinityCore Revision: ${ipaths.bin.revisions.trinitycore.readString().slice(0,7)}`
+                + `OrstetCore Revision: ${ipaths.bin.revisions.orstetcore.readString().slice(0,7)}`
             )
         }).addAlias('version')
     }

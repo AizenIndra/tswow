@@ -1,4 +1,4 @@
-/*
+﻿/*
  * libtxc_dxtn
  * Version:  0.1
  *
@@ -43,10 +43,10 @@ typedef int16_t GLshort;
 #define GL_FALSE 0
 #define GL_TRUE 1
 
-#define GL_COMPRESSED_RGB_S3TC_DXT1_EXT 0
-#define GL_COMPRESSED_RGBA_S3TC_DXT1_EXT 1
-#define GL_COMPRESSED_RGBA_S3TC_DXT3_EXT 2
-#define GL_COMPRESSED_RGBA_S3TC_DXT5_EXT 3
+#define GL_COMPRESSED_RGB_S3OC_DXT1_EXT 0
+#define GL_COMPRESSED_RGBA_S3OC_DXT1_EXT 1
+#define GL_COMPRESSED_RGBA_S3OC_DXT3_EXT 2
+#define GL_COMPRESSED_RGBA_S3OC_DXT5_EXT 3
 
 void fetch_2d_texel_rgb_dxt1(GLint srcRowStride, const GLubyte *pixdata,
                              GLint i, GLint j, GLvoid *texel);

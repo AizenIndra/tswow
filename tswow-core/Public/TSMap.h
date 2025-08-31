@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -33,7 +33,7 @@ class TSBattleground;
 class TSInstance;
 class TSMainThreadContext;
 
-class TC_GAME_API TSMap: public TSEntityProvider, public TSWorldEntityProvider<TSMap> {
+class OC_GAME_API TSMap: public TSEntityProvider, public TSWorldEntityProvider<TSMap> {
 public:
     Map *map;
     TSMap(Map *map);
@@ -109,7 +109,7 @@ private:
     friend class TSLua;
 };
 
-TC_GAME_API TSInstance ToInstance(TSMap);
-TC_GAME_API TSBattleground ToBattleground(TSMap);
+OC_GAME_API TSInstance ToInstance(TSMap);
+OC_GAME_API TSBattleground ToBattleground(TSMap);
 
 LUA_PTR_TYPE(TSMap)

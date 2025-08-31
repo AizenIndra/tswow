@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -43,7 +43,7 @@
 #include "ScriptMgr.h"
 #include "ObjectMgr.h"
 #include "Player.h"
-#if TRINITY
+#if ORSTET
 #include "MapManager.h"
 #endif
 #include "Config.h"
@@ -134,7 +134,7 @@ public:
     void OnMoneyChanged(Player* player,int32& amount) FIRE(Player,OnMoneyChanged,TSPlayer(player),TSMutableNumber<int32>(&amount))
     void OnMoneyLimit(Player* player,int32 amount) FIRE(Player,OnMoneyLimit,TSPlayer(player),amount)
     void OnGiveXP(Player* player,uint32& amount,Unit* victim) FIRE(Player,OnGiveXP,TSPlayer(player),TSMutableNumber<uint32>(&amount),TSUnit(victim))
-#if TRINITY
+#if ORSTET
     void OnReputationChange(Player* player,uint32 factionId,int32& standing,bool incremental) FIRE(Player,OnReputationChange,TSPlayer(player),factionId,TSMutableNumber<int32>(&standing),incremental)
 #endif
     void OnDuelRequest(Player* target,Player* challenger) FIRE(Player,OnDuelRequest,TSPlayer(target),TSPlayer(challenger))
@@ -146,8 +146,8 @@ public:
         // successful messages do not reach the normal OnWhisper events.
         if(handle_extra_tooltip_message(player,receiver,msg))
         {
-#if TRINITY
-            TC_LOG_DEBUG("tswow","CHAT: Successfully handled TSWoW GM Message");
+#if ORSTET
+            OC_LOG_DEBUG("tswow","CHAT: Successfully handled TSWoW GM Message");
 #endif
             return;
         }
@@ -156,12 +156,12 @@ public:
     void OnChat(Player* player,uint32 type,uint32 lang,std::string& msg,Group* group) FIRE(Player,OnChatGroup,TSPlayer(player), TSGroup(group), TSMutableString(&msg),type,lang)
     void OnChat(Player* player,uint32 type,uint32 lang,std::string& msg,Guild* guild) FIRE(Player,OnChatGuild,TSPlayer(player), TSGuild(guild), TSMutableString(&msg),type,lang)
     void OnChat(Player* player,uint32 type,uint32 lang,std::string& msg,Channel* channel) FIRE(Player,OnChat,TSPlayer(player), TSChannel(channel), TSMutableString(&msg),type,lang)
-#if TRINITY
+#if ORSTET
     void OnEmote(Player* player,Emote emote) FIRE(Player,OnEmote,TSPlayer(player),emote)
 #endif
     void OnTextEmote(Player* player,uint32 textEmote,uint32 emoteNum,ObjectGuid guid) FIRE(Player,OnTextEmote,TSPlayer(player),textEmote,emoteNum,guid.GetRawValue())
     void OnSpellCast(Player* player,Spell* spell,bool skipCheck) FIRE(Player,OnSpellCast,TSPlayer(player),TSSpell(spell),skipCheck)
-#if TRINITY
+#if ORSTET
     void OnLogin(Player* player,bool firstLogin) FIRE(Player,OnLogin,TSPlayer(player),firstLogin)
 #endif
     void OnLogout(Player* player) FIRE(Player,OnLogout,TSPlayer(player))
@@ -169,7 +169,7 @@ public:
     void OnDelete(ObjectGuid guid,uint32 accountId) FIRE(Player,OnDelete,guid.GetRawValue(),accountId)
     void OnFailedDelete(ObjectGuid guid,uint32 accountId) FIRE(Player,OnFailedDelete,guid.GetRawValue(),accountId)
     void OnSave(Player* player) FIRE(Player,OnSave,TSPlayer(player))
-#if TRINITY
+#if ORSTET
     void OnBindToInstance(Player* player,Difficulty difficulty,uint32 mapId,bool permanent,uint8 extendState) FIRE(Player,OnBindToInstance,TSPlayer(player),difficulty,mapId,permanent,extendState)
 #endif
     void OnUpdateZone(Player* player,uint32 newZone,uint32 newArea) FIRE(Player,OnUpdateZone,TSPlayer(player),newZone,newArea)

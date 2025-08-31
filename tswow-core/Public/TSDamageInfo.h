@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -25,7 +25,7 @@ struct SpellNonMeleeDamage;
 class DamageInfo;
 class HealInfo;
 
-class TC_GAME_API TSMeleeDamageInfo {
+class OC_GAME_API TSMeleeDamageInfo {
 public:
     CalcDamageInfo * _info;
     TSMeleeDamageInfo(CalcDamageInfo * info);
@@ -60,7 +60,7 @@ public:
     TSNumber<uint8> GetMeleeHitOutcome();
 };
 
-class TC_GAME_API TSSpellDamageInfo {
+class OC_GAME_API TSSpellDamageInfo {
 public:
     SpellNonMeleeDamage * _info;
     TSSpellDamageInfo(SpellNonMeleeDamage * info);
@@ -83,7 +83,7 @@ public:
     bool GetFullBlock();
 };
 
-class TC_GAME_API TSHealInfo {
+class OC_GAME_API TSHealInfo {
     TS_CLASS_DECLARATION(TSHealInfo, HealInfo, m_info)
     void AbsorbHeal(uint32 amount);
     void SetEffectiveHeal(uint32 amount);
@@ -97,7 +97,7 @@ class TC_GAME_API TSHealInfo {
     TSNumber<uint32> GetHitMask();
 };
 
-class TC_GAME_API TSDamageInfo {
+class OC_GAME_API TSDamageInfo {
     TS_CLASS_DECLARATION(TSDamageInfo, DamageInfo, m_info)
     void ModifyDamage(int32 amount);
     void AbsorbDamage(uint32 amount);

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "TSMain.h"
 #include "TSBase.h"
@@ -13,7 +13,7 @@ class InstanceScript;
 class TSGUID;
 
 class ObjectGuid;
-class TC_GAME_API TSGUIDSet {
+class OC_GAME_API TSGUIDSet {
     std::set<ObjectGuid>* m_set;
 public:
     TSGUIDSet(std::set<ObjectGuid>* set);
@@ -26,7 +26,7 @@ public:
 };
 
 struct BossInfo;
-class TC_GAME_API TSBossInfo {
+class OC_GAME_API TSBossInfo {
     BossInfo* m_info;
 public:
     TSBossInfo(BossInfo* info);
@@ -41,7 +41,7 @@ public:
     bool IsWithinBoundary(TSWorldObject obj);
 };
 
-class TC_GAME_API TSInstance : public TSMap {
+class OC_GAME_API TSInstance : public TSMap {
 public:
     InstanceScript* m_script;
     TSInstance(Map* map, InstanceScript* script);

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -29,13 +29,13 @@
 #include <set>
 #include <mutex>
 
-struct TC_GAME_API TSCompiledClass {
+struct OC_GAME_API TSCompiledClass {
     std::shared_ptr<void> ptr;
     TSCompiledClass(std::shared_ptr<void> ptr);
     TSCompiledClass();
 };
 
-class TC_GAME_API TSCompiledClasses {
+class OC_GAME_API TSCompiledClasses {
     std::map<std::string, TSCompiledClass> m_map;
 public:
     bool HasObject(std::string const& key);
@@ -70,7 +70,7 @@ struct ModTable
 };
 
 // todo: change these values to pointers that can be activated on demand
-class TC_GAME_API TSEntity {
+class OC_GAME_API TSEntity {
 public:
     TSCompiledClasses m_compiledClasses;
     TSJsonObject m_json;

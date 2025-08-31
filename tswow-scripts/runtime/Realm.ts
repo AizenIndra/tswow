@@ -141,7 +141,7 @@ export class RealmConfig extends ConfigFile {
           name: 'Timezone'
         , description: 'The realm timezone, specifies what realmlist tab to use'
         , examples: [[1,'Development']]
-        , note: 'See possible values here: https://trinitycore.atlassian.net/wiki/spaces/tc/pages/2130016/realmlist#realmlist-timezone'
+        , note: 'See possible values here: https://orstetcore.atlassian.net/wiki/spaces/tc/pages/2130016/realmlist#realmlist-timezone'
     })
     TimeZone: number = this.undefined()
 
@@ -149,7 +149,7 @@ export class RealmConfig extends ConfigFile {
           name: 'Realm.AutoRestart'
         , description: 'Whether to restart the worldserver if it crashes'
         , examples: [[false,'']]
-        , note: 'See possible values here: https://trinitycore.atlassian.net/wiki/spaces/tc/pages/2130016/realmlist#realmlist-timezone'
+        , note: 'See possible values here: https://orstetcore.atlassian.net/wiki/spaces/tc/pages/2130016/realmlist#realmlist-timezone'
     })
     AutoRestart: boolean = this.undefined();
 }
@@ -318,7 +318,7 @@ export class Realm {
                 : '"NodeConfig.MySQLExecutable"'
         )
 
-        if(this.core === 'trinitycore') {
+        if(this.core === 'orstetcore') {
             patchTCConfig(this.path.worldserver_conf.get(), 'HotSwap.Enabled',1)
             patchTCConfig(this.path.worldserver_conf.get(), 'HotSwap.EnableReCompiler',0)
             patchTCConfig(this.path.worldserver_conf.get(), 'HotSwap.EnableEarlyTermination',0)
@@ -336,7 +336,7 @@ export class Realm {
         this.worldserver.setAutoRestart(this.config.AutoRestart);
 
         switch(this.core) {
-            case 'trinitycore':
+            case 'orstetcore':
                 this.worldserver.startIn(this.path.get(),
                     wfs.absPath(ipaths.bin.core.pick(this.config.Dataset.config.EmulatorCore).build.pick(type).worldserver.get()),
                         [`-c${wfs.absPath(this.path.worldserver_conf.get())}`]);

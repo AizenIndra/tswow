@@ -1,4 +1,4 @@
-#include "Logger.h"
+﻿#include "Logger.h"
 #include "CustompacketChunk.h"
 #include "SharedDefines.h"
 

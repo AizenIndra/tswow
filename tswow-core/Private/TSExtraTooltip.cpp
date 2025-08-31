@@ -1,4 +1,4 @@
-#include "TSExtraTooltip.h"
+﻿#include "TSExtraTooltip.h"
 #include "TSPlayer.h"
 
 #include "CreatureData.h"
@@ -11,7 +11,7 @@ bool handle_extra_tooltip_message(Player* player, Player* receiver, std::string&
     if (msgIn.size() < 2) return false;
     std::string msg = msgIn.substr(1);
 
-#if TRINITY
+#if ORSTET
     if (player != receiver || !player->CanBeGameMaster()) {
 #endif
         return false;

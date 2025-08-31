@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <functional>
 #include <TSBase.h>
@@ -22,12 +22,12 @@ class GameObject;
 class TSGameObject;
 class WorldObject;
 
-#if TRINITY
+#if ORSTET
 typedef std::vector<WorldObject*> TSObjectVector;
 #endif
 
 struct Condition;
-struct TC_GAME_API TSCondition {
+struct OC_GAME_API TSCondition {
     Condition * m_condition;
     TSCondition(Condition* condition);
     TSCondition* operator->() { return this; }
@@ -53,7 +53,7 @@ struct TC_GAME_API TSCondition {
 };
 
 struct ConditionSourceInfo;
-struct TC_GAME_API TSConditionSourceInfo
+struct OC_GAME_API TSConditionSourceInfo
 {
     ConditionSourceInfo* m_info;
     TSConditionSourceInfo(ConditionSourceInfo* info);
@@ -71,7 +71,7 @@ class SmartScript;
 class Unit;
 class SpellInfo;
 struct SmartScriptHolder;
-class TC_GAME_API TSSmartScriptValues {
+class OC_GAME_API TSSmartScriptValues {
 private:
     SmartScriptHolder* m_holder;
     SmartScript * m_script;
@@ -81,7 +81,7 @@ private:
     bool m_bvar;
     SpellInfo const* m_spell;
     GameObject* m_gameObject;
-#if TRINITY
+#if ORSTET
     TSObjectVector* m_targets;
 #endif
 public:
@@ -94,7 +94,7 @@ public:
         , bool bvar
         , SpellInfo const* spell
         , GameObject* gameObject
-#if TRINITY
+#if ORSTET
         , TSObjectVector* targets
 #endif
     );

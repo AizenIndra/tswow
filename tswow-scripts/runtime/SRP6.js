@@ -1,4 +1,4 @@
-// Borrowed by TSWoW from https://github.com/Miorey/trinitycore-srp6
+// Borrowed by TSWoW from https://github.com/Miorey/orstetcore-srp6
 const BigInteger = require(`big-integer`)
 const { bufToBigint } = require("bigint-conversion")
 const crypto = require(`crypto`)
@@ -8,7 +8,7 @@ function assert_ (val, msg) {
 }
 
 const params = {
-    trinitycore: {
+    orstetcore: {
         N_length_bits: 256,
         N: BigInt(`0x894B645E89E1535BBDAD5B8B290650530801B18EBFBF5E8FAB3C82872A3E9BB7`),
         g: BigInt(`0x7`),

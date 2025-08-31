@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -22,7 +22,7 @@
 
 struct ItemTemplate;
 
-class TC_GAME_API TSItemTemplate : public TSEntityProvider {
+class OC_GAME_API TSItemTemplate : public TSEntityProvider {
 private:
     ItemTemplate* info;
 public:
@@ -231,5 +231,5 @@ public:
     void Save();
 };
 
-TSItemTemplate TC_GAME_API GetItemTemplate(uint32 id);
+TSItemTemplate OC_GAME_API GetItemTemplate(uint32 id);
 LUA_PTR_TYPE_CON(TSItemTemplate,TSItemTemplate())

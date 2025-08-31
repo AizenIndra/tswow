@@ -1,3 +1,3 @@
-#pragma once
+﻿#pragma once
 
-void TC_GAME_API LoadTSLibraries();
+void OC_GAME_API LoadTSLibraries();

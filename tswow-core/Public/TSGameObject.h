@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -24,7 +24,7 @@
 
 class TSGameObjectTemplate;
 
-class TC_GAME_API TSGameObject : public TSWorldObject {
+class OC_GAME_API TSGameObject : public TSWorldObject {
 public:
     GameObject *go;
     TSGameObject(GameObject *go);

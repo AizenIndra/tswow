@@ -78,7 +78,7 @@ export class EnchantmentEffectBase extends TransformedClass<EnchantmentEffectPla
 
 export class EnchantmentEffectPlain extends EnchantmentEffectBase {
     get MinAmount() { return this.wrapIndex(this.row.EffectPointsMin,this.index); }
-    /** @deprecated Not used in TrinityCore, use "MinAmount" as basevalue */
+    /** @deprecated Not used in OrstetCore, use "MinAmount" as basevalue */
     get MaxAmount() { return this.wrapIndex(this.row.EffectPointsMax,this.index); }
     get Arg() { return this.wrapIndex(this.row.EffectArg,this.index); }
 
@@ -98,7 +98,7 @@ export class Proc extends EnchantmentEffectBase {
 @EnchantmentTypeID(2)
 export class Damage extends EnchantmentEffectBase {
     get MinDamage() { return this.wrapIndex(this.row.EffectPointsMin,this.index); }
-    /** @deprecated Not used in TrinityCore, use "MinDamage" as base */
+    /** @deprecated Not used in OrstetCore, use "MinDamage" as base */
     get MaxDamage() { return this.wrapIndex(this.row.EffectPointsMax,this.index); }
 }
 
@@ -109,14 +109,14 @@ export class Buff extends EnchantmentEffectBase {
 @EnchantmentTypeID(4)
 export class Armor extends EnchantmentEffectBase {
     get MinArmor() { return this.wrapIndex(this.row.EffectPointsMin,this.index); }
-    /** @deprecated Not used in TrinityCore, use "MinArmor" as base value */
+    /** @deprecated Not used in OrstetCore, use "MinArmor" as base value */
     get MaxArmor() { return this.wrapIndex(this.row.EffectPointsMax,this.index); }
 }
 
 @EnchantmentTypeID(5)
 export class Stat extends EnchantmentEffectBase {
     get MinStat() { return this.wrapIndex(this.row.EffectPointsMin,this.index); }
-    /** @deprecated Not used in TrinityCore, use "MinStat" as base value */
+    /** @deprecated Not used in OrstetCore, use "MinStat" as base value */
     get MaxStat() { return this.wrapIndex(this.row.EffectPointsMax,this.index); }
     get Stat() {
         return makeEnumCell(StatType, this, this.wrapIndex(this.row.EffectArg,this.index));

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "TSBase.h"
 
@@ -13,4 +13,4 @@ public:
     TSPosition(uint32 map,float x, float y, float z, float o);
 };
 
-TC_GAME_API TSPosition CreatePosition(uint32 map, float x, float y, float z, float o);
+OC_GAME_API TSPosition CreatePosition(uint32 map, float x, float y, float z, float o);

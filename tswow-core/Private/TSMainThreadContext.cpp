@@ -1,7 +1,7 @@
-#include "TSPlayer.h"
+﻿#include "TSPlayer.h"
 #include "TSMap.h"
 #include "TSMainThreadContext.h"
-#if TRINITY
+#if ORSTET
 #include "MapManager.h"
 #endif
 #include "Player.h"
@@ -52,7 +52,7 @@ void TSMainThreadContext::SendMail(uint8 senderType, uint64 from, uint64 to, std
         draft.AddItem(item.item);
     }
 
-#if TRINITY
+#if ORSTET
     draft.SendMailTo(trans, MailReceiver(player, ObjectGuid(to)), sender, MAIL_CHECK_MASK_NONE, delay);
 #endif
     CharacterDatabase.CommitTransaction(trans);

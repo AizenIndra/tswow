@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSPosition.h"
 
 void TSLua::load_position_methods(sol::state& state)

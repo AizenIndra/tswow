@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -15,7 +15,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 #include "TSLoot.h"
-#if TRINITY
+#if ORSTET
 #include "Loot.h"
 #endif
 #include "LootMgr.h"
@@ -189,14 +189,14 @@ void TSLoot::Filter(std::function<bool(TSLootItem)> predicate)
 
 bool TSLoot::GetGeneratesNormally()
 {
-#if TRINITY
+#if ORSTET
     return loot->generateNormally;
 #endif
 }
 
 void TSLoot::SetGeneratesNormally(bool generatesNormally)
 {
-#if TRINITY
+#if ORSTET
     loot->generateNormally = generatesNormally;
 #endif
 }

@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSCreatureTemplate.h"
 
 void TSLua::load_creature_template_methods(sol::state& state)

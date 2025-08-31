@@ -1,6 +1,6 @@
-#include "TSMap.h"
+﻿#include "TSMap.h"
 
-#if TRINITY
+#if ORSTET
 #include "AreaBoundary.h"
 #endif
 #include "Map.h"
@@ -44,14 +44,14 @@ void TSInstance::DoUseDoorOrButton(TSGUID guid, uint32 withRestoreTime, bool use
 
 void TSInstance::DoCloseDoorOrButton(TSGUID guid)
 {
-#if TRINITY
+#if ORSTET
     m_script->DoCloseDoorOrButton(guid.asGUID());
 #endif
 }
 
 void TSInstance::DoRespawnGameObject(TSGUID guid, uint32 seconds)
 {
-#if TRINITY
+#if ORSTET
     m_script->DoRespawnGameObject(guid.asGUID(), Seconds(seconds));
 #endif
 }
@@ -83,13 +83,13 @@ void TSInstance::DoStopTimedAchievement(uint32 type, uint32 entry)
 
 void TSInstance::DoRemoveAurasDueToSpellOnPlayers(uint32 spell, bool includePets, bool includeControlled)
 {
-#if TRINITY
+#if ORSTET
     m_script->DoRemoveAurasDueToSpellOnPlayers(spell, includePets, includeControlled);
 #endif
 }
 void TSInstance::DoCastSpellOnPlayers(uint32 spell, bool includePets, bool includeControlled)
 {
-#if TRINITY
+#if ORSTET
     m_script->DoCastSpellOnPlayers(spell, includePets, includeControlled);
 #endif
 }
@@ -116,42 +116,42 @@ void TSInstance::ResetAreaTriggerDone(uint32 id)
 
 void TSInstance::BindAllPlayers()
 {
-#if TRINITY
+#if ORSTET
     m_script->instance->PermBindAllPlayers();
 #endif
 }
 
 bool TSInstance::HasPermBoundPlayers()
 {
-#if TRINITY
+#if ORSTET
     return m_script->instance->HasPermBoundPlayers();
 #endif
 }
 
 TSNumber<uint32> TSInstance::GetMaxPlayers()
 {
-#if TRINITY
+#if ORSTET
     return m_script->instance->GetMaxPlayers();
 #endif
 }
 
 TSNumber<uint32> TSInstance::GetMaxResetDelay()
 {
-#if TRINITY
+#if ORSTET
     return m_script->instance->GetMaxResetDelay();
 #endif
 }
 
 TSNumber<uint32> TSInstance::GetTeamIDInInstance()
 {
-#if TRINITY
+#if ORSTET
     return m_script->instance->GetTeamIdInInstance();
 #endif
 }
 
 TSNumber<uint32> TSInstance::GetFactionInInstance()
 {
-#if TRINITY
+#if ORSTET
     return m_script->instance->GetTeamInInstance();
 #endif
 }
@@ -196,35 +196,35 @@ TSNumber<uint32> TSBossInfo::GetBossState()
 
 TSGUIDSet TSBossInfo::GetMinionGUIDs()
 {
-#if TRINITY
+#if ORSTET
     return TSGUIDSet(&m_info->minion);
 #endif
 }
 
 TSGUIDSet TSBossInfo::GetDoorsClosedDuringEncounter()
 {
-#if TRINITY
+#if ORSTET
     return TSGUIDSet(&m_info->door[DoorType::DOOR_TYPE_ROOM]);
 #endif
 }
 
 TSGUIDSet TSBossInfo::GetDoorsOpenDuringEncounter()
 {
-#if TRINITY
+#if ORSTET
     return TSGUIDSet(&m_info->door[DoorType::DOOR_TYPE_SPAWN_HOLE]);
 #endif
 }
 
 TSGUIDSet TSBossInfo::GetDoorsOpenAfterEncounter()
 {
-#if TRINITY
+#if ORSTET
     return TSGUIDSet(&m_info->door[DoorType::DOOR_TYPE_PASSAGE]);
 #endif
 }
 
 bool TSBossInfo::IsWithinBoundary(float x, float y, float z)
 {
-#if TRINITY
+#if ORSTET
     for (auto part : m_info->boundary)
     {
         if (!part->IsWithinBoundary(Position(x, y, z))) return false;
@@ -235,7 +235,7 @@ bool TSBossInfo::IsWithinBoundary(float x, float y, float z)
 
 bool TSBossInfo::IsWithinBoundary(TSWorldObject obj)
 {
-#if TRINITY
+#if ORSTET
     for (auto part : m_info->boundary)
     {
         if (!part->IsWithinBoundary(obj.obj))

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -19,7 +19,7 @@
 /***
  * A basic game object (either an [Item] or a [WorldObject]).
  *
- * Objects in MaNGOS/Trinity are stored an a giant block of "values".
+ * Objects in MaNGOS/Orstet are stored an a giant block of "values".
  * Subclasses of Object, like [WorldObject], extend the block with more data specific to that subclass.
  * Further subclasses, like [Player], extend it even further.
  *
@@ -45,7 +45,7 @@ class TSCreature;
 class TSCorpse;
 class TSGUID;
 
-class TC_GAME_API TSObject: public TSEntityProvider {
+class OC_GAME_API TSObject: public TSEntityProvider {
 public:
     Object* obj;
     TSObject(Object* obj);
@@ -100,12 +100,12 @@ public:
     bool operator==(TSObject& rhs);
 };
 
-TC_GAME_API TSItem ToItem(TSObject);
-TC_GAME_API TSWorldObject ToWorldObject(TSObject);
-TC_GAME_API TSUnit ToUnit(TSObject);
-TC_GAME_API TSCreature ToCreature(TSObject);
-TC_GAME_API TSPlayer ToPlayer(TSObject);
-TC_GAME_API TSGameObject ToGameObject(TSObject);
-TC_GAME_API TSCorpse ToCorpse(TSObject);
+OC_GAME_API TSItem ToItem(TSObject);
+OC_GAME_API TSWorldObject ToWorldObject(TSObject);
+OC_GAME_API TSUnit ToUnit(TSObject);
+OC_GAME_API TSCreature ToCreature(TSObject);
+OC_GAME_API TSPlayer ToPlayer(TSObject);
+OC_GAME_API TSGameObject ToGameObject(TSObject);
+OC_GAME_API TSCorpse ToCorpse(TSObject);
 
 LUA_PTR_TYPE(TSObject)

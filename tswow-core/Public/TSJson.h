@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2021 tswow <https://github.com/tswow/>
  *
@@ -32,7 +32,7 @@ typedef std::variant<double, bool, void*, std::string, TSJsonObject, TSJsonArray
 enum class JsonType { NUMBER, BOOL, STRING, OBJECT, LIST, NULL_LITERAL};
 struct JsonTag;
 
-class TC_GAME_API TSJsonObject {
+class OC_GAME_API TSJsonObject {
     bool m_is_valid = true;
     bool contains(std::string const& key, JsonType type);
 
@@ -80,7 +80,7 @@ public:
     void Parse(std::string const& json);
 };
 
-class TC_GAME_API TSJsonArray {
+class OC_GAME_API TSJsonArray {
     bool m_is_valid = true;
     bool contains(unsigned key, JsonType type);
     template <typename T>

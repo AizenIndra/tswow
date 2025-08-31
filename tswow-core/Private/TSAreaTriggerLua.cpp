@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSAreaTrigger.h"
 #include "TSEvents.h"
 
@@ -6,7 +6,7 @@
 
 void TSLua::load_areatrigger_methods(sol::state& state)
 {
-#if TRINITY
+#if ORSTET
     auto ts_areatriggerentry = state.new_usertype<TSAreaTriggerEntry>("TSAreaTriggerEntry");
     LUA_FIELD(ts_areatriggerentry, TSAreaTriggerEntry, GetEntry);
     LUA_FIELD(ts_areatriggerentry, TSAreaTriggerEntry, GetContinentID);

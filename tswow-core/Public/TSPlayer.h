@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -35,7 +35,7 @@ class TSItemEntry;
 class TSGUID;
 
 struct TSMail;
-class TC_GAME_API TSPlayer : public TSUnit, public TSDBJsonProvider {
+class OC_GAME_API TSPlayer : public TSUnit, public TSDBJsonProvider {
 public:
 	Player* player;
 	TSPlayer(Player* player);

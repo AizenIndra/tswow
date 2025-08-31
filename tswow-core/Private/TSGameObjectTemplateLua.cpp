@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSGameObjectTemplate.h"
 
 void TSLua::load_gameobject_template_methods(sol::state& state)

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Characters/CharacterFixes.h"
 #include "Tooltip/SpellTooltipExtensions.h"
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -32,7 +32,7 @@ class DispelInfo;
 class TSAura;
 class TSGUID;
 
-class TC_GAME_API TSSpell : public TSEntityProvider {
+class OC_GAME_API TSSpell : public TSEntityProvider {
 public:
     Spell * spell;
     TSSpell(Spell *spell);
@@ -70,7 +70,7 @@ public:
     void Finish();
 };
 
-class TC_GAME_API TSSpellModifier
+class OC_GAME_API TSSpellModifier
 {
     TS_CLASS_DECLARATION(TSSpellModifier, SpellModifier, m_mod)
     TSNumber<uint32> GetOp();
@@ -90,7 +90,7 @@ class TC_GAME_API TSSpellModifier
     TSAura GetOwnerAura();
 };
 
-class TC_GAME_API TSSpellDestination
+class OC_GAME_API TSSpellDestination
 {
     TS_CLASS_DECLARATION(TSSpellDestination, SpellDestination, m_dest)
 
@@ -110,7 +110,7 @@ class TC_GAME_API TSSpellDestination
     void RelocateOffset(float x, float y, float z, float o);
 };
 
-class TC_GAME_API TSSpellImplicitTargetInfo
+class OC_GAME_API TSSpellImplicitTargetInfo
 {
     TS_CLASS_DECLARATION(TSSpellImplicitTargetInfo, SpellImplicitTargetInfo, m_info)
     bool IsArea();
@@ -126,7 +126,7 @@ class TC_GAME_API TSSpellImplicitTargetInfo
     bool IsTargetSet();
 };
 
-class TC_GAME_API TSDispelInfo
+class OC_GAME_API TSDispelInfo
 {
     TS_CLASS_DECLARATION(TSDispelInfo, DispelInfo, m_info)
     TSWorldObject GetDispeller();
@@ -135,7 +135,7 @@ class TC_GAME_API TSDispelInfo
     void SetRemovedCharges(uint8 amount);
 };
 
-class TC_GAME_API TSPlayerSpell
+class OC_GAME_API TSPlayerSpell
 {
 public:
     TSPlayerSpell(uint8 state, bool active, bool dependent, bool disabled);

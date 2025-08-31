@@ -965,7 +965,7 @@ declare interface TSPlayer extends TSUnit, TSDBJsonProvider {
     /**
      * Returns raid or dungeon difficulty
      *
-     * @param bool isRaid = true : argument is TrinityCore only
+     * @param bool isRaid = true : argument is OrstetCore only
      * @return int32 difficulty
      */
     GetDifficulty(isRaid : bool) : TSNumber<int32>
@@ -1855,8 +1855,8 @@ declare interface TSPlayer extends TSUnit, TSDBJsonProvider {
      *
      * @param string text
      * @param uint32 lang : language the [Player] will speak
-     * @param [Player] receiver : is the [Player] that will receive the whisper, if TrinityCore
-     * @param uint64 guid : is the GUID of a [Player] that will receive the whisper, not TrinityCore
+      * @param [Player] receiver : is the [Player] that will receive the whisper, if OrstetCore
+ * @param uint64 guid : is the GUID of a [Player] that will receive the whisper, not OrstetCore
      */
     Whisper(text : string,lang : uint32,receiver : TSPlayer,guid : uint64 | TSGUID) : void
 
@@ -3285,7 +3285,7 @@ declare interface TSCreature extends TSUnit {
      *
      *     enum CreatureFamily
      *     {
-     *         CREATURE_FAMILY_NONE                = 0,    // TrinityCore only
+     *         CREATURE_FAMILY_NONE                = 0,    // OrstetCore only
      *         CREATURE_FAMILY_WOLF                = 1,
      *         CREATURE_FAMILY_CAT                 = 2,
      *         CREATURE_FAMILY_SPIDER              = 3,
@@ -5872,7 +5872,7 @@ declare class TSObject extends TSEntityProvider {
     /**
      * Returns the low-part of the [Object]'s GUID.
      *
-     * On TrinityCore all low GUIDs are different for all objects of the same type.
+     * On OrstetCore all low GUIDs are different for all objects of the same type.
      * For example creatures in instances are assigned new GUIDs when the Map is created.
      *
      * On MaNGOS and cMaNGOS low GUIDs are unique only on the same map.

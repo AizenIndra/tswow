@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -19,7 +19,7 @@
 #include "TSEntity.h"
 #include "TSLua.h"
 
-class TC_GAME_API TSSpellEffectInfo
+class OC_GAME_API TSSpellEffectInfo
 {
 public:
     SpellEffectInfo* m_info;
@@ -54,7 +54,7 @@ public:
     bool IsAura();
 };
 
-class TC_GAME_API TSSpellInfo: public TSEntityProvider {
+class OC_GAME_API TSSpellInfo: public TSEntityProvider {
 public:
     SpellInfo * info;
     TSSpellInfo(SpellInfo const* info);
@@ -140,8 +140,8 @@ public:
     TSSpellInfo GetPrevRankSpell();
 };
 
-TC_GAME_API TSSpellInfo GetSpellInfo(uint32 entry);
-TC_GAME_API TSNumber<uint32> GetTalentCost(uint32 entry);
+OC_GAME_API TSSpellInfo GetSpellInfo(uint32 entry);
+OC_GAME_API TSNumber<uint32> GetTalentCost(uint32 entry);
 
 LUA_PTR_TYPE(TSSpellInfo)
 LUA_PTR_TYPE(TSSpellEffectInfo)

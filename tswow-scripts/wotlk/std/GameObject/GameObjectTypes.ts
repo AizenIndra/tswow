@@ -1,4 +1,4 @@
-// TrinityCore copypaste
+// OrstetCore copypaste
 export const GAMEOBJECT_TYPE_DOOR                        = 0
 export const GAMEOBJECT_TYPE_BUTTON                      = 1
 export const GAMEOBJECT_TYPE_QUESTGIVER                  = 2

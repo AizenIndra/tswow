@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "Config.h"
 #include "TSWorldObject.h"
 #include "TSGlobal.h"
@@ -24,7 +24,7 @@ sol::state& TSLua::GetState()
 
 static std::filesystem::path LibRoot()
 {
-#if TRINITY
+#if ORSTET
     return std::filesystem::path(sConfigMgr->GetStringDefault("DataDir", "./")) / "lib";
 #endif
 }
@@ -130,7 +130,7 @@ void TSLua::handle_error(sol::protected_function_result const& res)
     {
         return;
     }
-#if TRINITY
+#if ORSTET
     std::filesystem::path lua_path = std::filesystem::path(sConfigMgr->GetStringDefault("DataDir", "./")) / "lib" / "lua";
 #endif
     lua_path = std::filesystem::absolute(lua_path);

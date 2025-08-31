@@ -1,4 +1,4 @@
-#include "TSAchievementTemplate.h"
+﻿#include "TSAchievementTemplate.h"
 #include "TSEvents.h"
 #include "DBCStructure.h"
 #include "DBCStores.h"
@@ -21,21 +21,21 @@ TSNumber<uint32> TSAchievementEntry::GetEntry()
 
 TSNumber<int32> TSAchievementEntry::GetFaction()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_achievement->Faction;
 #endif
 }
 
 TSNumber<int32> TSAchievementEntry::GetInstanceID()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_achievement->InstanceID;
 #endif
 }
 TSArray<std::string> TSAchievementEntry::GetTitles()
 {
     TSArray<std::string> arr;
-#ifdef TRINITY
+#ifdef ORSTET
     for (const char* title : m_achievement->Title)
     {
         arr.push(title);
@@ -45,31 +45,31 @@ TSArray<std::string> TSAchievementEntry::GetTitles()
 }
 TSNumber<uint32> TSAchievementEntry::GetCategory()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_achievement->Category;
 #endif
 }
 TSNumber<uint32> TSAchievementEntry::GetPoints()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_achievement->Points;
 #endif
 }
 TSNumber<uint32> TSAchievementEntry::GetFlags()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_achievement->Flags;
 #endif
 }
 TSNumber<uint32> TSAchievementEntry::GetMinimumCriteria()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_achievement->MinimumCriteria;
 #endif
 }
 TSNumber<uint32> TSAchievementEntry::GetSharesCriteria()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_achievement->SharesCriteria;
 #endif
 }
@@ -87,76 +87,76 @@ TSNumber<uint32> TSAchievementCriteriaEntry::GetEntry()
 }
 TSNumber<uint32> TSAchievementCriteriaEntry::GetAchievementEntry()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_criteria->AchievementID;
 #endif
 }
 
 TSNumber<uint32> TSAchievementCriteriaEntry::GetType()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_criteria->Type;
 #endif
 }
 
 TSNumber<uint32> TSAchievementCriteriaEntry::GetAssetID()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_criteria->Asset.ID;
 #endif
 }
 TSNumber<uint32> TSAchievementCriteriaEntry::GetQuantity()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_criteria->Quantity;
 #endif
 }
 TSNumber<uint32> TSAchievementCriteriaEntry::GetAdditionalType1()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_criteria->AdditionalRequirements[0].Type;
 #endif
 }
 TSNumber<uint32> TSAchievementCriteriaEntry::GetAdditionalAsset1()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_criteria->AdditionalRequirements[0].Asset;
 #endif
 }
 TSNumber<uint32> TSAchievementCriteriaEntry::GetAdditionalType2()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_criteria->AdditionalRequirements[1].Type;
 #endif
 }
 TSNumber<uint32> TSAchievementCriteriaEntry::GetAdditionalAsset2()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_criteria->AdditionalRequirements[1].Asset;
 #endif
 
 }
 TSNumber<uint32> TSAchievementCriteriaEntry::GetFlags()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_criteria->Flags;
 #endif
 }
 TSNumber<uint32> TSAchievementCriteriaEntry::GetStartEvent()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_criteria->StartEvent;
 #endif
 }
 TSNumber<uint32> TSAchievementCriteriaEntry::GetStartAsset()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_criteria->StartAsset;
 #endif
 }
 TSNumber<uint32> TSAchievementCriteriaEntry::GetStartTimer()
 {
-#ifdef TRINITY
+#ifdef ORSTET
     return m_criteria->StartTimer;
 #endif
 }

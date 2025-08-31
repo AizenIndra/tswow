@@ -1,9 +1,9 @@
-import { isTrinityCore } from "../Settings";
+import { isOrstetCore } from "../Settings";
 
 export type TranslateDirection = 'IN'|'OUT'
 
 export function translate(table: string, row: any, direction: TranslateDirection) {
-    if(isTrinityCore()) return;
+    if(isOrstetCore()) return;
 
     const rename = (from: string, to: string)=>{
         if(direction === 'IN') {

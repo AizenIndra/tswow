@@ -1,4 +1,4 @@
-#include "TSBossAI.h"
+﻿#include "TSBossAI.h"
 #include "InstanceScript.h"
 #include "Map.h"
 #include "ObjectMgr.h"
@@ -6,7 +6,7 @@
 
 static bool ResolveBossScript(Creature* creature, uint32& boss, InstanceScript *& script)
 {
-#if TRINITY
+#if ORSTET
     if (!creature || !creature->GetCreatureData()) return false;
     uint32 _boss = sObjectMgr->GetCreatureBoss(creature->GetSpawnId());
     if (_boss == UINT32_MAX) return false;
@@ -20,7 +20,7 @@ static bool ResolveBossScript(Creature* creature, uint32& boss, InstanceScript *
 
 static void IterBosses(uint32 boss, InstanceScript const* script, std::function<bool(Creature*)> callback)
 {
-#if TRINITY
+#if ORSTET
     std::vector<uint32> const& guids = script->BossSpawnGUIDs(boss);
     for (uint32 guid : guids)
     {
@@ -33,7 +33,7 @@ static void IterBosses(uint32 boss, InstanceScript const* script, std::function<
 
 void TSBossAI::OnJustEngage(Creature* creature, Unit* target)
 {
-#if TRINITY
+#if ORSTET
     uint32 boss;
     InstanceScript * script;
     if (!ResolveBossScript(creature, boss, script)) return;

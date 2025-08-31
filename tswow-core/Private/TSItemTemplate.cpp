@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of tswow (https://github.com/tswow/).
  * Copyright (C) 2020 tswow <https://github.com/tswow/>
  *
@@ -18,7 +18,7 @@
 #include "TSItemTemplate.h"
 #include "ObjectMgr.h"
 #include <memory.h>
-#if TRINITY
+#if ORSTET
 #include "QueryPackets.h"
 #endif
 
@@ -486,12 +486,12 @@ TSNumber<float> TSItemTemplate::GetDPS() { return info->getDPS(); };
 bool TSItemTemplate::CanChangeEquipStateInCombat() { return info->CanChangeEquipStateInCombat(); };
 TSNumber<int32> TSItemTemplate::GetFeralBonus(int32 extraDPS) { return info->getFeralBonus(extraDPS); }
 TSNumber<int32> TSItemTemplate::GetTotalAPBonus() {
-#if TRINITY
+#if ORSTET
     return info->GetTotalAPBonus(); 
 #endif
 }
 TSNumber<float> TSItemTemplate::GetItemLevelIncludingQuality() {
-#if TRINITY
+#if ORSTET
     return info->GetItemLevelIncludingQuality(); 
 #endif
 };
@@ -510,7 +510,7 @@ TSEntity * TSItemTemplate::GetData()
 
 TSItemTemplate GetItemTemplate(uint32 entry)
 {
-#if TRINITY
+#if ORSTET
     return TSItemTemplate(sObjectMgr->GetItemTemplateMutable(entry));
 #endif
 }
@@ -522,7 +522,7 @@ ItemTemplate* TSItemTemplate::_GetInfo()
 
 void TSItemTemplate::Save()
 {
-#if TRINITY
+#if ORSTET
     CharacterDatabaseTransaction trans = CharacterDatabase.BeginTransaction();
 
     CharacterDatabasePreparedStatement* stmt = CharacterDatabase.GetPreparedStatement(CHAR_UPD_CUSTOM_ITEM);
@@ -649,7 +649,7 @@ void TSItemTemplate::Save()
 
 void TSItemTemplate::InitializeQueryData()
 {
-#if TRINITY
+#if ORSTET
     if(sWorld->getBoolConfig(CONFIG_CACHE_DATA_QUERIES))
     {
         info->InitializeQueryData();

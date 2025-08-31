@@ -1,4 +1,4 @@
-#include "TSLua.h"
+﻿#include "TSLua.h"
 #include "TSLuaVarargs.h"
 #include "TSOutfit.h"
 #include "TSGUID.h"
@@ -9,7 +9,7 @@
 
 void TSLua::load_outfit_methods(sol::state& state)
 {
-#if TRINITY
+#if ORSTET
     auto ts_outfit = state.new_usertype<TSOutfit>("TSOutfit");
     LUA_FIELD(ts_outfit, TSOutfit, SetClass);
     LUA_FIELD(ts_outfit, TSOutfit, GetClass);

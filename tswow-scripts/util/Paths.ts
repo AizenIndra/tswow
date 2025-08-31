@@ -21,7 +21,7 @@ import { mpath, wfs } from './FileSystem';
 import { custom, dir, dirn, dynCustom, dyndir, dynfile, enumDir, file, FilePath, generateTree, WDirectory, WFile } from "./FileTree";
 import { isWindows } from './Platform';
 
-export const TDB_URL = "https://github.com/TrinityCore/TrinityCore/releases/download/TDB335.24081/TDB_full_world_335.24081_2024_08_17.7z"
+export const TDB_URL = "https://github.com/OrstetCore/OrstetCore/releases/download/TDB335.24081/TDB_full_world_335.24081_2024_08_17.7z"
 
 export const DATASET_MODULES_CONFIG = 'Dataset.Modules'
 export const DATASET_CLIENT_PATCH_LETTER = 'Client.Patch.Letter'
@@ -304,7 +304,7 @@ export function InstallPath(pathIn: string, tdb: string) {
             mysql_startup: file('mysql_startup.txt'),
             addons: dir({}),
             revisions: dir({
-                trinitycore: file('trinitycore'),
+                orstetcore: file('orstetcore'),
                 tswow: file('tswow'),
             }),
             scripts: dir({
@@ -422,6 +422,13 @@ export function InstallPath(pathIn: string, tdb: string) {
                         ),
                         modulePdb: dynfile(mod=>`${wfs.dirname(mod)}/scripts_tswow_${wfs.basename(mod)}.pdb`)
                     }),
+                    mods: dir({
+                        moduleLib: dynfile((mod)=>isWindows()
+                            ? `${wfs.dirname(mod)}/mods_tswow_${wfs.basename(mod)}.dll`
+                            : `${wfs.dirname(mod)}/libmods_tswow_${wfs.basename(mod)}.so`
+                        ),
+                        modulePdb: dynfile(mod=>`${wfs.dirname(mod)}/mods_tswow_${wfs.basename(mod)}.pdb`)
+                    }),
                     worldserver: file(`worldserver${isWindows()?'.exe':''}`),
                     mapextractor: file(`mapextractor${isWindows()?'.exe':''}`),
                     mmaps_generator: file(`mmaps_generator${isWindows()?'.exe':''}`),
@@ -432,8 +439,14 @@ export function InstallPath(pathIn: string, tdb: string) {
                     authserver_conf_dist: file(`authserver.conf.dist`),
                     worldserver_conf_dist: file(`worldserver.conf.dist`),
 
+                    libcommon: file('libcommon.so'),
+                    libdatabase: file('libdatabase.so'),
+                    libgame: file('libgame.so'),
+                    libmods: file('libmods.so'),
+                    libshared: file('libshared.so'),
                     libcrypto: file('libcrypto-1_1-x64.dll'),
                     configs: custom((i)=>generateTree(i,dir({}))),
+                    libs: dir({}),
                 }))
             })),
         }),
@@ -585,12 +598,12 @@ export function BuildPaths(pathIn: string, tdb: string) {
             identify_exe: file('identify.exe'),
         }),
 
-        TrinityCore: dir({
+        OrstetCore: dir({
             sol_headers: dirn('_deps/sol2-src/include',{}),
             lua_headers: dirn('_deps/lua-src',{}),
-            bin_linux: dirn('install/trinitycore/bin',{}),
-            etc_linux: dirn('install/trinitycore/etc',{}),
-            lib_linux: dirn('install/trinitycore/lib',{}),
+            bin_linux: dirn('install/orstetcore/bin',{}),
+            etc_linux: dirn('install/orstetcore/etc',{}),
+            lib_linux: dirn('install/orstetcore/lib',{}),
             tracy_dll: custom((k)=>(type: string)=>{
                 return new WFile(mpath(k,`_deps/tracy-build/${type}/TracyClient.dll`))
             }),
@@ -603,7 +616,7 @@ export function BuildPaths(pathIn: string, tdb: string) {
                 return generateTree(mpath(k,'bin',name),dir({
                     worldserver_exe: file('worldserver.exe'),
                     authserver_exe: file('authserver.exe'),
-                    scripts: dir({})
+                    mods: dir({})
                 }))
             }),
 
@@ -623,19 +636,14 @@ export function BuildPaths(pathIn: string, tdb: string) {
                     `src/server/database/${type}/database.lib`,
                     `src/server/game/${type}/game.lib`,
                     `src/common/${type}/common.lib`,
-                    `dep/argon2/${type}/argon2.lib`,
-                    `${type}/liblua.lib`,
-                    `${type}/liblua.pdb`,
-                    `_deps/tracy-build/${type}/TracyClient.lib`,
-                    `_deps/tracy-build/${type}/TracyClient.pdb`,
+                    `dep/argon2/${type}/argon2.lib`
                 ]
                 :
                 [
-                    `install/trinitycore/lib/libcommon.so`,
-                    `install/trinitycore/lib/libdatabase.so`,
-                    `install/trinitycore/lib/libgame.so`,
-                    `install/trinitycore/lib/libshared.so`,
-                    `install/trinitycore/lib/libTracyClient.so`,
+                    `install/orstetcore/lib/libcommon.so`,
+                    `install/orstetcore/lib/libdatabase.so`,
+                    `install/orstetcore/lib/libgame.so`,
+                    `install/orstetcore/lib/libshared.so`,
                 ]
                 ).map(x=>new WFile(mpath(pathIn,x)))
             })),
@@ -655,10 +663,10 @@ export function BuildPaths(pathIn: string, tdb: string) {
             ]
             :
             [
-                `install/trinitycore/lib/libcommon.so`,
-                `install/trinitycore/lib/libdatabase.so`,
-                `install/trinitycore/lib/libgame.so`,
-                `install/trinitycore/lib/libshared.so`,
+                `install/orstetcore/lib/libcommon.so`,
+                `install/orstetcore/lib/libdatabase.so`,
+                `install/orstetcore/lib/libgame.so`,
+                `install/orstetcore/lib/libshared.so`,
             ]).map(x=>new WFile(pathIn).join(x)))
         }),
 
@@ -723,7 +731,7 @@ export function SourcePaths(pathIn: string) {
         }),
 
         cores: dir({
-            TrinityCore: dir({
+            OrstetCore: dir({
                 src: dir({}),
                 sql: dir({
                     updates: dir({}),
